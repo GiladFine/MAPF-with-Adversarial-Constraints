@@ -1,10 +1,13 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import json
+from math import inf
 
 class Graph:
     def __init__(self, edges):
         self.set_edges(edges)
+        self.network = nx.Graph()
+        self.network.add_edges_from(self.edges)
 
 
     def set_edges(self, edges):
@@ -51,10 +54,15 @@ class Graph:
                 self.edges.append(item)
 
 
+    def calc_node_distance(self, src, dst):
+        try:
+            return nx.shortest_path_length(self.network, src, dst)
+        except:
+            return inf
+
+
     def visualize(self):
-        G = nx.Graph()
-        G.add_edges_from(self.edges)
-        nx.draw_networkx(G)
+        nx.draw_networkx(self.network)
         plt.show()
 
 

@@ -29,3 +29,11 @@ EXAMPLE_TEAM = {
     'a2' : 'v3',
     'a3' : 'v5'
 }
+
+
+# Strategy - a dictionary mapping each agent to a path, represented by a list of vertices
+EXAMPLE_TEAM_STRATEGY = {
+    'a1' : ['v1', 'v1', 'v2'],
+    'a2' : ['v3', 'v2', 'v6'],
+    'a3' : ['v5', 'v4', 'v4']
+}

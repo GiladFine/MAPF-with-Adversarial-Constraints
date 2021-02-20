@@ -3,6 +3,7 @@ import json
 class Team:
     def __init__(self, agents):
         self.agents = agents
+        self.paths = {}
 
 
     def get_locations_list(self):
