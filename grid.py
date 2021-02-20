@@ -19,8 +19,8 @@ class Grid:
             j_size = len(row)
             for j in range(j_size):
                 if j + 1 < j_size and row[j] == row[j + 1] == True:
-                    edges.append([i * i_size + j + 1, i * i_size + j + 2])
+                    edges.append([str(i * i_size + j + 1), str(i * i_size + j + 2)])
                 if i + 1 < i_size and row[j] == self.grid[i + 1][j] == True:
-                    edges.append([i * i_size + j + 1, (i + 1) * i_size + j + 1])
+                    edges.append([str(i * i_size + j + 1), str((i + 1) * i_size + j + 1)])
         return edges
     
