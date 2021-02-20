@@ -11,8 +11,8 @@ def main():
     environment.team_b.print()
     print("-------------------------------------------")
     environment.goals.print()
-    #environment.graph.visualize()
-
+    environment.graph.visualize()
+    
 
 if __name__ == "__main__":
     main()
