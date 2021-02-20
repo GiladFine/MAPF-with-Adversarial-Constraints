@@ -16,6 +16,17 @@ class Graph:
         self.transitions = transitions
         self.transitions_to_edges()
 
+    
+    def get_vertices_list(self):
+        vertices_list = []
+        for item in self.edges:
+            if item[0] not in vertices_list:
+                vertices_list.append(item[0])
+            if item[1] not in vertices_list:
+                vertices_list.append(item[1])
+
+        return vertices_list
+
 
     def edges_to_transitions(self):
         self.transitions = {}
@@ -29,13 +40,15 @@ class Graph:
 
 
     def transitions_to_edges(self):
-        self.edges = []
+        tmp_edges = []
         for src in self.transitions:
             for dst in self.transitions[src]:
                 self.edges.append([src, dst])
 
-        self.edges = map(list, set(map(tuple, self.edges)))
-
+        self.edges = []
+        for item in tmp_edges:
+            if item not in self.edges:
+                self.edges.append(item)
 
 
     def visualize(self):
