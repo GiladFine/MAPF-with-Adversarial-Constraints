@@ -1,6 +1,9 @@
 from env_generator import Environment
 from game import Game
 from strategy import Strategy
+from network import Network
+from team import Team
+from graph import Graph
 from utils import *
 
 def main():
@@ -18,12 +21,11 @@ def main():
 
     strategy = Strategy(environment)
 
-    # environment.team_a, environment.team_b = EXAMPLE_TEAM_A, EXAMPLE_TEAM_B
-    # environment.graph, environment.goals = EXAMPLE_GRAPH, EXAMPLE_GOALS
     game = Game(environment, strategy.team_a_strategy, strategy.team_b_strategy)
     game.run()
 
-    
+    my_network = Network(environment.graph, environment.team_a, environment.goals)
+
 
 if __name__ == "__main__":
     main()
