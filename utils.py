@@ -1,4 +1,4 @@
-OBSTACLE_FREQUENCY = 0.4
+OBSTACLE_FREQUENCY = 0.2
 GRID_SIZE = 8
 TEAMS_SIZE = 4
 
@@ -57,3 +57,15 @@ EXAMPLE_TEAM_B_STRATEGY = {
 # Goals - a list of nodes representing B team's goals
 EXAMPLE_GOALS = {'v7', 'v20', 'v17'}
 
+# Simple Network Test
+NETWORK_TEST_GRAPH = [['1', '4'], ['2', '3'], ['3', '4'], 
+                          ['4', '5'], ['3', '5'], ['4', '6']]
+
+NETWORK_TEST_TEAM = {
+    'a1' : '1',
+    'a2' : '2'
+}
+NETWORK_TEST_GOALS = {
+    'g1' : '6',
+    'g2' : '5'
+}
