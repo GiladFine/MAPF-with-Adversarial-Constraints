@@ -7,8 +7,23 @@ class Team:
 
 
     def get_locations_list(self):
-        locations_list = [self.agents[agent] for agent in self.agents]
-        return locations_list
+        return list(self.agents.values())
+
+
+    def get_agents_list(self):
+        return list(self.agents.keys())
+
+
+    def get_agent_by_location(self, location):
+        return self.get_agents_list()[self.get_locations_list().index(location)]
+
+
+    def get_location_by_agent(self, agent):
+        return self.agents[agent]
+
+
+    def set_location(self, agent, location):
+        self.agents[agent] = location
 
 
     def print(self):

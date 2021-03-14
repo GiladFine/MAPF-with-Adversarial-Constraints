@@ -8,7 +8,7 @@ class Graph:
         self.set_edges(edges)
         self.network = nx.Graph()
         self.network.add_edges_from(self.edges)
-
+        self.UNREACHABLE = self.network.number_of_nodes() * 100000
 
     def set_edges(self, edges):
         self.edges = edges
@@ -35,11 +35,16 @@ class Graph:
         self.transitions = {}
         for item in self.edges:
             if item[0] in self.transitions:
-                if item[1] in self.transitions[item[0]]:
-                    continue
-                self.transitions[item[0]].append(item[1])
+                if not item[1] in self.transitions[item[0]]:
+                    self.transitions[item[0]].append(item[1])
             else:
                 self.transitions[item[0]] = [item[1]]
+
+            if item[1] in self.transitions:
+                if not item[0] in self.transitions[item[1]]:
+                    self.transitions[item[1]].append(item[0])
+            else:
+                self.transitions[item[1]] = [item[0]]
 
 
     def transitions_to_edges(self):
@@ -58,7 +63,11 @@ class Graph:
         try:
             return nx.shortest_path_length(self.network, src, dst)
         except:
-            return inf
+            return self.UNREACHABLE
+
+
+    def get_next_move(self, vertex):
+        return self.transitions[vertex] if vertex in self.transitions else []
 
 
     def visualize(self):
