@@ -1,4 +1,4 @@
-OBSTACLE_FREQUENCY = 0.2
+OBSTACLE_FREQUENCY = 0.35
 GRID_SIZE = 8
 TEAMS_SIZE = 4
 
@@ -58,14 +58,21 @@ EXAMPLE_TEAM_B_STRATEGY = {
 EXAMPLE_GOALS = {'v7', 'v20', 'v17'}
 
 # Simple Network Test
-NETWORK_TEST_GRAPH = [['1', '4'], ['2', '3'], ['3', '4'], 
-                          ['4', '5'], ['3', '5'], ['4', '6']]
+NETWORK_TEST_GRAPH = [['1', '5'], ['2', '5'], ['3', '6'], 
+                      ['4', '6'], ['5', '7'], ['5', '8'],
+                      ['6', '8'], ['6', '9'], ['8', '9'],
+                      ['7', '10'], ['9', '13'], ['8', '10'],
+                      ['8', '11'], ['8', '12'], ['8', '13']]
 
 NETWORK_TEST_TEAM = {
     'a1' : '1',
-    'a2' : '2'
+    'a2' : '2',
+    'a3' : '3',
+    'a4' : '4'
 }
 NETWORK_TEST_GOALS = {
-    'g1' : '6',
-    'g2' : '5'
+    'g1' : '10',
+    'g2' : '11', 
+    'g3' : '12',
+    'g4' : '13'
 }
