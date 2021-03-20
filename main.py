@@ -5,6 +5,7 @@ from network import Network
 from team import Team
 from graph import Graph
 from utils import *
+import copy
 
 def main():
     environment = Environment()
@@ -17,14 +18,19 @@ def main():
     environment.team_b.print()
     print("-------------------------------------------")
     environment.goals.print()
-    environment.graph.visualize()
+    #environment.graph.visualize()
 
     strategy = Strategy(environment)
 
-    game = Game(environment, strategy.team_a_strategy, strategy.team_b_strategy)
+    tmp_env = copy.deepcopy(environment)
+    tmp_strategy = copy.deepcopy(strategy)
+    game = Game(tmp_env, tmp_strategy.team_a_strategy, tmp_strategy.team_b_strategy)
     game.run()
 
     my_network = Network(environment.graph, environment.team_a, environment.goals)
+    # my_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS))
+    return
+    
 
 
 if __name__ == "__main__":
