@@ -3,6 +3,7 @@ from munkres import Munkres, DISALLOWED
 from math import inf
 from collections import Counter
 
+# TODO this class needs a refactor
 class Strategy:
     def __init__(self, environment):
         self.team_a = environment.team_a

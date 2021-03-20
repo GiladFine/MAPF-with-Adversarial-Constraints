@@ -1,5 +1,6 @@
 from env_generator import Environment
 
+# This class is used to define and run a game between two Teams and theit planned strategy
 class Game:
     def __init__(self, environment, team_a_strategy, team_b_strategy):
         self.team_a = environment.team_a
@@ -13,6 +14,7 @@ class Game:
         self.coverage_percentage = 0
 
     
+    # This function runs the game and prints the results
     def run(self):
         while not self.check_finish():
             self.move_team(self.team_a, self.team_a_strategy)
@@ -20,10 +22,10 @@ class Game:
             self.check_collisions()
             self.finalize_round()
 
-        self.print_results()
-        
+        self.print_results()    
 
 
+    # This function checks if both of the Teams has finished executing their strategies
     def check_finish(self):
         for vertex in self.team_a_strategy:
             if self.team_a_strategy[vertex] != []:
@@ -36,6 +38,7 @@ class Game:
         return True
 
 
+    # This function move a team one step according to the strategy, then update the strategy accordingly
     def move_team(self, team, strategy):
         for agent in team.get_agents_list():
             if strategy[agent] != []:
@@ -43,6 +46,7 @@ class Game:
                 del strategy[agent][0]
 
 
+    # This function is used to detect collisions between the two teams locations, and update the captured_agents set
     def check_collisions(self):
         for b_agent in self.team_b.get_agents_list():
             b_agent_location = self.team_b.get_location_by_agent(b_agent)
@@ -61,6 +65,7 @@ class Game:
                     self.captured_agents.add(b_agent)
 
 
+    # This function updates the lost-goals set after each round and prints it to the consolse
     def finalize_round(self):
         for agent in self.team_b.get_agents_list():
             cur_agent_location = self.team_b.get_location_by_agent(agent)
@@ -71,6 +76,7 @@ class Game:
         print('Lost Goals: {0}'.format(self.lost_goals))
         
 
+    # This function calcs & prints the game results to the console
     def print_results(self):
         self.coverage_percentage = 100 * (1 - len(self.lost_goals) / len(self.goals.get_agents_list()))
         print('Coverage Percentage: {0}%'.format(self.coverage_percentage))

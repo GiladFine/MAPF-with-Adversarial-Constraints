@@ -1,16 +1,19 @@
 from colorama import Style, Fore
 
+# This class represents a world grid with obstacles
 class Grid:
     def __init__(self, grid):
         self.grid = grid
 
 
+    # This function prints the grid to the console
     def print(self):
         for row in self.grid:
             print_row = ' '.join([f'{Fore.GREEN}O{Style.RESET_ALL}' if item == True else f'{Fore.RED}X{Style.RESET_ALL}' for item in row])
             print(print_row)
 
 
+    # This function converts the grid to a graph (edges representation)
     def convert_to_graph(self):
         edges = []
         i_size = len(self.grid)

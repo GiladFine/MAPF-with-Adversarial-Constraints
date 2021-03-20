@@ -4,6 +4,7 @@ from graph import Graph
 from team import Team
 from utils import *
 
+# This class randomly generates the environment for the game - world graph, teams, agents
 class Environment:
     def __init__(self, grid_size=GRID_SIZE, teams_size=TEAMS_SIZE, obstacle_frequency=OBSTACLE_FREQUENCY):
         # Generate random grid and convert it to graph
@@ -23,7 +24,7 @@ class Environment:
 
         # Generate target goals G
         self.goals = Team(self.random_team('g', teams_size, self.graph_available_vertices))
-
+        
 
     # Generate random grid by randomly assign obastacles until their frequency is meating the parameter
     def random_grid(self, size):
