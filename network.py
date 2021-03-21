@@ -42,10 +42,12 @@ class Network:
                 (b_node_dst, b_node_dst_tag, {"capacity": 1, "weight": 0}) # Blue edge
             ])
 
-            # Connect the src & dst nodes to the goals nodes
+            # Connect src to initial locations on the first subgraph
+            if index == 0 and base_node in self.team.get_locations_list():
+                tmp_edges_list.append(("src", b_node_src, {"capacity": 1, "weight": 0}))
+
+            # Connect the dst nodes to the goals nodes
             if base_node in self.goals.get_locations_list():
-                if index == 0: # Src will be connected only in the first subgraph
-                    tmp_edges_list.append(("src", b_node_src, {"capacity": 1, "weight": 0}))
                 tmp_edges_list.append((b_node_dst_tag, base_node + "-dst", {"capacity": 1, "weight": 0}))
                 tmp_edges_list.append((base_node + "-dst", "dst", {"capacity": 1, "weight": 0}))
 
