@@ -1,9 +1,11 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+from utils import Objective
 
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
-    def __init__(self, graph, team, goals):
+    def __init__(self, graph, team, goals, objective = Objective.MAKESPAN.value):
+        self.objective = objective
         self.original_graph = graph
         self.team = team
         self.goals = goals
@@ -38,7 +40,7 @@ class Network:
             b_node_dst_tag = str(index + 1) + "\'," + base_node
             # Create horizontal edges in the graph (blue & green in the Yu & LaValle example)
             tmp_edges_list.extend([
-                (b_node_src, b_node_dst, {"capacity": 1, "weight": 1}), # Green edge
+                (b_node_src, b_node_dst, {"capacity": 1, "weight": 1 if self.objective == Objective.MAKESPAN.value else 0}), # Green edge
                 (b_node_dst, b_node_dst_tag, {"capacity": 1, "weight": 0}) # Blue edge
             ])
 

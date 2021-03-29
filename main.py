@@ -27,8 +27,11 @@ def main():
     game = Game(tmp_env, tmp_strategy.team_a_strategy, tmp_strategy.team_b_strategy)
     game.run()
 
-    my_network = Network(environment.graph, environment.team_a, environment.goals)
-    # my_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS))
+    makespan_network = Network(environment.graph, environment.team_a, environment.goals, Objective.MAKESPAN.value)
+    total_distance_network = Network(environment.graph, environment.team_a, environment.goals, Objective.TOTAL_DISTANCE.value)
+    # makespan_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), Objective.MAKESPAN.value)
+    # total_distance_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), Objective.TOTAL_DISTANCE.value)
+
     return
     
 
