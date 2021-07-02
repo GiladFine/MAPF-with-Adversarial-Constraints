@@ -1,11 +1,11 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from utils import Objective
 
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
-    def __init__(self, graph, team, goals, objective = Objective.MAKESPAN.value):
+    def __init__(self, graph, team, goals, constraints = None, objective = "MAKESPAN"):
         self.objective = objective
+        self.constraints = constraints
         self.original_graph = graph
         self.team = team
         self.goals = goals
@@ -35,12 +35,16 @@ class Network:
         tmp_edges_list = []
         nodes_visited = []
         for base_node in self.original_graph.network.nodes():
+
+            if self.objective == "CONSTRAINTS" and base_node in self.constraints and self.constraints[base_node] <= index: # After the time
+                continue
+
             b_node_src = str(index) + "\'," + base_node
             b_node_dst = str(index + 1) + "," + base_node
             b_node_dst_tag = str(index + 1) + "\'," + base_node
             # Create horizontal edges in the graph (blue & green in the Yu & LaValle example)
             tmp_edges_list.extend([
-                (b_node_src, b_node_dst, {"capacity": 1, "weight": 1 if self.objective == Objective.MAKESPAN.value else 0}), # Green edge
+                (b_node_src, b_node_dst, {"capacity": 1, "weight": 0 if self.objective == "TOTAL_DISTANCE" else 1}), # Green edge
                 (b_node_dst, b_node_dst_tag, {"capacity": 1, "weight": 0}) # Blue edge
             ])
 
@@ -50,11 +54,15 @@ class Network:
 
             # Connect the dst nodes to the goals nodes
             if base_node in self.goals.get_locations_list():
-                tmp_edges_list.append((b_node_dst_tag, base_node + "-dst", {"capacity": 1, "weight": 0}))
-                tmp_edges_list.append((base_node + "-dst", "dst", {"capacity": 1, "weight": 0}))
+                tmp_edges_list.append((b_node_dst_tag, base_node + "-dst", {"capacity": 1, "weight": 1}))
+                tmp_edges_list.append((base_node + "-dst", "dst", {"capacity": 1, "weight": 0}))  
+
+            
 
             # Create the X-gadget for every possible move from current base_node
             for connected_node in self.original_graph.network.neighbors(base_node):
+                if self.objective == "CONSTRAINTS" and connected_node in self.constraints and self.constraints[connected_node] <= index: # After the time
+                    continue
                 if connected_node in nodes_visited:
                     continue
                 c_node_src = str(index) + "\'," + connected_node
@@ -86,7 +94,7 @@ class Network:
             self.calc_flow_and_cost()
 
             # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
-            if self.flow_value == len(self.goals.get_locations_list()):
+            if self.flow_value == len(self.goals.get_locations_list()) * 1000:
                 break
 
         self.calc_strategy()
@@ -95,6 +103,36 @@ class Network:
     # This function displays the time-expanded-graph
     def visualize(self):
         nx.draw_networkx(self.time_expanded_graph)
+        plt.show()
+
+
+    def visualize_flow(self):
+        G = nx.DiGraph()
+        labels = {}
+        for node_a in self.flow_dict.keys():
+            for node_b in self.flow_dict[node_a]:
+                if self.flow_dict[node_a][node_b] > 0:
+                    G.add_edge(node_a, node_b, weight=self.flow_dict[node_a][node_b])
+                    labels[(node_a, node_b)] = self.flow_dict[node_a][node_b]
+                    print("{0} -> {1}, val = {2}".format(node_a, node_b, self.flow_dict[node_a][node_b]))
+
+        green_edges = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] == 1]
+        blue_edges = [(u, v) for (u, v, d) in G.edges(data=True) if d["weight"] == 0]
+        pos = nx.spring_layout(G)  # positions for all nodes
+
+        # nodes
+        nx.draw_networkx_nodes(G, pos, node_size=100)
+
+        # edges
+        nx.draw_networkx_edges(G, pos, edgelist=green_edges, width=1, edge_color="g")
+        nx.draw_networkx_edges(G, pos, edgelist=blue_edges, width=1, edge_color="b")
+
+        # labels
+        nx.draw_networkx_labels(G, pos, font_size=8, font_family="sans-serif")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels, font_size=10)
+
+
+        plt.axis("off")
         plt.show()
 
 
@@ -117,7 +155,7 @@ class Network:
 
                 # Find the next node the flow is going to
                 for v in self.flow_dict[curr_node].keys():
-                    if self.flow_dict[curr_node][v] == 1:
+                    if self.flow_dict[curr_node][v] >= 1:
                         next_node = v
                         break
                 if next_node == None: # If no next node with flow exist, cut the path with ERROR
@@ -138,7 +176,7 @@ class Network:
                     tmp_split = splitted_next[1].split("-")
                     second = tmp_split[0] if tmp_split[0] != path_list[-1] else tmp_split[1]
                     # This if checks whether it really is moving to a different location, and not returning to the original location from the X-gadget
-                    if self.flow_dict[next_round + "," + splitted_next[1]][next_round + "," + second] != 1:
+                    if self.flow_dict[next_round + "," + splitted_next[1]][next_round + "," + second] < 1:
                         second = splitted_curr[1]
                 else: # Next location is the same as current location
                     second = splitted_curr[1]

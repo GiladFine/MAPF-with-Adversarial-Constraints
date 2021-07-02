@@ -2,33 +2,34 @@ from enum import Enum
 
 
 # Miscs
-OBSTACLE_FREQUENCY = 0.35
+OBSTACLE_FREQUENCY = 0.3
 GRID_SIZE = 8
 TEAMS_SIZE = 4
 
 
-# Objectives for the minimizer
-class Objective(Enum):
-    MAKESPAN = 1
-    TOTAL_DISTANCE = 2
-    CONSTRAINTS = 3
+# Possible objectives for the minimizer
+OBJECTIVE_TYPES = ["MAKESPAN", "TOTAL_DISTANCE", "CONSTRAINTS"]
 
 
-# Grid - size * size boolean array - grid[i] == False only if grid[i] is a part of an obstacle, else True
-EXAMPLE_GRID = [[True, True, True, True, True, True, True, True],
-                [True, True, False, False, True, True, True, True],
-                [False, True, False, False, True, True, True, True], 
-                [False, False, True, True, True, True, True, True], 
-                [False, True, True, True, True, True, True, True], 
-                [True, True, False, True, False, False, True, True], 
-                [True, True, False, True, True, True, True, True], 
-                [True, True, True, True, True, True, True, True]]
+# Possible strategies
+STRATEGY_TYPES = ["MUNKRES", "NETWORK_MAKSPAN", "NETWORK_TOTAL_DISTANCE"]
 
 
-SIMPLE_GRID = [[True, False, True, True],
-               [True, True, True, False],
-               [True, True, False, True],
-               [True, False, True, True],]
+# Grid - size * size boolean array - grid[i] == 0 only if grid[i] is a part of an obstacle, else 1
+EXAMPLE_GRID = [[1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 1, 0, 0, 1, 1, 1, 1],
+                [0, 1, 0, 0, 1, 1, 1, 1], 
+                [0, 0, 1, 1, 1, 1, 1, 1], 
+                [0, 1, 1, 1, 1, 1, 1, 1], 
+                [1, 1, 0, 1, 0, 0, 1, 1], 
+                [1, 1, 0, 1, 1, 1, 1, 1], 
+                [1, 1, 1, 1, 1, 1, 1, 1]]
+
+
+SIMPLE_GRID = [[1, 0, 1, 1],
+               [1, 1, 1, 0],
+               [1, 1, 0, 1],
+               [1, 0, 1, 1],]
 
 
 # Graph - a list of edges, each edge is a list of 2 vertices
@@ -70,16 +71,20 @@ EXAMPLE_TEAM_B_STRATEGY = {
 EXAMPLE_GOALS = {'v7', 'v20', 'v17'}
 
 # Simple Network Test
-NETWORK_TEST_GRAPH = [['1', '2'], ['2', '3'], ['3', '4'], 
-                      ['3', '5'], ['5', '8'], ['7', '8'],
-                      ['6', '7'], ['6', '1']]
+NETWORK_TEST_GRAPH = [['1', '3'], ['2', '3'], ['3', '4']]
 
 NETWORK_TEST_TEAM = {
     'a1' : '1',
-    'a2' : '4'
+    'a2' : '2'
 }
 
 NETWORK_TEST_GOALS = {
-    'g1' : '3',
-    'g2' : '5'
+    'g1' : '3', 
+    'g2' : '4'
+}
+
+# Constraints Example - This means for example that an agent must be in location '2' by timestep 5
+EXAMPLE_CONSTRAINTS = {
+    '3' : 1,
+    '4' : 2
 }

@@ -1,4 +1,5 @@
 from env_generator import Environment
+from copy import deepcopy
 
 # This class is used to define and run a game between two Teams and theit planned strategy
 class Game:
@@ -22,6 +23,7 @@ class Game:
             self.check_collisions()
             self.finalize_round()
 
+        self.reset_all()
         self.print_results()    
 
 
@@ -40,7 +42,7 @@ class Game:
 
     # This function move a team one step according to the strategy, then update the strategy accordingly
     def move_team(self, team, strategy):
-        for agent in team.get_agents_list():
+        for agent in strategy:
             if strategy[agent] != []:
                 team.set_location(agent, strategy[agent][0])
                 del strategy[agent][0]
@@ -48,9 +50,9 @@ class Game:
 
     # This function is used to detect collisions between the two teams locations, and update the captured_agents set
     def check_collisions(self):
-        for b_agent in self.team_b.get_agents_list():
+        for b_agent in self.team_b_strategy:
             b_agent_location = self.team_b.get_location_by_agent(b_agent)
-            for a_agent in self.team_a.get_agents_list():
+            for a_agent in self.team_a_strategy:
                 a_agent_location = self.team_a.get_location_by_agent(a_agent)
                 # Checking vertex collisions
                 if a_agent_location == b_agent_location and b_agent_location not in self.lost_goals:
@@ -76,7 +78,15 @@ class Game:
         print('Lost Goals: {0}'.format(self.lost_goals))
         
 
+    def reset_all(self):
+        pass
+
+
     # This function calcs & prints the game results to the console
     def print_results(self):
         self.coverage_percentage = 100 * (1 - len(self.lost_goals) / len(self.goals.get_agents_list()))
         print('Coverage Percentage: {0}%'.format(self.coverage_percentage))
+
+
+    def visualize(self):
+        pass

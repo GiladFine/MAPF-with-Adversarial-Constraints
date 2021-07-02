@@ -1,4 +1,8 @@
 from colorama import Style, Fore
+import matplotlib.pyplot as plt
+from matplotlib import colors
+from matplotlib.animation import FuncAnimation
+import numpy as np
 
 # This class represents a world grid with obstacles
 class Grid:
@@ -9,7 +13,7 @@ class Grid:
     # This function prints the grid to the console
     def print(self):
         for row in self.grid:
-            print_row = ' '.join([f'{Fore.GREEN}O{Style.RESET_ALL}' if item == True else f'{Fore.RED}X{Style.RESET_ALL}' for item in row])
+            print_row = ' '.join([f'{Fore.GREEN}O{Style.RESET_ALL}' if item == 1 else f'{Fore.RED}X{Style.RESET_ALL}' for item in row])
             print(print_row)
 
 
@@ -21,9 +25,15 @@ class Grid:
             row = self.grid[i]
             j_size = len(row)
             for j in range(j_size):
-                if j + 1 < j_size and row[j] == row[j + 1] == True:
+                if j + 1 < j_size and row[j] == row[j + 1] == 1:
                     edges.append([str(i * i_size + j + 1), str(i * i_size + j + 2)])
-                if i + 1 < i_size and row[j] == self.grid[i + 1][j] == True:
+                if i + 1 < i_size and row[j] == self.grid[i + 1][j] == 1:
                     edges.append([str(i * i_size + j + 1), str((i + 1) * i_size + j + 1)])
         return edges
+
+
+    def visualize(self):
+        cmap = colors.ListedColormap(['red','green'])
+        plt.pcolor(self.grid[::-1], cmap=cmap, edgecolors='k', linewidths=1)
+        plt.show()
     
