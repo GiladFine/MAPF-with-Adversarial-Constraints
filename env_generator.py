@@ -10,11 +10,19 @@ from math import floor
 
 # This class randomly generates the environment for the game - world graph, teams, agents
 class Environment:
-    def __init__(self, grid_size=GRID_SIZE, teams_size=TEAMS_SIZE, obstacle_frequency=OBSTACLE_FREQUENCY):
-        # Generate random grid and convert it to graph
-        self.grid_size = grid_size
+    def __init__(self, map_file_name=None, grid_size=GRID_SIZE, teams_size=TEAMS_SIZE, obstacle_frequency=OBSTACLE_FREQUENCY):
+        if map_file_name: # load map
+            with open("input/" + map_file_name,"rt") as infile:
+                map = [[1 if char == '.' else 0 for char in list(line.strip())] for line in infile.readlines()]
+                self.grid = Grid(map)
+                self.obstacle_frequency = sum(x.count(0) for x in map)
+                self.grid_size = len(map)
+        else: # Generate random grid and convert it to graph
+            self.obstacle_frequency = obstacle_frequency
+            self.grid_size = grid_size
+            self.grid = Grid(self.random_grid())
+
         self.teams_size = teams_size
-        self.grid = Grid(self.random_grid())
         self.graph = Graph(self.grid.convert_to_graph())
 
         # Generate team A
@@ -36,7 +44,7 @@ class Environment:
     def random_grid(self):
         grid = [[1 for i in range(self.grid_size)] for j in range(self.grid_size)]
         num_of_obastacle = 0
-        while (num_of_obastacle / (self.grid_size * self.grid_size)) < OBSTACLE_FREQUENCY:
+        while (num_of_obastacle / (self.grid_size * self.grid_size)) < self.obstacle_frequency:
             row_location, col_location = randint(0, self.grid_size - 1), randint(0, self.grid_size - 1)
             if grid[row_location][col_location]:
                 num_of_obastacle += 1
@@ -84,21 +92,21 @@ class Environment:
 
         for agent in self.team_a.get_agents_list():
             x_pos, y_pos = self.location_to_grid_position(int(self.team_a.get_location_by_agent(agent)))
-            plt.text(x_pos, y_pos, agent, size=10,
+            plt.text(x_pos, y_pos, agent, size=8,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="blue")
                 )
 
         for agent in self.team_b.get_agents_list():
             x_pos, y_pos = self.location_to_grid_position(int(self.team_b.get_location_by_agent(agent)))
-            plt.text(x_pos, y_pos, agent, size=10,
+            plt.text(x_pos, y_pos, agent, size=8,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="purple")
                 )
 
         for goal in self.goals.get_agents_list():
             x_pos, y_pos = self.location_to_grid_position(int(self.goals.get_location_by_agent(goal)))
-            plt.text(x_pos, y_pos, goal, size=10,
+            plt.text(x_pos, y_pos, goal, size=8,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="orange")
                 )

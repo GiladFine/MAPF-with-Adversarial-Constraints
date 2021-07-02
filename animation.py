@@ -8,6 +8,12 @@ from numpy.core.fromnumeric import size
 class Animation:
     def __init__(self, environment, a_team_strategy, b_team_strategy, lost_goals):
         self.environment = environment
+        squares_num = self.environment.grid_size * self.environment.grid_size
+        i = 0
+        while squares_num > 200:
+            squares_num -= 100 * i
+            i += 1
+        self.agent_size = max(10 - i, 3)   
         self.strategy_a = a_team_strategy
         self.strategy_b = b_team_strategy
         self.lost_goals = lost_goals
@@ -138,7 +144,7 @@ class Animation:
         ret_agents = []
         for goal in self.environment.goals.agents:
             x_pos, y_pos = self.environment.location_to_grid_position(int(self.environment.goals.get_location_by_agent(goal)))
-            ret_agents.append(plt.text(x_pos, y_pos, goal, size=10,
+            ret_agents.append(plt.text(x_pos, y_pos, goal, size=self.agent_size,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="orange")
                 ))
@@ -150,7 +156,7 @@ class Animation:
                 curr_speed = (0, 0)
             else:
                 curr_speed = self.speeds_a[agent][self.curr_timestep]
-            ret_agents.append(plt.text(curr_pos[0] + curr_speed[0] * i, curr_pos[1] + curr_speed[1] * i, agent, size=10,
+            ret_agents.append(plt.text(curr_pos[0] + curr_speed[0] * i, curr_pos[1] + curr_speed[1] * i, agent, size=self.agent_size,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="blue")
                 ))
@@ -161,7 +167,7 @@ class Animation:
                 curr_speed = (0, 0)
             else:
                 curr_speed = self.speeds_b[agent][self.curr_timestep]
-            ret_agents.append(plt.text(curr_pos[0] + curr_speed[0] * i, curr_pos[1] + curr_speed[1] * i, agent, size=10,
+            ret_agents.append(plt.text(curr_pos[0] + curr_speed[0] * i, curr_pos[1] + curr_speed[1] * i, agent, size=self.agent_size,
                 ha="center", va="center",
                 bbox=dict(boxstyle="circle", color="purple")
                 ))

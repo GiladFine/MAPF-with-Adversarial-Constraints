@@ -9,7 +9,7 @@ from animation import Animation
 import copy
 
 def main():
-    environment = Environment()
+    environment = Environment(map_file_name='24_24.map')
     environment.grid.print()
     # environment.grid.visualize()
     print("-------------------------------------------")
