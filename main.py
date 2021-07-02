@@ -5,11 +5,13 @@ from network import Network
 from team import Team
 from graph import Graph
 from utils import *
+from animation import Animation
 import copy
 
 def main():
     environment = Environment()
     environment.grid.print()
+    # environment.grid.visualize()
     print("-------------------------------------------")
     environment.graph.print()
     print("-------------------------------------------")
@@ -18,17 +20,29 @@ def main():
     environment.team_b.print()
     print("-------------------------------------------")
     environment.goals.print()
-    #environment.graph.visualize()
+    # environment.visualize()
 
-    strategy = Strategy(environment)
+    # munkres_strategy = Strategy(environment, "MUNKRES")
+    makespan_network_strategy = Strategy(environment, "MUNKRES")
+    # makespan_network_strategy.makespan_network_a.visualize_flow()
+    # makespan_network_strategy.makespan_network_b.visualize_flow()
+    print("A Straregy: ")
+    print(makespan_network_strategy.team_a_strategy)
+    print("B Straregy: ")
+    print(makespan_network_strategy.team_b_strategy)
+    
 
     tmp_env = copy.deepcopy(environment)
-    tmp_strategy = copy.deepcopy(strategy)
+    tmp_strategy = copy.deepcopy(makespan_network_strategy)
     game = Game(tmp_env, tmp_strategy.team_a_strategy, tmp_strategy.team_b_strategy)
     game.run()
 
-    my_network = Network(environment.graph, environment.team_a, environment.goals)
-    # my_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS))
+    anim = Animation(environment, makespan_network_strategy.team_a_strategy, makespan_network_strategy.team_b_strategy, game.lost_goals)
+    anim.plot()
+
+    # makespan_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), EXAMPLE_CONSTRAINTS, "CONSTRAINTS")
+    # makespan_network.visualize_flow()
+    # print(makespan_network.strategy)
     return
     
 

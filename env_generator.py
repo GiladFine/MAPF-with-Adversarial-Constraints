@@ -1,40 +1,46 @@
 from random import randint
+import matplotlib.pyplot as plt
+from matplotlib import colors
+from matplotlib.animation import FuncAnimation
 from grid import Grid
 from graph import Graph
 from team import Team
 from utils import *
+from math import floor
 
 # This class randomly generates the environment for the game - world graph, teams, agents
 class Environment:
     def __init__(self, grid_size=GRID_SIZE, teams_size=TEAMS_SIZE, obstacle_frequency=OBSTACLE_FREQUENCY):
         # Generate random grid and convert it to graph
-        self.grid = Grid(self.random_grid(grid_size))
+        self.grid_size = grid_size
+        self.teams_size = teams_size
+        self.grid = Grid(self.random_grid())
         self.graph = Graph(self.grid.convert_to_graph())
 
         # Generate team A
         self.graph_available_vertices = self.graph.get_vertices_list()
-        self.team_a = Team(self.random_team('a', teams_size, self.graph_available_vertices))
+        self.team_a = Team(self.random_team('a', self.graph_available_vertices))
 
         # Remove all vertices occupied by team A
         self.graph_available_vertices = [vertex for vertex in self.graph_available_vertices if vertex not in self.team_a.get_locations_list()]
         
         # Generate team B
-        self.team_b = Team(self.random_team('b', teams_size, self.graph_available_vertices))
+        self.team_b = Team(self.random_team('b', self.graph_available_vertices))
         self.graph_available_vertices = [vertex for vertex in self.graph_available_vertices if vertex not in self.team_b.get_locations_list()]
 
         # Generate target goals G
-        self.goals = Team(self.random_team('g', teams_size, self.graph_available_vertices))
+        self.goals = Team(self.random_team('g', self.graph_available_vertices))
         
 
     # Generate random grid by randomly assign obastacles until their frequency is meating the parameter
-    def random_grid(self, size):
-        grid = [[True for i in range(size)] for j in range(size)]
+    def random_grid(self):
+        grid = [[1 for i in range(self.grid_size)] for j in range(self.grid_size)]
         num_of_obastacle = 0
-        while (num_of_obastacle / (size * size)) < OBSTACLE_FREQUENCY:
-            row_location, col_location = randint(0, size - 1), randint(0, size - 1)
+        while (num_of_obastacle / (self.grid_size * self.grid_size)) < OBSTACLE_FREQUENCY:
+            row_location, col_location = randint(0, self.grid_size - 1), randint(0, self.grid_size - 1)
             if grid[row_location][col_location]:
                 num_of_obastacle += 1
-                grid[row_location][col_location] = False
+                grid[row_location][col_location] = 0
         return grid
 
 
@@ -55,12 +61,48 @@ class Environment:
 
 
     # Generate random team by randomly selecting locations for each agent
-    def random_team(self, letter, size, vertices_list):
+    def random_team(self, letter, vertices_list):
         team = {}
-        for i in range(1, size + 1):
+        for i in range(1, self.teams_size + 1):
             agent = letter + str(i)
             rand_vertex = vertices_list[randint(0, len(vertices_list) - 1)]
             vertices_list.remove(rand_vertex) # Remove from possible locations for future agents
             team[agent] = rand_vertex
 
         return team
+
+
+    def location_to_grid_position(self, location):
+        x_pos = 0.5 + (location - 1) % self.grid_size
+        y_pos = self.grid_size - floor((location - 1) / self.grid_size) - 0.5
+        return x_pos, y_pos
+
+
+    def visualize(self):
+        cmap = colors.ListedColormap(['red','green'])
+        plt.pcolor(self.grid.grid[::-1], cmap=cmap, edgecolors='k', linewidths=1)
+
+        for agent in self.team_a.get_agents_list():
+            x_pos, y_pos = self.location_to_grid_position(int(self.team_a.get_location_by_agent(agent)))
+            plt.text(x_pos, y_pos, agent, size=10,
+                ha="center", va="center",
+                bbox=dict(boxstyle="circle", color="blue")
+                )
+
+        for agent in self.team_b.get_agents_list():
+            x_pos, y_pos = self.location_to_grid_position(int(self.team_b.get_location_by_agent(agent)))
+            plt.text(x_pos, y_pos, agent, size=10,
+                ha="center", va="center",
+                bbox=dict(boxstyle="circle", color="purple")
+                )
+
+        for goal in self.goals.get_agents_list():
+            x_pos, y_pos = self.location_to_grid_position(int(self.goals.get_location_by_agent(goal)))
+            plt.text(x_pos, y_pos, goal, size=10,
+                ha="center", va="center",
+                bbox=dict(boxstyle="circle", color="orange")
+                )
+
+        plt.show()
+
+        
