@@ -71,7 +71,7 @@ class Game:
     def finalize_round(self):
         for agent in self.team_b.get_agents_list():
             cur_agent_location = self.team_b.get_location_by_agent(agent)
-            if cur_agent_location in self.goals.get_locations_list() and agent not in self.captured_agents:
+            if cur_agent_location in self.goals.get_locations_list() and cur_agent_location not in self.team_a.get_locations_list():
                 self.lost_goals.add(cur_agent_location)
 
         print('Captures Agents: {0}'.format(self.captured_agents))

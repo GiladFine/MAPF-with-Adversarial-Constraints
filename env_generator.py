@@ -17,7 +17,7 @@ class Environment:
                 self.grid = Grid(map)
                 self.obstacle_frequency = sum(x.count(0) for x in map)
                 self.grid_size = len(map)
-        else: # Generate random grid and convert it to graph
+        else: # Generate random gridx
             self.obstacle_frequency = obstacle_frequency
             self.grid_size = grid_size
             self.grid = Grid(self.random_grid())

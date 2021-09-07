@@ -9,21 +9,24 @@ from animation import Animation
 import copy
 
 def main():
-    environment = Environment(map_file_name='24_24.map')
+    environment = Environment(map_file_name='8_8.map')
     environment.grid.print()
     # environment.grid.visualize()
     print("-------------------------------------------")
     environment.graph.print()
     print("-------------------------------------------")
+    environment.team_a.agents = EXAMPLE_TEAM_A
     environment.team_a.print()
     print("-------------------------------------------")
+    environment.team_b.agents = EXAMPLE_TEAM_B
     environment.team_b.print()
     print("-------------------------------------------")
+    environment.goals.agents = EXAMPLE_GOALS
     environment.goals.print()
     # environment.visualize()
 
     # munkres_strategy = Strategy(environment, "MUNKRES")
-    makespan_network_strategy = Strategy(environment, "MUNKRES")
+    makespan_network_strategy = Strategy(environment, "CONSTRAINTS")
     # makespan_network_strategy.makespan_network_a.visualize_flow()
     # makespan_network_strategy.makespan_network_b.visualize_flow()
     print("A Straregy: ")

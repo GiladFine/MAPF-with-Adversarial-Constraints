@@ -39,7 +39,10 @@ class Animation:
         for agent in self.strategy_a.keys():
             goals_to_agents[self.strategy_a[agent][-1]] = [agent]
         for agent in self.strategy_b.keys():
-            goals_to_agents[self.strategy_b[agent][-1]].append(agent)
+            if self.strategy_b[agent][-1] not in goals_to_agents: # If a new goal was detected in B team
+                goals_to_agents[self.strategy_b[agent][-1]] = [agent]    
+            else: # Else, append agent to the existing goal's list of agents
+                goals_to_agents[self.strategy_b[agent][-1]].append(agent)
 
         for goal in self.environment.goals.agents:
             goal_location = self.environment.goals.get_location_by_agent(goal)

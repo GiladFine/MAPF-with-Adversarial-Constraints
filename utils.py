@@ -42,16 +42,23 @@ EXAMPLE_GRAPH = [['v1', 'v2'], ['v3', 'v4'], ['v2', 'v6'], ['v3', 'v7'], ['v4', 
 
 # Team - a dictionary mapping each agent to its location in the graph
 EXAMPLE_TEAM_A = {
-    'a1' : 'v10',
-    'a2' : 'v4', 
-    'a3' : 'v9'
+    'a1' : '21',
+    'a2' : '29',
+    'a3' : '30'
 }
 
 EXAMPLE_TEAM_B = {
-    'b1' : 'v11',
-    'b2' : 'v16',
-    'b3' : 'v1'
+    'b1' : '8',
+    'b2' : '39',
+    'b3' : '52'
 }
+
+EXAMPLE_GOALS = {
+    'g1' : '38',
+    'g2' : '55',
+    'g3' : '56'
+}
+
 
 
 # Strategy - a dictionary mapping each agent to a path, represented by a list of vertices
@@ -66,9 +73,6 @@ EXAMPLE_TEAM_B_STRATEGY = {
     'b2' : ['v16', 'v15', 'v14', 'v17'],
     'b3' : ['v1', 'v2', 'v6', 'v7']
 }
-
-# Goals - a list of nodes representing B team's goals
-EXAMPLE_GOALS = {'v7', 'v20', 'v17'}
 
 # Simple Network Test
 NETWORK_TEST_GRAPH = [['1', '3'], ['2', '3'], ['3', '4']]

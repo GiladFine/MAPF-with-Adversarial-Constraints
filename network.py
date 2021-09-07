@@ -146,9 +146,12 @@ class Network:
     # This function derrive a Makespan-optimal strategy from the flow_dict
     def calc_strategy(self):
         for base_node in self.flow_dict["src"].keys():
-            if self.flow_dict["src"][base_node] == 0: # Ignore nodes that has no flow
-                continue
             path_list = [base_node.split(",")[1]] # Add initial location to path
+            
+            if self.flow_dict["src"][base_node] == 0: # Ignore nodes that has no flow
+                self.strategy[self.team.get_agent_by_location(path_list[0])] = path_list
+                continue
+            
             curr_node = base_node
             while True:
                 next_node = None
