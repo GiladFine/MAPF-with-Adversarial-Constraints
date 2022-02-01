@@ -9,8 +9,7 @@ from animation import Animation
 import copy
 
 def main():
-    environment = Environment(map_file_name='8_8.map')
-    environment.grid.print()
+    environment = Environment(map_file_name='check.map')
     # environment.grid.visualize()
     print("-------------------------------------------")
     environment.graph.print()
@@ -23,6 +22,7 @@ def main():
     print("-------------------------------------------")
     environment.goals.agents = EXAMPLE_GOALS
     environment.goals.print()
+    environment.print()
     # environment.visualize()
 
     # munkres_strategy = Strategy(environment, "MUNKRES")
@@ -43,7 +43,7 @@ def main():
     anim = Animation(environment, makespan_network_strategy.team_a_strategy, makespan_network_strategy.team_b_strategy, game.lost_goals)
     anim.plot()
 
-    # makespan_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), EXAMPLE_CONSTRAINTS, "CONSTRAINTS")
+    # makespan_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), EXAMPLE_REACH_CONSTRAINTS, "CONSTRAINTS")
     # makespan_network.visualize_flow()
     # print(makespan_network.strategy)
     return

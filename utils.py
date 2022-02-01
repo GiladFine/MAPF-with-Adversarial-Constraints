@@ -2,7 +2,7 @@ from enum import Enum
 
 
 # Miscs
-OBSTACLE_FREQUENCY = 0.3
+OBSTACLE_FREQUENCY = 0.1
 GRID_SIZE = 8
 TEAMS_SIZE = 4
 
@@ -41,22 +41,41 @@ EXAMPLE_GRAPH = [['v1', 'v2'], ['v3', 'v4'], ['v2', 'v6'], ['v3', 'v7'], ['v4', 
 
 
 # Team - a dictionary mapping each agent to its location in the graph
+# EXAMPLE_TEAM_A = {
+#     'a1' : '21',
+#     'a2' : '29',
+#     'a3' : '30'
+# }
+
+# EXAMPLE_TEAM_B = {
+#     'b1' : '8',
+#     'b2' : '39',
+#     'b3' : '60'
+# }
+
+# EXAMPLE_GOALS = {
+#     'g1' : '38',
+#     'g2' : '55',
+#     'g3' : '56'
+# }
+
+
 EXAMPLE_TEAM_A = {
-    'a1' : '21',
-    'a2' : '29',
-    'a3' : '30'
+    'a1' : '26',
+    'a2' : '27',
+    'a3' : '45'
 }
 
 EXAMPLE_TEAM_B = {
-    'b1' : '8',
-    'b2' : '39',
-    'b3' : '52'
+    'b1' : '63',
+    'b2' : '6',
+    'b3' : '2'
 }
 
 EXAMPLE_GOALS = {
-    'g1' : '38',
-    'g2' : '55',
-    'g3' : '56'
+    'g1' : '31',
+    'g2' : '32',
+    'g3' : '21'
 }
 
 
@@ -87,8 +106,17 @@ NETWORK_TEST_GOALS = {
     'g2' : '4'
 }
 
-# Constraints Example - This means for example that an agent must be in location '2' by timestep 5
-EXAMPLE_CONSTRAINTS = {
+# Reach Constraints Example - This means for example that an agent must be in location '3' by timestep 1,
+# so the entire branch of '3' from timestep 1 and forward is trimmed from the time-expanded graph
+EXAMPLE_REACH_CONSTRAINTS = {
     '3' : 1,
     '4' : 2
+}
+
+
+# Hole Constraints Example - This means that the location '2' in the original graph is not available in timestep 3
+# and 7, but for example in timesteps 5, 9 it is free
+EXAMPLE_HOLE_CONSTRAINTS = {
+    '2': [3, 6],
+    '5': [1, 3, 4]
 }

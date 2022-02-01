@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
-    def __init__(self, graph, team, goals, constraints = None, objective = "MAKESPAN"):
+    def __init__(self, graph, team, goals, reach_constraints = None, hole_constraints = None, objective = "MAKESPAN"):
         self.objective = objective
-        self.constraints = constraints
+        self.reach_constraints = reach_constraints
+        self.hole_constraints = hole_constraints
         self.original_graph = graph
         self.team = team
         self.goals = goals
@@ -30,13 +31,27 @@ class Network:
         return max_distance
 
 
+    def _is_constrainted(self, node, index):
+        if self.objective != "CONSTRAINTS":
+            return False
+        
+        if self.reach_constraints and node in self.reach_constraints and self.reach_constraints[node] <= index:
+            return True
+
+        if self.hole_constraints and node in self.hole_constraints and index in self.hole_constraints[node]:
+            return True
+
+        return False
+        
+
+
     # This function returns a list of edges consist with a subgraph of the i-th propagation of the original graph
     def create_subgraph(self, index):
         tmp_edges_list = []
         nodes_visited = []
         for base_node in self.original_graph.network.nodes():
 
-            if self.objective == "CONSTRAINTS" and base_node in self.constraints and self.constraints[base_node] <= index: # After the time
+            if self._is_constrainted(base_node, index):
                 continue
 
             b_node_src = str(index) + "\'," + base_node
@@ -57,11 +72,9 @@ class Network:
                 tmp_edges_list.append((b_node_dst_tag, base_node + "-dst", {"capacity": 1, "weight": 1}))
                 tmp_edges_list.append((base_node + "-dst", "dst", {"capacity": 1, "weight": 0}))  
 
-            
-
             # Create the X-gadget for every possible move from current base_node
             for connected_node in self.original_graph.network.neighbors(base_node):
-                if self.objective == "CONSTRAINTS" and connected_node in self.constraints and self.constraints[connected_node] <= index: # After the time
+                if self._is_constrainted(base_node, index):
                     continue
                 if connected_node in nodes_visited:
                     continue
@@ -94,10 +107,13 @@ class Network:
             self.calc_flow_and_cost()
 
             # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
-            if self.flow_value == len(self.goals.get_locations_list()) * 1000:
+            if self.flow_value == len(self.goals.get_locations_list()):
                 break
 
-        self.calc_strategy()
+        try:
+            self.calc_strategy()
+        except:
+            self.strategy = None
 
         
     # This function displays the time-expanded-graph
@@ -138,9 +154,14 @@ class Network:
 
     # This function calculates the flow on the time-expanded-graph
     def calc_flow_and_cost(self):
-        self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
-        self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
-        self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))
+        try:
+            self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
+            self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
+            self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))
+        except:
+            self.flow_dict={}
+            self.flow_cost=0
+            self.flow_value=0
 
 
     # This function derrive a Makespan-optimal strategy from the flow_dict

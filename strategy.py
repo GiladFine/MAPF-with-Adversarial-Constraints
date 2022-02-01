@@ -33,10 +33,11 @@ class Strategy:
         elif self.type == "CONSTRAINTS":
 
             # Calculate team A constraints based on team B's strategy
-            a_constraints = {}
+            a_reach_constraints = {}
+            a_hole_constraints = {}
             for item in self.team_b_strategy:
                 curr_goal = self.team_b_strategy[item][-1]
-                a_constraints[curr_goal] = len(self.team_b_strategy[item]) - 1
+                a_reach_constraints[curr_goal] = len(self.team_b_strategy[item]) - 1
 
             # The main idea here is to calculate a Network-Flow based solution, them 'delete' the found goals
             # and re-calculate for the unachieved goals until convergence. This helps us calculate the final paths
@@ -44,23 +45,46 @@ class Strategy:
             is_improving = True
             team_a, goals = deepcopy(self.team_a), deepcopy(self.goals)
             hot_swaps_locations = []
+
             while is_improving and team_a.agents != {} and goals.agents != {}:
-                self.constrains_network_a = Network(self.graph, team_a, goals, a_constraints, objective="CONSTRAINTS")
+                print("Network")
+                self.constrains_network_a = Network(self.graph, team_a, goals, a_reach_constraints, a_hole_constraints ,objective="CONSTRAINTS")
+                if not self.constrains_network_a.strategy:
+                    break
+                
                 is_improving = False
+
                 for agent in team_a.get_agents_list():
                     self.team_a_strategy[agent] = self.constrains_network_a.strategy[agent] # Update strategy for agent
+                    
                     for loc in hot_swaps_locations:
                         if loc in self.team_a_strategy[agent]:
                             self.team_a_strategy[agent].remove(loc) # Remove from strategy path the locations where it collides with other agents in a 'hot-swap' 
-                    if len(self.constrains_network_a.strategy[agent]) > 1: # Meaning the agent now have a solution
+
+                    if len(self.team_a_strategy[agent]) > 1: # Meaning the agent now have a solution
                         is_improving = True
                         del team_a.agents[agent] # Remove from team for next iteration of the main loop
-                        if self.team_a_strategy[agent][-1] in a_constraints: # If this path's goal has a constraint
-                            del a_constraints[self.team_a_strategy[agent][-1]] # Remove constraint
+
+                        print(f'agent {agent}')
+                        print(f'h_constraints {a_hole_constraints}')
+                        for i, loc in enumerate(self.team_a_strategy[agent]):
+                            if i == len(self.team_a_strategy[agent]) - 1 or i == 0:
+                                continue
+                            if loc in a_hole_constraints:
+                                a_hole_constraints[loc].append(i - 1)
+                            else:
+                                a_hole_constraints[loc] = [i - 1]
+                        print(f'h_constraints {a_hole_constraints}')
+
+                        if self.team_a_strategy[agent][-1] in a_reach_constraints: # If this path's goal has a constraint
+                            del a_reach_constraints[self.team_a_strategy[agent][-1]] # Remove constraint
                             hot_swaps_locations.append(self.team_a_strategy[agent][-1]) # Add goal to hot-swapping locations
-                        for item in a_constraints:
-                            a_constraints[item] += 1 # Increase the constraint by 1, to compensate for the 'jump' that happens when hot-swapping
+
+                        for item in a_reach_constraints:
+                            a_reach_constraints[item] += 1 # Increase the constraint by 1, to compensate for the 'jump' that happens when hot-swapping
+
                         del goals.agents[goals.get_agent_by_location(self.constrains_network_a.strategy[agent][-1])] # Remove goal
+                        
             print("------- Strategy ---------")
             print(self.team_a_strategy)
 
@@ -89,8 +113,8 @@ class Strategy:
                             self.team_a_strategy[agent2] = self.team_a_strategy[agent2][:i] + sub_path1
                             break
 
-            print("------- Strategy ---------")
-            print(self.team_a_strategy)
+                print("------- Strategy ---------")
+                print(self.team_a_strategy)
     
 
     def calc_team_b_strategy(self):
