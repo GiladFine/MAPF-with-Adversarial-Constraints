@@ -86,6 +86,15 @@ class Environment:
         return x_pos, y_pos
 
 
+    def print(self):
+        print(self.grid.to_string(self.team_a.get_locations_list(), self.team_b.get_locations_list(), self.goals.get_locations_list())) 
+        
+        
+    def save(self, env_name):
+        with open("results/" + env_name + ".env", "w") as savefile:
+            savefile.write(self.grid.to_string(self.team_a.get_locations_list(), self.team_b.get_locations_list(), self.goals.get_locations_list()))
+
+
     def visualize(self):
         cmap = colors.ListedColormap(['red','green'])
         plt.pcolor(self.grid.grid[::-1], cmap=cmap, edgecolors='k', linewidths=1)

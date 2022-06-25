@@ -8,13 +8,29 @@ import numpy as np
 class Grid:
     def __init__(self, grid):
         self.grid = grid
+        self.row_size = len(self.grid)
+        self.col_size = len(self.grid[0])
 
 
     # This function prints the grid to the console
-    def print(self):
-        for row in self.grid:
-            print_row = ' '.join([f'{Fore.GREEN}O{Style.RESET_ALL}' if item == 1 else f'{Fore.RED}X{Style.RESET_ALL}' for item in row])
-            print(print_row)
+    def to_string(self, a_team_locations, b_team_locations, goals_locations):
+        result = ''
+        for i, row in enumerate(self.grid):
+            print_row = ''
+            for j, item in enumerate(row):
+                location_str = str(i * self.row_size + j + 1)
+                if location_str in a_team_locations:
+                    print_item = f'{Fore.YELLOW}{a_team_locations.index(location_str) + 1}{Style.RESET_ALL} '
+                elif location_str in b_team_locations:
+                    print_item = f'{Fore.BLUE}{b_team_locations.index(location_str) + 1}{Style.RESET_ALL} '
+                elif location_str in goals_locations:
+                    print_item = f'{Fore.MAGENTA}{goals_locations.index(location_str) + 1}{Style.RESET_ALL} '
+                else:
+                    print_item = f'{Fore.GREEN}O{Style.RESET_ALL} ' if item == 1 else f'{Fore.RED}X{Style.RESET_ALL} '
+                    
+                print_row += print_item
+            result += print_row + '\n'
+        return result
 
 
     # This function converts the grid to a graph (edges representation)
