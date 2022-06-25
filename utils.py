@@ -2,7 +2,7 @@ from enum import Enum
 
 
 # Miscs
-OBSTACLE_FREQUENCY = 0.1
+OBSTACLE_FREQUENCY = 0.25
 GRID_SIZE = 8
 TEAMS_SIZE = 4
 

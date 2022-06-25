@@ -85,6 +85,14 @@ class Graph:
             return nx.shortest_path_length(self.network, src, dst)
         except:
             return self.UNREACHABLE # The constant distance between two non-connected nodes
+        
+        
+    def get_all_shortest_paths(self, src, dst):
+        try:
+            return nx.all_shortest_paths(self.network, src, dst)
+        except:
+            return self.UNREACHABLE # The constant distance between two non-connected nodes
+
 
 
     # This function returns the list of transitions for a given node

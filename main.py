@@ -1,6 +1,6 @@
 from env_generator import Environment
 from game import Game
-from strategy import Strategy
+from strategies import MunkresStrategy, ConstraintsStrategy
 from network import Network
 from team import Team
 from graph import Graph
@@ -25,8 +25,8 @@ def main():
     environment.print()
     # environment.visualize()
 
-    # munkres_strategy = Strategy(environment, "MUNKRES")
-    makespan_network_strategy = Strategy(environment, "CONSTRAINTS")
+    # munkres_strategy = MunkresStrategy(environment, b_type="MUNKRES")
+    makespan_network_strategy = ConstraintsStrategy(environment, b_type="MUNKRES")
     # makespan_network_strategy.makespan_network_a.visualize_flow()
     # makespan_network_strategy.makespan_network_b.visualize_flow()
     print("A Straregy: ")
@@ -42,13 +42,6 @@ def main():
 
     anim = Animation(environment, makespan_network_strategy.team_a_strategy, makespan_network_strategy.team_b_strategy, game.lost_goals)
     anim.plot()
-
-    # makespan_network = Network(Graph(NETWORK_TEST_GRAPH), Team(NETWORK_TEST_TEAM), Team(NETWORK_TEST_GOALS), EXAMPLE_REACH_CONSTRAINTS, "CONSTRAINTS")
-    # makespan_network.visualize_flow()
-    # print(makespan_network.strategy)
-    return
-    
-
 
 if __name__ == "__main__":
     main()

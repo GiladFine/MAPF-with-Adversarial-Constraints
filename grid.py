@@ -18,7 +18,7 @@ class Grid:
         for i, row in enumerate(self.grid):
             print_row = ''
             for j, item in enumerate(row):
-                location_str = str(i * 8 + j + 1)
+                location_str = str(i * self.row_size + j + 1)
                 if location_str in a_team_locations:
                     print_item = f'{Fore.YELLOW}{a_team_locations.index(location_str) + 1}{Style.RESET_ALL} '
                 elif location_str in b_team_locations:

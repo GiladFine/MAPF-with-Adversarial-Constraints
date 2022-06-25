@@ -88,6 +88,11 @@ class Environment:
 
     def print(self):
         print(self.grid.to_string(self.team_a.get_locations_list(), self.team_b.get_locations_list(), self.goals.get_locations_list())) 
+        
+        
+    def save(self, env_name):
+        with open("results/" + env_name + ".env", "w") as savefile:
+            savefile.write(self.grid.to_string(self.team_a.get_locations_list(), self.team_b.get_locations_list(), self.goals.get_locations_list()))
 
 
     def visualize(self):
