@@ -1,24 +1,29 @@
+from copy import deepcopy
 import datetime
 import networkx as nx
 import matplotlib.pyplot as plt
+from itertools import combinations
 
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
     def __init__(self, graph, team, goals, reach_constraints = None, objective = "MAKESPAN"):
         self.objective = objective
         self.reach_constraints = reach_constraints
+        print(f"reach_constraints:\n{self.reach_constraints}")
         self.original_graph = graph
         self.team = team
         self.goals = goals
         self.strategy = {}
         self.time_expanded_graph = nx.DiGraph()
+        self.time_expanded_graph_orig = nx.DiGraph()
         self.propagation_const = self.get_max_distance() + self.original_graph.network.number_of_nodes() + 1
         self.flow_dict = {}
         self.flow_cost = 0
         self.flow_value = 0
         self.debug = False
-        self.build_network()
-        # self.build_network_with_demands()
+        self.brute_force = True
+        # self.build_network()
+        self.build_network_with_demands()
 
     # This function returns the maximal distance between any agent to any goal in the graph
     def get_max_distance(self):
@@ -56,7 +61,7 @@ class Network:
             b_node_dst = str(index + 1) + "," + base_node
             b_node_dst_tag = str(index + 1) + "\'," + base_node
             
-            if self._is_constrainted(base_node, index + 1):                
+            if self._is_constrainted(base_node, index + 1):  
                 if b_node_dst in nodes_lower_bounds_total_output:
                     nodes_lower_bounds_total_output[b_node_dst] += 1
                 else:
@@ -106,6 +111,39 @@ class Network:
         [edges_list.append(item) for item in tmp_edges_list if item not in edges_list]
         return edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output
     
+    def _get_all_combinations(self, l):
+        if not self.brute_force:
+            return l
+        comb = []
+        for i in range(len(l) + 1):
+            # Generating sub list
+            comb += [list(j) for j in combinations(l, i)]
+        # Returning list
+        comb.sort(key=len, reverse=True)
+        return comb
+    
+    def _prepare_next_combination(self, comb, prev_removed_edges = None):
+        self.time_expanded_graph = deepcopy(self.time_expanded_graph_orig)
+        removed_edges = []
+        for goal in list(set(self.goals.get_locations_list()) - set(comb)):
+            removed_edges.append((f"{goal}-dst", "dst"))
+            removed_edges.extend(
+                [
+                    edge
+                    for edge in self.time_expanded_graph.edges
+                    if (
+                        edge[0] == "fake_src" and edge[1].split(",")[1] == goal
+                    ) or (
+                        edge[1] == f"{goal}-dst"
+                    ) or (
+                        edge[1] == "fake_dst" and edge[0].split(",")[1] == goal
+                    )
+                ]
+            )
+        
+        self.time_expanded_graph.remove_edges_from(removed_edges)
+        return removed_edges
+            
     def build_network_with_demands(self):
         number_of_goals = len(self.goals.get_locations_list())
         self.time_expanded_graph.add_node("fake_src")
@@ -116,6 +154,7 @@ class Network:
                 ("dst", "src", {"capacity": 10000}),
             ]
         )
+        
         for i in range(self.propagation_const):
             edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output = self.create_subgraph(index=i, is_demands=True)
             
@@ -140,15 +179,28 @@ class Network:
             
             self.time_expanded_graph.add_edges_from(extra_edges)
             
+        self.time_expanded_graph_orig = deepcopy(self.time_expanded_graph)
+        goal_combs = self._get_all_combinations(self.goals.get_locations_list())
+        solution_found = False
+        debug_break = False
+        for comb in goal_combs:
+            self._prepare_next_combination(comb)
+            
             self.calc_flow_and_cost_auxilary()
 
             # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
             if (
-                self.flow_dict["dst"]["src"] == number_of_goals and
-                all(val == 1 for val in self.flow_dict["fake_src"].values())
-            ):
+                self.flow_dict["dst"]["src"] == len(comb) and
+                list(self.flow_dict["fake_src"].values()).count(0) == 0
+            ) or debug_break:
+                solution_found = True # GOOD!
                 break
-
+            else:
+                continue # No Solution - check different configuration (brute force)
+            
+        if not solution_found:
+            raise ValueError("No Solution!!!")
+        
         try:
             self.calc_simplified_flow_list()                        
             if self.debug == True:
@@ -170,7 +222,7 @@ class Network:
                 self.simplified_flow_list.append(f"{src} -> {dsts}")
                 
         if "src" in self.flow_dict["dst"]:
-            dst_to_src_flow_val = self.flow_dict["dst"][""]
+            dst_to_src_flow_val = self.flow_dict["dst"]["src"]
             self.simplified_flow_list.append(f"dst -> src X{dst_to_src_flow_val}")
     
     def write_flow_file(self):

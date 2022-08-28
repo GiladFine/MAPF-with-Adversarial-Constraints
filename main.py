@@ -14,13 +14,13 @@ def main():
     print("-------------------------------------------")
     environment.graph.print()
     print("-------------------------------------------")
-    environment.team_a.agents = EXAMPLE_TEAM_A
+    # environment.team_a.agents = EXAMPLE_TEAM_A
     environment.team_a.print()
     print("-------------------------------------------")
-    environment.team_b.agents = EXAMPLE_TEAM_B
+    # environment.team_b.agents = EXAMPLE_TEAM_B
     environment.team_b.print()
     print("-------------------------------------------")
-    environment.goals.agents = EXAMPLE_GOALS
+    # environment.goals.agents = EXAMPLE_GOALS
     environment.goals.print()
     environment.print()
     # environment.visualize()
@@ -40,8 +40,8 @@ def main():
     game = Game(tmp_env, tmp_strategy.team_a_strategy, tmp_strategy.team_b_strategy)
     game.run()
 
-    anim = Animation(environment, makespan_network_strategy.team_a_strategy, makespan_network_strategy.team_b_strategy, game.lost_goals)
-    anim.plot()
+    # anim = Animation(environment, makespan_network_strategy.team_a_strategy, makespan_network_strategy.team_b_strategy, game.lost_goals)
+    # anim.plot()
 
 if __name__ == "__main__":
     main()
