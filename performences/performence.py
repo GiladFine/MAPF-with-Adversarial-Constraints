@@ -27,6 +27,7 @@ class DataRecord(BaseModel):
     number_of_sat_solutions: int
     overall_sat_time: float
     overall_non_sat_time: float
+    overall_paths_sizes_generally_sat: int
     number_of_runs: int    
     
 
@@ -79,9 +80,10 @@ def log_data_record(
             number_of_sat_solutions=info["number_of_valid_solutions"],
             overall_sat_time=info["overall_sat_time"],
             overall_non_sat_time=info["overall_non_sat_time"],
+            overall_paths_sizes_generally_sat=info["overall_paths_sizes_generally_sat"],
         )
         print(data_record.dict())
-        with open("performence_results.txt", 'a') as results_file:
+        with open("performences/performence_results.txt", 'a') as results_file:
             results_file.write(json.dumps(data_record.dict(), indent=4))
             results_file.write("\n------------------------\n")
 
@@ -132,7 +134,7 @@ def check_munkres(env: Environment, constraints: Dict[str, int]) -> bool:
         for j, distance in enumerate(row):
             new_row.append(
                 0
-                if distance <= constraints_list[j] + 1
+                if distance <= constraints_list[j]
                 else 1
             )
         reachability_matrix.append(new_row)
@@ -180,7 +182,7 @@ def calc_strategy_paths_size(strategy: ConstraintsStrategy) -> Dict[str, int]:
     return path_sums  
         
 def main():
-    for num_of_goals in [3, 5, 7, 9, 11]:
+    for num_of_goals in [5, 7, 9, 11]:
         results = {
             network_mode: {
                 'overall_sat_time': 0.0,
@@ -223,7 +225,7 @@ def main():
                 log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {overall_time}, {path_sizes_dict}"
                 print(log_str)
 
-                with open("log.txt", 'a') as log_file:
+                with open("performences/log.txt", 'a') as log_file:
                     log_file.write(log_str + "\n")
                 
             print(f"\nResults for {num_of_goals} agents - \n{json.dumps(results, indent=4)}\n")        
