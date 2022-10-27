@@ -41,6 +41,15 @@ def plot_sat_graph(mode):
                     ),
                     1
                 )
+            elif mode == "overall-times":
+                value = round(
+                    (
+                        data_of_agents_amount["overall_non_sat_time"]
+                        + data_of_agents_amount["overall_sat_time"]
+                    )
+                    / NUMBER_OF_RUNS,
+                    1
+                )
             else:
                 raise ValueError("BAD MODE")
             arrays_dict[variation].append(value)
@@ -50,24 +59,24 @@ def plot_sat_graph(mode):
     width = 0.3  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width, arrays_dict[variations[0]], width, label=variations[0])
-    rects2 = ax.bar(x, arrays_dict[variations[1]], width, label=variations[1])
-    rects3 = ax.bar(x + width, arrays_dict[variations[2]], width, label=variations[2])
+    rects1 = ax.bar(x - width, arrays_dict[variations[0]], width, label=variations[0], hatch='///')
+    rects2 = ax.bar(x, arrays_dict[variations[1]], width, label=variations[1], hatch='.O')
+    rects3 = ax.bar(x + width, arrays_dict[variations[2]], width, label=variations[2], hatch='..')
 
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_xlabel('number of agents')
     if mode == "percent-of-SAT":
         ax.set_ylabel('% of SAT instances')
-        ax.set_title('% of SAT instances for each problem type')
         plt.ylim(0, 130)
     elif mode == "SAT-times":
         ax.set_ylabel('Avarage time per SAT instance (seconds)')
-        ax.set_title('Avarage time of SAT instance for each problem type')
         plt.ylim(0, 70)
     elif mode == "non-SAT-times":
         ax.set_ylabel('Avarage time per non-SAT instance (seconds)')
-        ax.set_title('Avarage time of non-SAT instance for each problem type')
+        plt.ylim(0, 70)
+    elif mode == "overall-times":
+        ax.set_ylabel('Avarage time per instance (seconds)')
         plt.ylim(0, 70)
     else:
         raise ValueError("BAD MODE")
@@ -91,3 +100,4 @@ if __name__ == "__main__":
     plot_sat_graph("percent-of-SAT")
     plot_sat_graph("SAT-times")
     plot_sat_graph("non-SAT-times")
+    plot_sat_graph("overall-times")
