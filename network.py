@@ -1,29 +1,37 @@
 from copy import deepcopy
 import datetime
+from typing import List
+from time import time
+from func_timeout import func_set_timeout
 import networkx as nx
 import matplotlib.pyplot as plt
 from itertools import combinations
 
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
-    def __init__(self, graph, team, goals, reach_constraints = None, objective = "MAKESPAN"):
+    def __init__(self, graph, team, goals, network_mode, reach_constraints = None, objective = "MAKESPAN"):
         self.objective = objective
         self.reach_constraints = reach_constraints
-        print(f"reach_constraints:\n{self.reach_constraints}")
+        # print(f"reach_constraints:\n{self.reach_constraints}")
         self.original_graph = graph
         self.team = team
         self.goals = goals
+        self.network_mode = network_mode
         self.strategy = {}
         self.time_expanded_graph = nx.DiGraph()
         self.time_expanded_graph_orig = nx.DiGraph()
-        self.propagation_const = self.get_max_distance() + self.original_graph.network.number_of_nodes() + 1
+        self.propagation_const = max(self.reach_constraints.values())
         self.flow_dict = {}
         self.flow_cost = 0
         self.flow_value = 0
         self.debug = False
         self.brute_force = True
-        # self.build_network()
-        self.build_network_with_demands()
+        if self.network_mode == "stays":
+            self.build_network_stays_on_targets()
+        elif self.network_mode == "disappearing":
+            self.build_network_disappearing()
+        elif self.network_mode == "demands":
+            self.build_network_with_demands()
 
     # This function returns the maximal distance between any agent to any goal in the graph
     def get_max_distance(self):
@@ -47,52 +55,72 @@ class Network:
         return False
 
     # This function returns a list of edges consist with a subgraph of the i-th propagation of the original graph
-    def create_subgraph(self, index, is_demands):
+    def create_subgraph(self, index: int, reached_nodes: List[str], network_mode: str):
         tmp_edges_list = []
         nodes_visited = []
+        all_base_nodes_neighbors = []
         nodes_lower_bounds_total_input = {}
         nodes_lower_bounds_total_output = {}
-        for base_node in self.original_graph.network.nodes():
+        
+        for goal in self.goals.get_locations_list():
+            goal_node_dst = str(index + 1) + "," + goal
+            goal_node_dst_tag = str(index + 1) + "\'," + goal
+            
+            if network_mode == "demands":
+                if index == max(self.reach_constraints.values()) - 1:  # Connect the dst nodes to the goals nodes
+                    tmp_edges_list.append((goal_node_dst_tag, goal + "-dst", {"capacity": 1}))
+                    tmp_edges_list.append((goal + "-dst", "dst", {"capacity": 1}))
 
-            if not is_demands and self._is_constrainted(base_node, index):
-                continue
+                if self._is_constrainted(goal, index + 1):  
+                    if goal_node_dst in nodes_lower_bounds_total_output:
+                        nodes_lower_bounds_total_output[goal_node_dst] += 1
+                    else:
+                        nodes_lower_bounds_total_output[goal_node_dst] = 1
+                        
+                    if goal_node_dst_tag in nodes_lower_bounds_total_input:
+                        nodes_lower_bounds_total_input[goal_node_dst_tag] += 1
+                    else:
+                        nodes_lower_bounds_total_input[goal_node_dst_tag] = 1
+    
+            elif network_mode == "disappearing":
+                if not self._is_constrainted(goal, index):  # Connect the dst nodes to the goals nodes
+                    tmp_edges_list.append((goal_node_dst_tag, goal + "-dst", {"capacity": 1}))
+                    tmp_edges_list.append((goal + "-dst", "dst", {"capacity": 1}))
+            elif network_mode == "stays":
+                if index == max(self.reach_constraints.values()) - 1:  # Connect the dst nodes to the goals nodes
+                    tmp_edges_list.append((goal_node_dst_tag, goal + "-dst", {"capacity": 1}))
+                    tmp_edges_list.append((goal + "-dst", "dst", {"capacity": 1}))
 
+        for base_node in reached_nodes:
+            current_base_node_neighbors = list(self.original_graph.network.neighbors(base_node))
+            all_base_nodes_neighbors.extend(current_base_node_neighbors)
             b_node_src = str(index) + "\'," + base_node
             b_node_dst = str(index + 1) + "," + base_node
             b_node_dst_tag = str(index + 1) + "\'," + base_node
-            
-            if self._is_constrainted(base_node, index + 1):  
-                if b_node_dst in nodes_lower_bounds_total_output:
-                    nodes_lower_bounds_total_output[b_node_dst] += 1
-                else:
-                    nodes_lower_bounds_total_output[b_node_dst] = 1
-                    
-                if b_node_dst_tag in nodes_lower_bounds_total_input:
-                    nodes_lower_bounds_total_input[b_node_dst_tag] += 1
-                else:
-                    nodes_lower_bounds_total_input[b_node_dst_tag] = 1
             
             # Create horizontal edges in the graph (blue & green in the Yu & LaValle example)
             tmp_edges_list.extend([
                 (b_node_src, b_node_dst, {"capacity": 1}), # Green edge
                 (b_node_dst, b_node_dst_tag, {"capacity": 1}) # Blue edge
             ])
+            
+            if network_mode == "stays" and self._is_constrainted(base_node, index):
+                continue  # Trim network when stays on targets
 
             # Connect src to initial locations on the first subgraph
             if index == 0 and base_node in self.team.get_locations_list():
                 tmp_edges_list.append(("src", b_node_src, {"capacity": 1}))
 
-            # Connect the dst nodes to the goals nodes
-            if base_node in self.goals.get_locations_list():
-                tmp_edges_list.append((b_node_dst_tag, base_node + "-dst", {"capacity": 1}))
-                tmp_edges_list.append((base_node + "-dst", "dst", {"capacity": 1}))
-
             # Create the X-gadget for every possible move from current base_node
-            for connected_node in self.original_graph.network.neighbors(base_node):
+            for connected_node in current_base_node_neighbors:
+                if network_mode == "stays" and self._is_constrainted(connected_node, index):
+                    continue  # Trim network when stays on targets
+
                 if connected_node in nodes_visited:
                     continue
                 c_node_src = str(index) + "\'," + connected_node
                 c_node_dst = str(index + 1) + "," + connected_node
+                c_node_dst_tag = str(index + 1) + "\'," + connected_node
                 tmp_src = b_node_src + "-" + connected_node 
                 tmp_dst = b_node_dst + "-" + connected_node
                 tmp_edges_list.extend([
@@ -100,16 +128,19 @@ class Network:
                     (c_node_src, tmp_src, {"capacity": 1}),
                     (tmp_src, tmp_dst, {"capacity": 1}), # Horizontal edge
                     (tmp_dst, b_node_dst, {"capacity": 1}),
-                    (tmp_dst, c_node_dst, {"capacity": 1}), 
+                    (tmp_dst, c_node_dst, {"capacity": 1}),
+                    (c_node_dst, c_node_dst_tag, {"capacity": 1}),
                 ])
-                
 
             nodes_visited.append(base_node)
+            
+        reached_nodes.extend(all_base_nodes_neighbors)
+        reached_nodes = list(set(reached_nodes))
 
         # Remove duplicates
         edges_list = []
         [edges_list.append(item) for item in tmp_edges_list if item not in edges_list]
-        return edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output
+        return edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes
     
     def _get_all_combinations(self, l):
         if not self.brute_force:
@@ -122,7 +153,7 @@ class Network:
         comb.sort(key=len, reverse=True)
         return comb
     
-    def _prepare_next_combination(self, comb, prev_removed_edges = None):
+    def _prepare_next_combination(self, comb):
         self.time_expanded_graph = deepcopy(self.time_expanded_graph_orig)
         removed_edges = []
         for goal in list(set(self.goals.get_locations_list()) - set(comb)):
@@ -145,7 +176,7 @@ class Network:
         return removed_edges
             
     def build_network_with_demands(self):
-        number_of_goals = len(self.goals.get_locations_list())
+        reached_nodes = self.team.get_locations_list()
         self.time_expanded_graph.add_node("fake_src")
         self.time_expanded_graph.add_node("fake_dst")
         self.time_expanded_graph.add_edges_from(
@@ -155,8 +186,9 @@ class Network:
             ]
         )
         
+        before_time = time()
         for i in range(self.propagation_const):
-            edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output = self.create_subgraph(index=i, is_demands=True)
+            edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes = self.create_subgraph(index=i, network_mode="demands", reached_nodes=reached_nodes)
             
             self.time_expanded_graph.add_edges_from(edges_list)
             
@@ -178,27 +210,38 @@ class Network:
             )
             
             self.time_expanded_graph.add_edges_from(extra_edges)
+
+        after_time = time()
+        self.graph_creation_time = after_time - before_time
             
         self.time_expanded_graph_orig = deepcopy(self.time_expanded_graph)
-        goal_combs = self._get_all_combinations(self.goals.get_locations_list())
-        solution_found = False
+        # goal_combs = self._get_all_combinations(self.goals.get_locations_list())
+        goal_combs = [self.goals.get_locations_list()]
+        self.solution_found = False
         debug_break = False
+        self.comb_times = []
         for comb in goal_combs:
             self._prepare_next_combination(comb)
             
-            self.calc_flow_and_cost_auxilary()
+            before_time = time()
+            try:
+                self.calc_flow_and_cost_auxilary(forceTimeout=(300 - self.graph_creation_time - sum(self.comb_times)))
+            except:
+                pass
+            after_time = time()
+            self.comb_times.append(after_time - before_time)
+            if self.graph_creation_time + sum(self.comb_times) >= 299: # 5 minutes timeout
+                self.solution_size = len(comb)
+                self.strategy = None
+                return
 
             # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
-            if (
-                self.flow_dict["dst"]["src"] == len(comb) and
-                list(self.flow_dict["fake_src"].values()).count(0) == 0
-            ) or debug_break:
-                solution_found = True # GOOD!
+            if self.check_demands_flow_dict_result(comb=comb) or debug_break:
+                self.solution_found = True # GOOD!
+                self.solution_size = len(comb)
                 break
-            else:
-                continue # No Solution - check different configuration (brute force)
             
-        if not solution_found:
+        if not self.solution_found:
             raise ValueError("No Solution!!!")
         
         try:
@@ -210,6 +253,15 @@ class Network:
             
         except Exception as e:
             self.strategy = None
+
+    def check_demands_flow_dict_result(self, comb):
+        if self.flow_dict["dst"]["src"] < len(comb):
+            return False
+        for goal in comb:
+            constraint = min([int(item.split("'")[0]) for item in self.flow_dict["fake_src"] if f",{goal}" in item])
+            if constraint > self.reach_constraints[goal]:
+                return False
+        return True
 
     def calc_simplified_flow_list(self):
         self.simplified_flow_list = []
@@ -232,20 +284,39 @@ class Network:
                 fp.write(f"{item}\n")
         
     # This function creates the time-expanded-graph by gradually creating & connecting subgraphs until all goals are reached by the flow
-    def build_network(self):        
+    def build_network_disappearing(self): 
+        reached_nodes = self.team.get_locations_list()       
         for i in range(self.propagation_const):
-            edges_list, _, _ = self.create_subgraph(index=i, is_demands=False)
+            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="disappearing", reached_nodes=reached_nodes)
             self.time_expanded_graph.add_edges_from(edges_list)
-            self.calc_flow_and_cost()
-
-            # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
-            if self.flow_value == len(self.goals.get_locations_list()):
-                break
+    
+        self.calc_flow_and_cost()
+        # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
+        if self.flow_value != len(self.goals.get_locations_list()):
+            raise ValueError("No Solution!!!")
 
         try:
             self.calc_simplified_flow_list()
             self.calc_strategy()
 
+        except:
+            self.strategy = None
+
+    def build_network_stays_on_targets(self): 
+        reached_nodes = self.team.get_locations_list()       
+        for i in range(self.propagation_const):
+            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="stays", reached_nodes=reached_nodes)
+            self.time_expanded_graph.add_edges_from(edges_list)
+    
+        self.calc_flow_and_cost()
+        # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
+        if self.flow_value != len(self.goals.get_locations_list()):
+            raise ValueError("No Solution!!!")
+
+        try:
+            self.calc_simplified_flow_list()
+            self.calc_strategy()
+            pass
         except:
             self.strategy = None
 
@@ -284,7 +355,8 @@ class Network:
 
         plt.axis("off")
         plt.show()
-        
+    
+    @func_set_timeout(timeout=300, allowOverride=True)
     def calc_flow_and_cost_auxilary(self):
         try:
             self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "fake_src", "fake_dst")[1]
@@ -294,11 +366,12 @@ class Network:
             self.flow_dict={}
             self.flow_cost=0
             self.flow_value=0
-
+    
     # This function calculates the flow on the time-expanded-graph
     def calc_flow_and_cost(self):
         try:
-            self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
+            # self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
+            self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "src", "dst")[1]
             self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
             self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))
         except:

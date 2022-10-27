@@ -15,8 +15,8 @@ class Environment:
             with open("input/" + map_file_name,"rt") as infile:
                 map = [[1 if char == '.' else 0 for char in list(line.strip())] for line in infile.readlines()]
                 self.grid = Grid(map)
-                self.obstacle_frequency = sum(x.count(0) for x in map)
                 self.grid_size = len(map)
+                self.obstacle_frequency = sum(x.count(0) for x in map) / (self.grid_size * self.grid_size)
         else: # Generate random gridx
             self.obstacle_frequency = obstacle_frequency
             self.grid_size = grid_size

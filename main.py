@@ -14,19 +14,29 @@ def main():
     print("-------------------------------------------")
     environment.graph.print()
     print("-------------------------------------------")
-    # environment.team_a.agents = EXAMPLE_TEAM_A
+    environment.team_a.agents = EXAMPLE_TEAM_A
     environment.team_a.print()
     print("-------------------------------------------")
-    # environment.team_b.agents = EXAMPLE_TEAM_B
+    environment.team_b.agents = EXAMPLE_TEAM_B
     environment.team_b.print()
     print("-------------------------------------------")
-    # environment.goals.agents = EXAMPLE_GOALS
+    environment.goals.agents = EXAMPLE_GOALS
     environment.goals.print()
     environment.print()
     # environment.visualize()
 
     # munkres_strategy = MunkresStrategy(environment, b_type="MUNKRES")
-    makespan_network_strategy = ConstraintsStrategy(environment, b_type="MUNKRES")
+    makespan_network_strategy = ConstraintsStrategy(
+        environment,
+        b_type="MUNKRES", 
+        network_mode="demands",
+        constraints={
+            '9': 3,
+            '35': 2,
+            '43': 1,
+            '16': 2,
+        },
+    )
     # makespan_network_strategy.makespan_network_a.visualize_flow()
     # makespan_network_strategy.makespan_network_b.visualize_flow()
     print("A Straregy: ")

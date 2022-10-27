@@ -1,0 +1,85 @@
+{
+    "room-32.map": {
+        "stays": {
+            "3": {
+                "number_of_sat_solutions": 12,
+                "overall_sat_time": 373.9440166950226,
+                "overall_non_sat_time": 2176.6664192676544         
+            },
+            "5": {
+                "number_of_sat_solutions": 6,
+                "overall_sat_time": 248.26136183738708,
+                "overall_non_sat_time": 3624.792104244232            
+            },
+            "7": {
+                "number_of_sat_solutions": 12,
+                "overall_sat_time": 606.2724378108978,
+                "overall_non_sat_time": 3906.0525829792023
+            },
+            "9": {
+                "number_of_sat_solutions": 15,
+                "overall_sat_time": 841.0094928741455,
+                "overall_non_sat_time": 4527.607412576675
+            },
+            "11": {
+                "number_of_sat_solutions": 21,
+                "overall_sat_time": 1353.9214925765991,
+                "overall_non_sat_time": 4902.5758311748505
+            }
+        },
+        "disappearing": {
+            "3": {
+                "number_of_sat_solutions": 37,
+                "overall_sat_time": 1291.9483852386475,
+                "overall_non_sat_time": 1540.2164778709412
+            },
+            "5": {
+                "number_of_sat_solutions": 48,
+                "overall_sat_time": 2021.6838901042938,
+                "overall_non_sat_time": 1894.7786073684692
+            },
+            "7": {
+                "number_of_sat_solutions": 51,
+                "overall_sat_time": 2512.242212533951,
+                "overall_non_sat_time": 2072.785969018936
+            },
+            "9": {
+                "number_of_sat_solutions": 58,
+                "overall_sat_time": 3297.390058517456,
+                "overall_non_sat_time": 2225.427758693695
+            },
+            "11": {
+                "number_of_sat_solutions": 66,
+                "overall_sat_time": 4174.548086881638,
+                "overall_non_sat_time": 2117.0283195972443
+            }
+        },
+        "HS": {
+            "3": {
+                "number_of_sat_solutions": 92,
+                "overall_sat_time": 1624.1914422512054,
+                "overall_non_sat_time": 137.60899543762207
+            },
+            "5": {
+                "number_of_sat_solutions": 90,
+                "overall_sat_time": 2022.0890760421753,
+                "overall_non_sat_time": 234.19488143920898
+            },
+            "7": {
+                "number_of_sat_solutions": 93,
+                "overall_sat_time": 2400.2192046642303,
+                "overall_non_sat_time": 159.40795373916626
+            },
+            "9": {
+                "number_of_sat_solutions": 96,
+                "overall_sat_time": 2870.7465867996216,
+                "overall_non_sat_time": 134.27099299430847
+            },
+            "11": {
+                "number_of_sat_solutions": 94,
+                "overall_sat_time": 3145.7518258094788,
+                "overall_non_sat_time": 220.148188829422
+            }
+        }
+    }
+}

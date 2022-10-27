@@ -1,3 +1,4 @@
+from time import time
 import networkx as nx
 from munkres import Munkres
 from network import Network
@@ -48,7 +49,10 @@ class Strategy:
 
     def calc_team_b_strategy(self):
         if self.b_type == "MUNKRES":
+            before_time = time()
             self.team_b_strategy = self.cost_optimal_strategy(self.team_b, self.team_b_distance_matrix)
+            after_time = time()
+            self.munkres_b_total_time = after_time - before_time
             return
         elif self.b_type == "NETWORK_MAKESPAN" or self.b_type == "CONSTRAINTS":
             objective = "MAKESPAN"

@@ -1,3 +1,5 @@
+from random import randint
+from typing import List
 from colorama import Style, Fore
 import matplotlib.pyplot as plt
 from matplotlib import colors
@@ -46,6 +48,20 @@ class Grid:
                 if i + 1 < i_size and row[j] == self.grid[i + 1][j] == 1:
                     edges.append([str(i * i_size + j + 1), str((i + 1) * i_size + j + 1)])
         return edges
+    
+    def random_free_locations(self, num_of_locations: int) -> List[str]:
+        locations = []
+        while len(locations) < num_of_locations:
+            row = randint(0, self.row_size - 1)
+            col = randint(0, self.col_size - 1)
+            location = str(row * self.row_size + col + 1)
+            if (
+                self.grid[row][col] == 0
+                or location in locations
+            ):
+                continue
+            locations.append(location)
+        return locations
 
 
     def visualize(self):
