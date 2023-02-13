@@ -1,0 +1,280 @@
+{
+    "map_name": "room-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 5,
+    "number_of_sat_solutions": 6,
+    "overall_sat_time": 256.3970396518707,
+    "overall_non_sat_time": 1962.1512479782104,
+    "overall_paths_sizes_generally_sat": 691,
+    "overall_flow_values": 184,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 5,
+    "number_of_sat_solutions": 12,
+    "overall_sat_time": 592.2357783317566,
+    "overall_non_sat_time": 1943.868177652359,
+    "overall_paths_sizes_generally_sat": 685,
+    "overall_flow_values": 249,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 5,
+    "number_of_sat_solutions": 35,
+    "overall_sat_time": 1693.5571117401123,
+    "overall_non_sat_time": 619.0688259601593,
+    "overall_paths_sizes_generally_sat": 685,
+    "overall_flow_values": 235,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 5,
+    "number_of_sat_solutions": 45,
+    "overall_sat_time": 2460.561844110489,
+    "overall_non_sat_time": 211.329820394516,
+    "overall_paths_sizes_generally_sat": 685,
+    "overall_flow_values": 250,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 11,
+    "overall_sat_time": 647.1366322040558,
+    "overall_non_sat_time": 2533.932341337204,
+    "overall_paths_sizes_generally_sat": 1925,
+    "overall_flow_values": 439,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 33,
+    "overall_sat_time": 2264.821236371994,
+    "overall_non_sat_time": 1379.6445050239563,
+    "overall_paths_sizes_generally_sat": 1889,
+    "overall_flow_values": 500,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 42,
+    "overall_sat_time": 2709.8025748729706,
+    "overall_non_sat_time": 537.202924489975,
+    "overall_paths_sizes_generally_sat": 1889,
+    "overall_flow_values": 492,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 48,
+    "overall_sat_time": 3678.5642144680023,
+    "overall_non_sat_time": 144.7097408771515,
+    "overall_paths_sizes_generally_sat": 1883,
+    "overall_flow_values": 500,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 15,
+    "number_of_sat_solutions": 22,
+    "overall_sat_time": 1623.9759693145752,
+    "overall_non_sat_time": 2130.7667751312256,
+    "overall_paths_sizes_generally_sat": 4739,
+    "overall_flow_values": 704,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 15,
+    "number_of_sat_solutions": 40,
+    "overall_sat_time": 3549.9036316871643,
+    "overall_non_sat_time": 1085.297559261322,
+    "overall_paths_sizes_generally_sat": 4577,
+    "overall_flow_values": 750,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 15,
+    "number_of_sat_solutions": 44,
+    "overall_sat_time": 3333.8831729888916,
+    "overall_non_sat_time": 520.9930713176727,
+    "overall_paths_sizes_generally_sat": 4571,
+    "overall_flow_values": 743,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 15,
+    "number_of_sat_solutions": 45,
+    "overall_sat_time": 4331.395284175873,
+    "overall_non_sat_time": 602.4377477169037,
+    "overall_paths_sizes_generally_sat": 4549,
+    "overall_flow_values": 750,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 31,
+    "overall_sat_time": 2698.049,
+    "overall_non_sat_time": 1517.454,
+    "overall_paths_sizes_generally_sat": 7181,
+    "overall_flow_values": 967,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 44,
+    "overall_sat_time": 4561.1,
+    "overall_non_sat_time": 550.827,
+    "overall_paths_sizes_generally_sat": 6949,
+    "overall_flow_values": 1000,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 48,
+    "overall_sat_time": 4204.985,
+    "overall_non_sat_time": 161.85136437416077,
+    "overall_paths_sizes_generally_sat": 6949,
+    "overall_flow_values": 998,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 48,
+    "overall_sat_time": 5256.692,
+    "overall_non_sat_time": 203.23003101348877,
+    "overall_paths_sizes_generally_sat": 6935,
+    "overall_flow_values": 1000,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 25,
+    "number_of_sat_solutions": 34,
+    "overall_sat_time": 3185.761823654175,
+    "overall_non_sat_time": 1485.2574005126953,
+    "overall_paths_sizes_generally_sat": 8202,
+    "overall_flow_values": 1228,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 25,
+    "number_of_sat_solutions": 41,
+    "overall_sat_time": 4706.085297346115,
+    "overall_non_sat_time": 911.9290225505829,
+    "overall_paths_sizes_generally_sat": 7976,
+    "overall_flow_values": 1250,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 25,
+    "number_of_sat_solutions": 42,
+    "overall_sat_time": 3948.9814698696136,
+    "overall_non_sat_time": 656.8726036548615,
+    "overall_paths_sizes_generally_sat": 7962,
+    "overall_flow_values": 1242,
+    "number_of_runs": 50
+}
+------------------------
+{
+    "map_name": "room-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.333984375,
+    "teams_size": 25,
+    "number_of_sat_solutions": 45,
+    "overall_sat_time": 5378.034357786179,
+    "overall_non_sat_time": 479.14973878860474,
+    "overall_paths_sizes_generally_sat": 7954,
+    "overall_flow_values": 1250,
+    "number_of_runs": 50
+}
+------------------------

@@ -17,6 +17,7 @@ class Network:
         self.team = team
         self.goals = goals
         self.network_mode = network_mode
+        self.hs_time_delay = 0
         self.strategy = {}
         self.time_expanded_graph = nx.DiGraph()
         self.time_expanded_graph_orig = nx.DiGraph()
@@ -32,6 +33,10 @@ class Network:
             self.build_network_disappearing()
         elif self.network_mode == "demands":
             self.build_network_with_demands()
+        elif "hot_swapping" in self.network_mode:
+            self.hs_time_delay = int(self.network_mode.split('-')[1])
+            self.network_mode = "hot_swapping"
+            self.build_network_hot_swapping()
 
     # This function returns the maximal distance between any agent to any goal in the graph
     def get_max_distance(self):
@@ -54,15 +59,25 @@ class Network:
 
         return False
 
+    def edge_cost(self, network_mode: str, node: str, index: int, edge_cost: int):
+        if network_mode != "hot_swapping":
+            return 0
+        if (
+            node in self.reach_constraints
+            and index >= self.reach_constraints.get(node) - 1
+        ):
+            return 0
+        return edge_cost
+
     # This function returns a list of edges consist with a subgraph of the i-th propagation of the original graph
-    def create_subgraph(self, index: int, reached_nodes: List[str], network_mode: str):
+    def create_subgraph(self, index: int, reached_nodes: List[str], network_mode: str, edge_cost_for_hs: int = 0):
         tmp_edges_list = []
         nodes_visited = []
         all_base_nodes_neighbors = []
         nodes_lower_bounds_total_input = {}
         nodes_lower_bounds_total_output = {}
         
-        for goal in self.goals.get_locations_list():
+        for goal in sorted(self.goals.get_locations_list()):
             goal_node_dst = str(index + 1) + "," + goal
             goal_node_dst_tag = str(index + 1) + "\'," + goal
             
@@ -83,15 +98,15 @@ class Network:
                         nodes_lower_bounds_total_input[goal_node_dst_tag] = 1
     
             elif network_mode == "disappearing":
-                if not self._is_constrainted(goal, index):  # Connect the dst nodes to the goals nodes
+                if index == self.reach_constraints[goal] - 1:  # Connect the dst nodes to the goals nodes
                     tmp_edges_list.append((goal_node_dst_tag, goal + "-dst", {"capacity": 1}))
                     tmp_edges_list.append((goal + "-dst", "dst", {"capacity": 1}))
-            elif network_mode == "stays":
+            elif network_mode == "stays" or network_mode == "hot_swapping":
                 if index == max(self.reach_constraints.values()) - 1:  # Connect the dst nodes to the goals nodes
                     tmp_edges_list.append((goal_node_dst_tag, goal + "-dst", {"capacity": 1}))
                     tmp_edges_list.append((goal + "-dst", "dst", {"capacity": 1}))
 
-        for base_node in reached_nodes:
+        for base_node in sorted(reached_nodes):
             current_base_node_neighbors = list(self.original_graph.network.neighbors(base_node))
             all_base_nodes_neighbors.extend(current_base_node_neighbors)
             b_node_src = str(index) + "\'," + base_node
@@ -101,7 +116,19 @@ class Network:
             # Create horizontal edges in the graph (blue & green in the Yu & LaValle example)
             tmp_edges_list.extend([
                 (b_node_src, b_node_dst, {"capacity": 1}), # Green edge
-                (b_node_dst, b_node_dst_tag, {"capacity": 1}) # Blue edge
+                (
+                    b_node_dst,
+                    b_node_dst_tag,
+                    {
+                        "capacity": 1,
+                        "weight": self.edge_cost(
+                            network_mode=network_mode,
+                            node=base_node,
+                            index=index,
+                            edge_cost=edge_cost_for_hs,
+                        ),
+                    }
+                ) # Blue edge + cost for HS
             ])
             
             if network_mode == "stays" and self._is_constrainted(base_node, index):
@@ -112,7 +139,7 @@ class Network:
                 tmp_edges_list.append(("src", b_node_src, {"capacity": 1}))
 
             # Create the X-gadget for every possible move from current base_node
-            for connected_node in current_base_node_neighbors:
+            for connected_node in sorted(current_base_node_neighbors):
                 if network_mode == "stays" and self._is_constrainted(connected_node, index):
                     continue  # Trim network when stays on targets
 
@@ -121,15 +148,76 @@ class Network:
                 c_node_src = str(index) + "\'," + connected_node
                 c_node_dst = str(index + 1) + "," + connected_node
                 c_node_dst_tag = str(index + 1) + "\'," + connected_node
+                
+                c_node_dst_hs_delayed = (
+                    str(index + 1 + self.hs_time_delay) + "," + connected_node
+                    if (
+                        self.network_mode == "hot_swapping"
+                        and connected_node in self.goals.get_locations_list()
+                        and self._is_constrainted(connected_node, index)
+                        and self.hs_time_delay > 0
+                    )
+                    else None
+                )
+                c_node_dst_hs_delayed_edge_cost = (
+                    0
+                    if c_node_dst_hs_delayed is None
+                    else sum([
+                        self.edge_cost(
+                            network_mode=network_mode,
+                            node=base_node,
+                            index=i,
+                            edge_cost=edge_cost_for_hs,
+                        ) for i in range(index + 1, index + 1 + self.hs_time_delay)
+                    ]) + 1
+                )
+            
+                b_node_dst_hs_delayed = (
+                    str(index + 1 + self.hs_time_delay) + "," + base_node
+                    if (
+                        self.network_mode == "hot_swapping"
+                        and base_node in self.goals.get_locations_list()
+                        and self._is_constrainted(base_node, index)
+                        and self.hs_time_delay > 0
+                    )
+                    else None
+                )
+                b_node_dst_hs_delayed_edge_cost = (
+                    0
+                    if b_node_dst_hs_delayed is None
+                    else sum([
+                        self.edge_cost(
+                            network_mode=network_mode,
+                            node=connected_node,
+                            index=i,
+                            edge_cost=edge_cost_for_hs,
+                        ) for i in range(index + 1, index + 1 + self.hs_time_delay)
+                    ]) + 1
+                )
+                
                 tmp_src = b_node_src + "-" + connected_node 
                 tmp_dst = b_node_dst + "-" + connected_node
                 tmp_edges_list.extend([
                     (b_node_src, tmp_src, {"capacity": 1}),
                     (c_node_src, tmp_src, {"capacity": 1}),
-                    (tmp_src, tmp_dst, {"capacity": 1}), # Horizontal edge
-                    (tmp_dst, b_node_dst, {"capacity": 1}),
-                    (tmp_dst, c_node_dst, {"capacity": 1}),
-                    (c_node_dst, c_node_dst_tag, {"capacity": 1}),
+                    (tmp_src, tmp_dst, {"capacity": 1, "weight": 1}), # Horizontal edge - weight (cost) value is 1 to messure fuel consumption on move actions
+                    (tmp_dst, b_node_dst_hs_delayed or b_node_dst, {
+                        "capacity": 1,
+                        "weight": b_node_dst_hs_delayed_edge_cost,
+                    }),
+                    (tmp_dst, c_node_dst_hs_delayed or c_node_dst, {
+                        "capacity": 1,
+                        "weight": c_node_dst_hs_delayed_edge_cost,
+                    }),
+                    (c_node_dst, c_node_dst_tag, {
+                        "capacity": 1,
+                        "weight": self.edge_cost(
+                            network_mode=network_mode,
+                            node=connected_node,
+                            index=index,
+                            edge_cost=edge_cost_for_hs,
+                        ),
+                    }),
                 ])
 
             nodes_visited.append(base_node)
@@ -174,6 +262,36 @@ class Network:
         
         self.time_expanded_graph.remove_edges_from(removed_edges)
         return removed_edges
+
+    def build_network_hot_swapping(self):
+        number_of_targets = len(self.goals.get_locations_list())
+        max_number_of_hs_actions = (number_of_targets * number_of_targets - number_of_targets) / 2
+        sum_of_deadlines = sum(self.reach_constraints.values())
+        edge_cost = sum_of_deadlines + max_number_of_hs_actions + 1
+
+        reached_nodes = self.team.get_locations_list()       
+        for i in range(self.propagation_const):
+            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="hot_swapping", reached_nodes=reached_nodes, edge_cost_for_hs=edge_cost)
+            self.time_expanded_graph.add_edges_from(edges_list)
+    
+        self.calc_flow_and_cost()
+        max_allowd_flow = edge_cost * (sum_of_deadlines - number_of_targets + 1)
+        # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
+        if (
+            self.flow_value != len(self.goals.get_locations_list())
+            or self.flow_cost >= max_allowd_flow
+        ):
+            raise ValueError("No Solution!!!", self.flow_value)
+
+        try:
+            self.calc_simplified_flow_list()
+            if self.hs_time_delay == 0:
+                self.calc_strategy()
+            else:
+                self.hs_calc_strategy_with_time_delays()
+
+        except:
+            self.strategy = None
             
     def build_network_with_demands(self):
         reached_nodes = self.team.get_locations_list()
@@ -242,7 +360,7 @@ class Network:
                 break
             
         if not self.solution_found:
-            raise ValueError("No Solution!!!")
+            raise ValueError("No Solution!!!", self.flow_value)
         
         try:
             self.calc_simplified_flow_list()                        
@@ -293,7 +411,7 @@ class Network:
         self.calc_flow_and_cost()
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if self.flow_value != len(self.goals.get_locations_list()):
-            raise ValueError("No Solution!!!")
+            raise ValueError("No Solution!!!", self.flow_value)
 
         try:
             self.calc_simplified_flow_list()
@@ -311,7 +429,7 @@ class Network:
         self.calc_flow_and_cost()
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if self.flow_value != len(self.goals.get_locations_list()):
-            raise ValueError("No Solution!!!")
+            raise ValueError("No Solution!!!", self.flow_value)
 
         try:
             self.calc_simplified_flow_list()
@@ -370,8 +488,8 @@ class Network:
     # This function calculates the flow on the time-expanded-graph
     def calc_flow_and_cost(self):
         try:
-            # self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
-            self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "src", "dst")[1]
+            self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
+            # self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "src", "dst")[1]
             self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
             self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))
         except:
@@ -424,6 +542,73 @@ class Network:
                     # This if checks whether it really is moving to a different location, and not returning to the original location from the X-gadget
                     if self.flow_dict[next_round + "," + splitted_next[1]][next_round + "," + second] < 1:
                         second = splitted_curr[1]
+                else: # Next location is the same as current location
+                    second = splitted_curr[1]
+                path_list.append(second)
+                curr_node = next_round + "'," + second
+
+            # Add the path to the strategy
+            self.strategy[self.team.get_agent_by_location(path_list[0])] = path_list
+
+    def _get_next_node(self, curr_node):
+        for v in self.flow_dict[curr_node].keys():
+            if self.flow_dict[curr_node][v] >= 1:
+                return v
+        
+        return None
+
+    def hs_calc_strategy_with_time_delays(self):
+        src_node, dst_node = "src", "dst"
+        
+        for base_node in self.flow_dict[src_node].keys():
+            if base_node == "dst":
+                continue
+            
+            path_list = [base_node.split(",")[1]] # Add initial location to path
+            
+            if self.flow_dict[src_node][base_node] == 0: # Ignore nodes that has no flow
+                self.strategy[self.team.get_agent_by_location(path_list[0])] = path_list
+                continue
+            
+            curr_node = base_node
+            while True:
+                next_node = None
+
+                # Find the next node the flow is going to
+                next_node = self._get_next_node(curr_node=curr_node)
+
+                if next_node == None: # If no next node with flow exist, cut the path with ERROR
+                    path_list.append("ERROR")
+                    break
+
+                splitted_next = next_node.split(",")
+                splitted_curr = curr_node.split(",")
+                curr_round = splitted_curr[0]
+                if curr_round[-1] == "'":
+                    curr_round = curr_round[:-1]
+                next_round = str(int(curr_round) + 1)
+                time_delayed_next_round = str(int(curr_round) + 1 + self.hs_time_delay)
+
+                # If we have reached dst the path if completed
+                if dst_node in splitted_next[0]:
+                    break
+
+                # If next node has a '-' it means there is a possibility that in the next round the flow is going to a different node
+                if "-" in splitted_next[1]:
+                    tmp_split = splitted_next[1].split("-")
+                    second = tmp_split[0] if tmp_split[0] != path_list[-1] else tmp_split[1]
+                    # This if checks whether it really is moving to a different location, and not returning to the original location from the X-gadget
+                    try:
+                        if self.flow_dict[next_round + "," + splitted_next[1]][next_round + "," + second] < 1:
+                            second = splitted_curr[1]
+                    except:
+                        if self.flow_dict[next_round + "," + splitted_next[1]][time_delayed_next_round + "," + second] < 1:
+                            second = splitted_curr[1]
+                        else:
+                            path_list.append(splitted_curr[1])
+                            path_list.append(second)
+                            curr_node = time_delayed_next_round + "'," + second
+                            continue
                 else: # Next location is the same as current location
                     second = splitted_curr[1]
                 path_list.append(second)

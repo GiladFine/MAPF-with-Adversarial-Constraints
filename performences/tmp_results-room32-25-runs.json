@@ -1,0 +1,30 @@
+{
+    "stays": {
+        "overall_sat_time": 1454.9041020870209,
+        "overall_non_sat_time": 782.6072676181793,
+        "number_of_valid_solutions": 16,
+        "overall_paths_sizes_generally_sat": 3717,
+        "overall_flow_values": 485
+    },
+    "hot_swapping-2": {
+        "overall_sat_time": 2517.869223833084,
+        "overall_non_sat_time": 188.69271683692932,
+        "number_of_valid_solutions": 23,
+        "overall_paths_sizes_generally_sat": 3623,
+        "overall_flow_values": 500
+    },
+    "disappearing": {
+        "overall_sat_time": 2341.790791988373,
+        "overall_non_sat_time": 0.0,
+        "number_of_valid_solutions": 25,
+        "overall_paths_sizes_generally_sat": 3623,
+        "overall_flow_values": 500
+    },
+    "hot_swapping-0": {
+        "overall_sat_time": 2872.8432064056396,
+        "overall_non_sat_time": 0.0,
+        "number_of_valid_solutions": 25,
+        "overall_paths_sizes_generally_sat": 3621,
+        "overall_flow_values": 500
+    }
+}

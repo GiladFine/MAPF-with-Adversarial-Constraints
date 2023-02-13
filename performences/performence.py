@@ -2,10 +2,9 @@ from random import randint
 from munkres import Munkres
 from env_generator import Environment
 from strategies import ConstraintsStrategy
-from statistics import median
 from time import time
 from pydantic import BaseModel
-from typing import Any, List, Optional, Dict
+from typing import Any, List, Union, Dict
 
 import json
 
@@ -28,12 +27,14 @@ class DataRecord(BaseModel):
     overall_sat_time: float
     overall_non_sat_time: float
     overall_paths_sizes_generally_sat: int
+    overall_flow_values: int
     number_of_runs: int    
     
 
-MAP_NAME = "room-32.map"
-NUM_OF_RUNS = 100
-NETWORK_MODES = ["stays", "disappearing", "demands"]
+MAP_NAME = "maze-32.map"
+# MAP_NAME = "warehouse.map"
+NUM_OF_RUNS = 50
+NETWORK_MODES = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
 GOALS_LOCATIONS_ROOM = [
     "325",
     "323",
@@ -46,6 +47,20 @@ GOALS_LOCATIONS_ROOM = [
     "305",
     "275",
     "403",
+    "544",
+    "585",
+    "593",
+    "601",
+    "605",
+    "643",
+    "650",
+    "663",
+    "668",
+    "672",
+    "770",
+    "780",
+    "784",
+    "786",
 ]
 GOALS_LOCATIONS_MAZE = [
     "416",
@@ -59,8 +74,49 @@ GOALS_LOCATIONS_MAZE = [
     "725",
     "783",
     "750",
+    "992",
+    "984",
+    "978",
+    "977",
+    "882",
+    "881",
+    "996",
+    "867",
+    "813",
+    "844",
+    "776",
+    "777",
+    "891",
+    "1013",
 ]
-GOAL_LOCATIONS = GOALS_LOCATIONS_ROOM
+GOALS_LOCATIONS_WAREHOUSE = [
+    "316",
+    "552",
+    "327",
+    "585",
+    "338",
+    "349",
+    "360",
+    "541",
+    "563",
+    "574",
+    "766",
+    "777",
+    "788",
+    "799",
+    "810",
+    "991",
+    "1002",
+    "1013",
+    "1024",
+    "1035",
+    "1216",
+    "1227",
+    "1238",
+    "1249",
+    "1260",
+]
+GOAL_LOCATIONS = GOALS_LOCATIONS_MAZE
 
 def goal_locations(num_of_goals: int) -> List[str]:
     return GOAL_LOCATIONS[:num_of_goals]
@@ -81,6 +137,7 @@ def log_data_record(
             overall_sat_time=info["overall_sat_time"],
             overall_non_sat_time=info["overall_non_sat_time"],
             overall_paths_sizes_generally_sat=info["overall_paths_sizes_generally_sat"],
+            overall_flow_values=info["overall_flow_values"],
         )
         print(data_record.dict())
         with open("performences/performence_results.txt", 'a') as results_file:
@@ -104,7 +161,7 @@ def generate_constraints(env: Environment, factor: int, num_of_goals: int) -> Di
     return constraints
         
 
-def calc_strategy(environment: Environment, network_mode: str, constraints: Dict[str, int]) -> Optional[ConstraintsStrategy]:
+def calc_strategy(environment: Environment, network_mode: str, constraints: Dict[str, int]) -> Union[ConstraintsStrategy, int]:
     try:
         return ConstraintsStrategy(
             environment,
@@ -112,8 +169,8 @@ def calc_strategy(environment: Environment, network_mode: str, constraints: Dict
             network_mode=network_mode,
             constraints=constraints,
         )
-    except:
-        return None
+    except ValueError as err:
+        return int(err.args[1])
 
 def generate_team_a(env: Environment, num_of_goals: int) -> Dict[str, str]:
     generated_locations = env.grid.random_free_locations(num_of_locations=num_of_goals)
@@ -134,7 +191,7 @@ def check_munkres(env: Environment, constraints: Dict[str, int]) -> bool:
         for j, distance in enumerate(row):
             new_row.append(
                 0
-                if distance <= constraints_list[j]
+                if distance <= constraints_list[j] + randint(0, 1)
                 else 1
             )
         reachability_matrix.append(new_row)
@@ -178,17 +235,18 @@ def calc_strategy_paths_size(strategy: ConstraintsStrategy) -> Dict[str, int]:
            if loc != prev_loc:
                prev_loc = loc
                path_sum += 1  
-        path_sums[agent] = path_sum           
+        path_sums[agent] = path_sum - 1 # First loc does not require a move
     return path_sums  
         
 def main():
-    for num_of_goals in [5, 7, 9, 11]:
+    for num_of_goals in [3, 5]:
         results = {
             network_mode: {
                 'overall_sat_time': 0.0,
                 'overall_non_sat_time': 0.0,
                 'number_of_valid_solutions': 0,
                 'overall_paths_sizes_generally_sat': 0,
+                'overall_flow_values': 0,
             }
             for network_mode in NETWORK_MODES
         }
@@ -207,22 +265,31 @@ def main():
                 overall_time = after_time - before_time
 
                 solution_found = (
-                    False
-                    if constraiant_strategy is None
-                    else True
+                    True
+                    if isinstance(constraiant_strategy, ConstraintsStrategy)
+                    else False
                 )
+                flow_value = (
+                    constraiant_strategy.constrains_network_a.flow_value
+                    if solution_found
+                    else constraiant_strategy   
+                )
+                results[network_mode]['overall_flow_values'] += flow_value
+                    
                 path_sizes_dict = {}
                 if solution_found:
                     results[network_mode]['number_of_valid_solutions'] += 1
                     results[network_mode]['overall_sat_time'] += overall_time
                     path_sizes_dict = calc_strategy_paths_size(strategy=constraiant_strategy)
+                    overall_fuel = sum(path_sizes_dict.values())
                     if all_solutions_found:
-                        results[network_mode]['overall_paths_sizes_generally_sat'] += sum(path_sizes_dict.values())
+                        results[network_mode]['overall_paths_sizes_generally_sat'] += overall_fuel
                 else:
+                    overall_fuel = 0
                     all_solutions_found = False
                     results[network_mode]['overall_non_sat_time'] += overall_time
 
-                log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {overall_time}, {path_sizes_dict}"
+                log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {overall_time}, {path_sizes_dict}, {overall_fuel}, {flow_value}"
                 print(log_str)
 
                 with open("performences/log.txt", 'a') as log_file:

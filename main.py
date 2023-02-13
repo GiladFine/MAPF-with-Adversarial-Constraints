@@ -29,7 +29,7 @@ def main():
     makespan_network_strategy = ConstraintsStrategy(
         environment,
         b_type="MUNKRES", 
-        network_mode="demands",
+        network_mode="hot_swapping-1",
         constraints={
             '9': 3,
             '35': 2,
