@@ -1,0 +1,836 @@
+map_name, network_mode, number_of_agents, iteration, is_sat, overall_time, paths_lens
+-----------------------------------------------------------------------------------------------------------------
+
+maze-32.map, stays, 3, 1, False, 21.18937110900879, {}
+maze-32.map, disappearing, 3, 1, False, 21.382659196853638, {}
+maze-32.map, demands, 3, 1, True, 22.097697019577026, {'a0': 43, 'a1': 45, 'a2': 62}
+maze-32.map, stays, 3, 2, False, 47.02723288536072, {}
+maze-32.map, disappearing, 3, 2, True, 47.149234771728516, {'a0': 123, 'a1': 67, 'a2': 3}
+maze-32.map, demands, 3, 2, True, 64.67202544212341, {'a0': 115, 'a1': 70, 'a2': 8}
+maze-32.map, stays, 3, 3, True, 28.348695039749146, {'a0': 82, 'a1': 59, 'a2': 64}
+maze-32.map, disappearing, 3, 3, True, 27.705076932907104, {'a0': 82, 'a1': 59, 'a2': 64}
+maze-32.map, demands, 3, 3, True, 32.76685309410095, {'a0': 77, 'a1': 64, 'a2': 64}
+maze-32.map, stays, 3, 4, True, 55.68510580062866, {'a0': 59, 'a1': 123, 'a2': 60}
+maze-32.map, disappearing, 3, 4, True, 55.93723964691162, {'a0': 59, 'a1': 123, 'a2': 60}
+maze-32.map, demands, 3, 4, True, 89.85013365745544, {'a0': 59, 'a1': 123, 'a2': 62}
+maze-32.map, stays, 3, 5, False, 23.854678630828857, {}
+maze-32.map, disappearing, 3, 5, True, 21.77926540374756, {'a0': 66, 'a1': 51, 'a2': 61}
+maze-32.map, demands, 3, 5, True, 25.91611123085022, {'a0': 63, 'a1': 54, 'a2': 61}
+maze-32.map, stays, 3, 6, True, 67.39318704605103, {'a0': 42, 'a1': 114, 'a2': 48}
+maze-32.map, disappearing, 3, 6, True, 50.89390778541565, {'a0': 42, 'a1': 114, 'a2': 48}
+maze-32.map, demands, 3, 6, True, 58.032394886016846, {'a0': 42, 'a1': 114, 'a2': 48}
+maze-32.map, stays, 3, 7, False, 27.28529381752014, {}
+maze-32.map, disappearing, 3, 7, False, 29.170073747634888, {}
+maze-32.map, demands, 3, 7, False, 33.99041247367859, {}
+maze-32.map, stays, 3, 8, False, 9.083190202713013, {}
+maze-32.map, disappearing, 3, 8, False, 8.475138902664185, {}
+maze-32.map, demands, 3, 8, False, 10.614088535308838, {}
+maze-32.map, stays, 3, 9, True, 41.0639283657074, {'a0': 106, 'a1': 8, 'a2': 52}
+maze-32.map, disappearing, 3, 9, True, 49.02936601638794, {'a0': 106, 'a1': 8, 'a2': 52}
+maze-32.map, demands, 3, 9, True, 63.466444969177246, {'a0': 106, 'a1': 10, 'a2': 52}
+maze-32.map, stays, 3, 10, False, 59.278780698776245, {}
+maze-32.map, disappearing, 3, 10, False, 54.55278754234314, {}
+maze-32.map, demands, 3, 10, True, 61.552284717559814, {'a0': 77, 'a1': 66, 'a2': 119}
+maze-32.map, stays, 3, 11, True, 51.888787031173706, {'a0': 44, 'a1': 107, 'a2': 49}
+maze-32.map, disappearing, 3, 11, True, 45.34432911872864, {'a0': 44, 'a1': 107, 'a2': 49}
+maze-32.map, demands, 3, 11, True, 52.24582386016846, {'a0': 44, 'a1': 107, 'a2': 49}
+maze-32.map, stays, 3, 12, False, 52.2721905708313, {}
+maze-32.map, disappearing, 3, 12, False, 53.54213190078735, {}
+maze-32.map, demands, 3, 12, True, 62.467308044433594, {'a0': 116, 'a1': 49, 'a2': 60}
+maze-32.map, stays, 3, 13, True, 63.76008176803589, {'a0': 68, 'a1': 131, 'a2': 56}
+maze-32.map, disappearing, 3, 13, True, 58.70699191093445, {'a0': 68, 'a1': 131, 'a2': 56}
+maze-32.map, demands, 3, 13, True, 77.38138151168823, {'a0': 68, 'a1': 131, 'a2': 56}
+maze-32.map, stays, 3, 14, False, 50.77719569206238, {}
+maze-32.map, disappearing, 3, 14, False, 51.0343873500824, {}
+maze-32.map, demands, 3, 14, True, 73.81435084342957, {'a0': 126, 'a1': 102, 'a2': 57}
+maze-32.map, stays, 3, 15, True, 11.378369331359863, {'a0': 65, 'a1': 61, 'a2': 60}
+maze-32.map, disappearing, 3, 15, True, 8.698842763900757, {'a0': 62, 'a1': 61, 'a2': 63}
+maze-32.map, demands, 3, 15, True, 13.867112636566162, {'a0': 62, 'a1': 61, 'a2': 63}
+maze-32.map, stays, 3, 16, True, 47.64826250076294, {'a0': 114, 'a1': 111, 'a2': 67}
+maze-32.map, disappearing, 3, 16, True, 41.646600008010864, {'a0': 114, 'a1': 111, 'a2': 67}
+maze-32.map, demands, 3, 16, True, 57.78716516494751, {'a0': 114, 'a1': 111, 'a2': 67}
+maze-32.map, stays, 3, 17, False, 47.689995527267456, {}
+maze-32.map, disappearing, 3, 17, True, 43.4736385345459, {'a0': 40, 'a1': 96, 'a2': 106}
+maze-32.map, demands, 3, 17, True, 55.999117374420166, {'a0': 43, 'a1': 101, 'a2': 98}
+maze-32.map, stays, 3, 18, False, 40.61449074745178, {}
+maze-32.map, disappearing, 3, 18, False, 39.96257734298706, {}
+maze-32.map, demands, 3, 18, True, 48.51498532295227, {'a0': 66, 'a1': 93, 'a2': 44}
+maze-32.map, stays, 3, 19, False, 19.718741416931152, {}
+maze-32.map, disappearing, 3, 19, True, 18.68492841720581, {'a0': 72, 'a1': 54, 'a2': 55}
+maze-32.map, demands, 3, 19, True, 24.220749139785767, {'a0': 64, 'a1': 62, 'a2': 55}
+maze-32.map, stays, 3, 20, True, 23.3853657245636, {'a0': 90, 'a1': 96, 'a2': 97}
+maze-32.map, disappearing, 3, 20, True, 20.038379907608032, {'a0': 90, 'a1': 96, 'a2': 97}
+maze-32.map, demands, 3, 20, True, 31.559465408325195, {'a0': 90, 'a1': 96, 'a2': 97}
+maze-32.map, stays, 3, 21, True, 12.419506549835205, {'a0': 54, 'a1': 48, 'a2': 54}
+maze-32.map, disappearing, 3, 21, True, 10.53075623512268, {'a0': 54, 'a1': 48, 'a2': 54}
+maze-32.map, demands, 3, 21, True, 15.557784080505371, {'a0': 54, 'a1': 48, 'a2': 54}
+maze-32.map, stays, 3, 22, False, 31.574961185455322, {}
+maze-32.map, disappearing, 3, 22, True, 30.454967260360718, {'a0': 90, 'a1': 53, 'a2': 52}
+maze-32.map, demands, 3, 22, True, 40.265265226364136, {'a0': 82, 'a1': 61, 'a2': 52}
+maze-32.map, stays, 3, 23, True, 13.811998844146729, {'a0': 51, 'a1': 61, 'a2': 54}
+maze-32.map, disappearing, 3, 23, True, 14.172000646591187, {'a0': 51, 'a1': 61, 'a2': 54}
+maze-32.map, demands, 3, 23, True, 19.060489177703857, {'a0': 59, 'a1': 61, 'a2': 46}
+maze-32.map, stays, 3, 24, False, 15.512622594833374, {}
+maze-32.map, disappearing, 3, 24, False, 15.064080238342285, {}
+maze-32.map, demands, 3, 24, False, 21.908512830734253, {}
+maze-32.map, stays, 3, 25, False, 8.054811954498291, {}
+maze-32.map, disappearing, 3, 25, False, 7.251171112060547, {}
+maze-32.map, demands, 3, 25, True, 11.070674657821655, {'a0': 46, 'a1': 41, 'a2': 50}
+maze-32.map, stays, 3, 26, False, 49.47610688209534, {}
+maze-32.map, disappearing, 3, 26, False, 52.01250219345093, {}
+maze-32.map, demands, 3, 26, True, 65.63831806182861, {'a0': 52, 'a1': 118, 'a2': 29}
+maze-32.map, stays, 3, 27, False, 46.57095694541931, {}
+maze-32.map, disappearing, 3, 27, True, 45.229761838912964, {'a0': 109, 'a1': 52, 'a2': 48}
+maze-32.map, demands, 3, 27, True, 54.871195793151855, {'a0': 101, 'a1': 52, 'a2': 56}
+maze-32.map, stays, 3, 28, False, 51.98734712600708, {}
+maze-32.map, disappearing, 3, 28, True, 51.95503067970276, {'a0': 53, 'a1': 50, 'a2': 129}
+maze-32.map, demands, 3, 28, True, 65.76684737205505, {'a0': 58, 'a1': 53, 'a2': 121}
+maze-32.map, stays, 3, 29, False, 47.98394012451172, {}
+maze-32.map, disappearing, 3, 29, False, 44.236878633499146, {}
+maze-32.map, demands, 3, 29, False, 57.90019965171814, {}
+maze-32.map, stays, 3, 30, False, 40.65908074378967, {}
+maze-32.map, disappearing, 3, 30, False, 36.31782388687134, {}
+maze-32.map, demands, 3, 30, False, 47.60994791984558, {}
+maze-32.map, stays, 3, 31, True, 7.090987205505371, {'a0': 46, 'a1': 6, 'a2': 39}
+maze-32.map, disappearing, 3, 31, True, 6.144490957260132, {'a0': 46, 'a1': 6, 'a2': 39}
+maze-32.map, demands, 3, 31, True, 8.189193725585938, {'a0': 46, 'a1': 6, 'a2': 39}
+maze-32.map, stays, 3, 32, False, 46.99065804481506, {}
+maze-32.map, disappearing, 3, 32, False, 46.67911958694458, {}
+maze-32.map, demands, 3, 32, True, 61.67943453788757, {'a0': 44, 'a1': 113, 'a2': 65}
+maze-32.map, stays, 3, 33, True, 33.277249574661255, {'a0': 51, 'a1': 71, 'a2': 92}
+maze-32.map, disappearing, 3, 33, True, 33.894482135772705, {'a0': 51, 'a1': 71, 'a2': 92}
+maze-32.map, demands, 3, 33, True, 39.83519434928894, {'a0': 51, 'a1': 63, 'a2': 92}
+maze-32.map, stays, 3, 34, True, 60.06020760536194, {'a0': 87, 'a1': 58, 'a2': 130}
+maze-32.map, disappearing, 3, 34, True, 56.236736536026, {'a0': 87, 'a1': 58, 'a2': 130}
+maze-32.map, demands, 3, 34, True, 72.41021680831909, {'a0': 95, 'a1': 50, 'a2': 130}
+maze-32.map, stays, 3, 35, False, 43.245986461639404, {}
+maze-32.map, disappearing, 3, 35, True, 35.278635025024414, {'a0': 28, 'a1': 52, 'a2': 87}
+maze-32.map, demands, 3, 35, True, 42.04759907722473, {'a0': 31, 'a1': 49, 'a2': 87}
+maze-32.map, stays, 3, 36, False, 51.1469247341156, {}
+maze-32.map, disappearing, 3, 36, False, 59.02670335769653, {}
+maze-32.map, demands, 3, 36, True, 64.93073439598083, {'a0': 105, 'a1': 34, 'a2': 113}
+maze-32.map, stays, 3, 37, False, 15.048091650009155, {}
+maze-32.map, disappearing, 3, 37, True, 12.688768863677979, {'a0': 55, 'a1': 65, 'a2': 58}
+maze-32.map, demands, 3, 37, True, 18.663915634155273, {'a0': 60, 'a1': 59, 'a2': 61}
+maze-32.map, stays, 3, 38, False, 15.187952756881714, {}
+maze-32.map, disappearing, 3, 38, False, 14.433450698852539, {}
+maze-32.map, demands, 3, 38, True, 15.351487636566162, {'a0': 38, 'a1': 56, 'a2': 61}
+maze-32.map, stays, 3, 39, False, 18.54021692276001, {}
+maze-32.map, disappearing, 3, 39, False, 16.901471853256226, {}
+maze-32.map, demands, 3, 39, True, 21.266897201538086, {'a0': 56, 'a1': 63, 'a2': 37}
+maze-32.map, stays, 3, 40, False, 47.96591544151306, {}
+maze-32.map, disappearing, 3, 40, True, 43.776851415634155, {'a0': 71, 'a1': 115, 'a2': 51}
+maze-32.map, demands, 3, 40, True, 55.025184631347656, {'a0': 76, 'a1': 107, 'a2': 54}
+maze-32.map, stays, 3, 41, False, 49.2735960483551, {}
+maze-32.map, disappearing, 3, 41, False, 44.20354962348938, {}
+maze-32.map, demands, 3, 41, True, 55.90514421463013, {'a0': 105, 'a1': 85, 'a2': 38}
+maze-32.map, stays, 3, 42, False, 32.74170708656311, {}
+maze-32.map, disappearing, 3, 42, False, 33.01328420639038, {}
+maze-32.map, demands, 3, 42, True, 40.27288746833801, {'a0': 83, 'a1': 35, 'a2': 57}
+maze-32.map, stays, 3, 43, False, 26.30402684211731, {}
+maze-32.map, disappearing, 3, 43, False, 26.66284990310669, {}
+maze-32.map, demands, 3, 43, True, 32.92083168029785, {'a0': 35, 'a1': 47, 'a2': 74}
+maze-32.map, stays, 3, 44, False, 20.17824649810791, {}
+maze-32.map, disappearing, 3, 44, False, 20.369914054870605, {}
+maze-32.map, demands, 3, 44, True, 25.8588387966156, {'a0': 57, 'a1': 72, 'a2': 76}
+maze-32.map, stays, 3, 45, False, 43.146536111831665, {}
+maze-32.map, disappearing, 3, 45, True, 44.656765937805176, {'a0': 67, 'a1': 38, 'a2': 113}
+maze-32.map, demands, 3, 45, True, 55.998621225357056, {'a0': 67, 'a1': 46, 'a2': 105}
+maze-32.map, stays, 3, 46, False, 13.085352420806885, {}
+maze-32.map, disappearing, 3, 46, True, 10.99835753440857, {'a0': 65, 'a1': 40, 'a2': 45}
+maze-32.map, demands, 3, 46, True, 14.019263744354248, {'a0': 57, 'a1': 45, 'a2': 48}
+maze-32.map, stays, 3, 47, False, 41.673877239227295, {}
+maze-32.map, disappearing, 3, 47, True, 45.55345559120178, {'a0': 37, 'a1': 107, 'a2': 40}
+maze-32.map, demands, 3, 47, True, 62.73678255081177, {'a0': 42, 'a1': 99, 'a2': 43}
+maze-32.map, stays, 3, 48, True, 6.996802091598511, {'a0': 33, 'a1': 44, 'a2': 31}
+maze-32.map, disappearing, 3, 48, True, 5.919809818267822, {'a0': 38, 'a1': 39, 'a2': 31}
+maze-32.map, demands, 3, 48, True, 7.83308482170105, {'a0': 38, 'a1': 39, 'a2': 31}
+maze-32.map, stays, 3, 49, False, 57.761024951934814, {}
+maze-32.map, disappearing, 3, 49, True, 51.933977127075195, {'a0': 137, 'a1': 65, 'a2': 104}
+maze-32.map, demands, 3, 49, True, 68.57352423667908, {'a0': 129, 'a1': 68, 'a2': 109}
+maze-32.map, stays, 3, 50, False, 41.48675179481506, {}
+maze-32.map, disappearing, 3, 50, False, 39.365931034088135, {}
+maze-32.map, demands, 3, 50, False, 66.4668128490448, {}
+maze-32.map, stays, 5, 1, False, 31.82190990447998, {}
+maze-32.map, disappearing, 5, 1, True, 30.998138427734375, {'a0': 77, 'a1': 24, 'a2': 36, 'a3': 36, 'a4': 37}
+maze-32.map, demands, 5, 1, True, 38.21591758728027, {'a0': 67, 'a1': 35, 'a2': 36, 'a3': 35, 'a4': 39}
+maze-32.map, stays, 5, 2, True, 65.39096760749817, {'a0': 107, 'a1': 124, 'a2': 52, 'a3': 52, 'a4': 39}
+maze-32.map, disappearing, 5, 2, True, 58.35229015350342, {'a0': 107, 'a1': 124, 'a2': 52, 'a3': 49, 'a4': 42}
+maze-32.map, demands, 5, 2, True, 76.99423623085022, {'a0': 109, 'a1': 119, 'a2': 55, 'a3': 49, 'a4': 42}
+maze-32.map, stays, 5, 3, False, 71.41599225997925, {}
+maze-32.map, disappearing, 5, 3, True, 66.70041918754578, {'a0': 68, 'a1': 135, 'a2': 51, 'a3': 41, 'a4': 113}
+maze-32.map, demands, 5, 3, True, 82.71110606193542, {'a0': 76, 'a1': 122, 'a2': 61, 'a3': 44, 'a4': 110}
+maze-32.map, stays, 5, 4, False, 38.074610471725464, {}
+maze-32.map, disappearing, 5, 4, False, 31.897462606430054, {}
+maze-32.map, demands, 5, 4, True, 42.962470054626465, {'a0': 52, 'a1': 62, 'a2': 52, 'a3': 77, 'a4': 54}
+maze-32.map, stays, 5, 5, False, 57.25128197669983, {}
+maze-32.map, disappearing, 5, 5, True, 51.55261301994324, {'a0': 79, 'a1': 62, 'a2': 117, 'a3': 65, 'a4': 57}
+maze-32.map, demands, 5, 5, True, 62.41188430786133, {'a0': 81, 'a1': 54, 'a2': 115, 'a3': 68, 'a4': 62}
+maze-32.map, stays, 5, 6, False, 59.13649773597717, {}
+maze-32.map, disappearing, 5, 6, True, 60.03035116195679, {'a0': 133, 'a1': 30, 'a2': 114, 'a3': 90, 'a4': 117}
+maze-32.map, demands, 5, 6, True, 77.81580305099487, {'a0': 120, 'a1': 40, 'a2': 111, 'a3': 101, 'a4': 112}
+maze-32.map, stays, 5, 7, False, 33.94918441772461, {}
+maze-32.map, disappearing, 5, 7, False, 35.89306712150574, {}
+maze-32.map, demands, 5, 7, True, 42.755682945251465, {'a0': 48, 'a1': 61, 'a2': 51, 'a3': 80, 'a4': 59}
+maze-32.map, stays, 5, 8, False, 42.40942144393921, {}
+maze-32.map, disappearing, 5, 8, False, 42.08196520805359, {}
+maze-32.map, demands, 5, 8, True, 56.98027229309082, {'a0': 59, 'a1': 86, 'a2': 94, 'a3': 25, 'a4': 55}
+maze-32.map, stays, 5, 9, True, 11.984671831130981, {'a0': 8, 'a1': 61, 'a2': 7, 'a3': 61, 'a4': 19}
+maze-32.map, disappearing, 5, 9, True, 13.478419780731201, {'a0': 10, 'a1': 61, 'a2': 5, 'a3': 61, 'a4': 19}
+maze-32.map, demands, 5, 9, True, 18.436532974243164, {'a0': 21, 'a1': 56, 'a2': 12, 'a3': 53, 'a4': 16}
+maze-32.map, stays, 5, 10, False, 50.797791719436646, {}
+maze-32.map, disappearing, 5, 10, True, 50.02917695045471, {'a0': 115, 'a1': 52, 'a2': 46, 'a3': 1, 'a4': 85}
+maze-32.map, demands, 5, 10, True, 65.24662041664124, {'a0': 102, 'a1': 52, 'a2': 56, 'a3': 4, 'a4': 85}
+maze-32.map, stays, 5, 11, False, 31.293982982635498, {}
+maze-32.map, disappearing, 5, 11, False, 28.476218223571777, {}
+maze-32.map, demands, 5, 11, True, 37.4517560005188, {'a0': 61, 'a1': 68, 'a2': 43, 'a3': 37, 'a4': 70}
+maze-32.map, stays, 5, 12, False, 17.69726061820984, {}
+maze-32.map, disappearing, 5, 12, False, 15.759566068649292, {}
+maze-32.map, demands, 5, 12, True, 20.184890508651733, {'a0': 54, 'a1': 46, 'a2': 51, 'a3': 42, 'a4': 42}
+maze-32.map, stays, 5, 13, True, 41.932756662368774, {'a0': 95, 'a1': 53, 'a2': 94, 'a3': 73, 'a4': 69}
+maze-32.map, disappearing, 5, 13, True, 36.63098478317261, {'a0': 95, 'a1': 53, 'a2': 92, 'a3': 73, 'a4': 69}
+maze-32.map, demands, 5, 13, True, 48.69881844520569, {'a0': 95, 'a1': 61, 'a2': 84, 'a3': 76, 'a4': 66}
+maze-32.map, stays, 5, 14, False, 63.28411388397217, {}
+maze-32.map, disappearing, 5, 14, False, 55.2929105758667, {}
+maze-32.map, demands, 5, 14, True, 66.9122793674469, {'a0': 65, 'a1': 69, 'a2': 52, 'a3': 59, 'a4': 119}
+maze-32.map, stays, 5, 15, False, 60.98932075500488, {}
+maze-32.map, disappearing, 5, 15, False, 51.18130850791931, {}
+maze-32.map, demands, 5, 15, True, 69.1155297756195, {'a0': 108, 'a1': 52, 'a2': 34, 'a3': 44, 'a4': 81}
+maze-32.map, stays, 5, 16, False, 45.00982689857483, {}
+maze-32.map, disappearing, 5, 16, False, 41.44330596923828, {}
+maze-32.map, demands, 5, 16, True, 51.998499393463135, {'a0': 52, 'a1': 98, 'a2': 47, 'a3': 48, 'a4': 54}
+maze-32.map, stays, 5, 17, False, 44.60546541213989, {}
+maze-32.map, disappearing, 5, 17, False, 41.56521916389465, {}
+maze-32.map, demands, 5, 17, True, 56.143333435058594, {'a0': 58, 'a1': 86, 'a2': 53, 'a3': 79, 'a4': 52}
+maze-32.map, stays, 5, 18, True, 56.88466000556946, {'a0': 4, 'a1': 105, 'a2': 105, 'a3': 126, 'a4': 7}
+maze-32.map, disappearing, 5, 18, True, 51.78050374984741, {'a0': 4, 'a1': 105, 'a2': 103, 'a3': 126, 'a4': 5}
+maze-32.map, demands, 5, 18, True, 67.38078188896179, {'a0': 4, 'a1': 100, 'a2': 103, 'a3': 121, 'a4': 17}
+maze-32.map, stays, 5, 19, False, 44.10112190246582, {}
+maze-32.map, disappearing, 5, 19, False, 46.914400815963745, {}
+maze-32.map, demands, 5, 19, True, 47.68581938743591, {'a0': 58, 'a1': 55, 'a2': 48, 'a3': 54, 'a4': 87}
+maze-32.map, stays, 5, 20, False, 51.77277946472168, {}
+maze-32.map, disappearing, 5, 20, True, 51.849238872528076, {'a0': 112, 'a1': 93, 'a2': 38, 'a3': 51, 'a4': 38}
+maze-32.map, demands, 5, 20, True, 66.25718235969543, {'a0': 110, 'a1': 85, 'a2': 38, 'a3': 56, 'a4': 43}
+maze-32.map, stays, 5, 21, False, 19.35032367706299, {}
+maze-32.map, disappearing, 5, 21, False, 20.162291288375854, {}
+maze-32.map, demands, 5, 21, True, 25.6819007396698, {'a0': 52, 'a1': 57, 'a2': 51, 'a3': 56, 'a4': 45}
+maze-32.map, stays, 5, 22, False, 44.214353799819946, {}
+maze-32.map, disappearing, 5, 22, True, 44.53574800491333, {'a0': 35, 'a1': 35, 'a2': 50, 'a3': 54, 'a4': 109}
+maze-32.map, demands, 5, 22, True, 62.01645302772522, {'a0': 40, 'a1': 45, 'a2': 50, 'a3': 48, 'a4': 99}
+maze-32.map, stays, 5, 23, False, 46.46734952926636, {}
+maze-32.map, disappearing, 5, 23, False, 38.489171266555786, {}
+maze-32.map, demands, 5, 23, True, 47.666890382766724, {'a0': 58, 'a1': 79, 'a2': 93, 'a3': 46, 'a4': 58}
+maze-32.map, stays, 5, 24, False, 51.922890424728394, {}
+maze-32.map, disappearing, 5, 24, False, 52.55876564979553, {}
+maze-32.map, demands, 5, 24, True, 78.62941718101501, {'a0': 36, 'a1': 9, 'a2': 106, 'a3': 122, 'a4': 12}
+maze-32.map, stays, 5, 25, False, 67.29768109321594, {}
+maze-32.map, disappearing, 5, 25, True, 69.1934552192688, {'a0': 39, 'a1': 39, 'a2': 57, 'a3': 125, 'a4': 73}
+maze-32.map, demands, 5, 25, True, 81.1599338054657, {'a0': 39, 'a1': 44, 'a2': 52, 'a3': 123, 'a4': 71}
+maze-32.map, stays, 5, 26, False, 56.10110783576965, {}
+maze-32.map, disappearing, 5, 26, False, 51.934959411621094, {}
+maze-32.map, demands, 5, 26, True, 72.25113010406494, {'a0': 33, 'a1': 6, 'a2': 8, 'a3': 106, 'a4': 39}
+maze-32.map, stays, 5, 27, False, 12.38425588607788, {}
+maze-32.map, disappearing, 5, 27, False, 11.462327241897583, {}
+maze-32.map, demands, 5, 27, True, 15.196241617202759, {'a0': 21, 'a1': 44, 'a2': 41, 'a3': 34, 'a4': 30}
+maze-32.map, stays, 5, 28, False, 13.470947980880737, {}
+maze-32.map, disappearing, 5, 28, False, 12.833094596862793, {}
+maze-32.map, demands, 5, 28, True, 18.467050552368164, {'a0': 49, 'a1': 29, 'a2': 49, 'a3': 52, 'a4': 9}
+maze-32.map, stays, 5, 29, False, 56.60059642791748, {}
+maze-32.map, disappearing, 5, 29, False, 59.09719681739807, {}
+maze-32.map, demands, 5, 29, True, 80.66662406921387, {'a0': 42, 'a1': 115, 'a2': 69, 'a3': 42, 'a4': 113}
+maze-32.map, stays, 5, 30, False, 55.02232241630554, {}
+maze-32.map, disappearing, 5, 30, False, 57.545801877975464, {}
+maze-32.map, demands, 5, 30, True, 70.98851680755615, {'a0': 91, 'a1': 51, 'a2': 30, 'a3': 28, 'a4': 113}
+maze-32.map, stays, 5, 31, True, 21.657612800598145, {'a0': 60, 'a1': 15, 'a2': 54, 'a3': 54, 'a4': 48}
+maze-32.map, disappearing, 5, 31, True, 20.778945446014404, {'a0': 60, 'a1': 15, 'a2': 54, 'a3': 54, 'a4': 46}
+maze-32.map, demands, 5, 31, True, 24.476768970489502, {'a0': 55, 'a1': 28, 'a2': 51, 'a3': 49, 'a4': 48}
+maze-32.map, stays, 5, 32, False, 54.42471671104431, {}
+maze-32.map, disappearing, 5, 32, True, 49.86515021324158, {'a0': 104, 'a1': 6, 'a2': 40, 'a3': 55, 'a4': 93}
+maze-32.map, demands, 5, 32, True, 65.58871483802795, {'a0': 99, 'a1': 19, 'a2': 41, 'a3': 50, 'a4': 93}
+maze-32.map, stays, 5, 33, False, 10.689214706420898, {}
+maze-32.map, disappearing, 5, 33, False, 10.376002788543701, {}
+maze-32.map, demands, 5, 33, True, 12.394624710083008, {'a0': 25, 'a1': 21, 'a2': 38, 'a3': 37, 'a4': 37}
+maze-32.map, stays, 5, 34, False, 54.60361289978027, {}
+maze-32.map, disappearing, 5, 34, False, 54.42288255691528, {}
+maze-32.map, demands, 5, 34, True, 76.11230611801147, {'a0': 34, 'a1': 120, 'a2': 50, 'a3': 19, 'a4': 38}
+maze-32.map, stays, 5, 35, False, 55.10319495201111, {}
+maze-32.map, disappearing, 5, 35, False, 53.94246459007263, {}
+maze-32.map, demands, 5, 35, True, 77.08923387527466, {'a0': 30, 'a1': 98, 'a2': 63, 'a3': 34, 'a4': 119}
+maze-32.map, stays, 5, 36, False, 50.3807270526886, {}
+maze-32.map, disappearing, 5, 36, False, 46.36702632904053, {}
+maze-32.map, demands, 5, 36, True, 56.048399686813354, {'a0': 100, 'a1': 101, 'a2': 48, 'a3': 53, 'a4': 44}
+maze-32.map, stays, 5, 37, False, 46.90603566169739, {}
+maze-32.map, disappearing, 5, 37, False, 45.62439441680908, {}
+maze-32.map, demands, 5, 37, True, 59.39960026741028, {'a0': 49, 'a1': 92, 'a2': 42, 'a3': 24, 'a4': 55}
+maze-32.map, stays, 5, 38, False, 59.55263710021973, {}
+maze-32.map, disappearing, 5, 38, False, 61.35969018936157, {}
+maze-32.map, demands, 5, 38, True, 85.88712763786316, {'a0': 62, 'a1': 121, 'a2': 66, 'a3': 38, 'a4': 121}
+maze-32.map, stays, 5, 39, True, 47.25511407852173, {'a0': 96, 'a1': 22, 'a2': 62, 'a3': 56, 'a4': 60}
+maze-32.map, disappearing, 5, 39, True, 44.53172755241394, {'a0': 96, 'a1': 33, 'a2': 64, 'a3': 56, 'a4': 47}
+maze-32.map, demands, 5, 39, True, 56.08853006362915, {'a0': 91, 'a1': 33, 'a2': 67, 'a3': 50, 'a4': 57}
+maze-32.map, stays, 5, 40, False, 47.24337720870972, {}
+maze-32.map, disappearing, 5, 40, True, 44.02684545516968, {'a0': 91, 'a1': 13, 'a2': 108, 'a3': 41, 'a4': 56}
+maze-32.map, demands, 5, 40, True, 61.97946214675903, {'a0': 83, 'a1': 21, 'a2': 95, 'a3': 51, 'a4': 64}
+maze-32.map, stays, 5, 41, False, 11.924338579177856, {}
+maze-32.map, disappearing, 5, 41, False, 11.83769154548645, {}
+maze-32.map, demands, 5, 41, True, 14.681424140930176, {'a0': 35, 'a1': 43, 'a2': 42, 'a3': 48, 'a4': 41}
+maze-32.map, stays, 5, 42, False, 55.770551919937134, {}
+maze-32.map, disappearing, 5, 42, False, 60.28802680969238, {}
+maze-32.map, demands, 5, 42, True, 84.13311767578125, {'a0': 62, 'a1': 15, 'a2': 111, 'a3': 48, 'a4': 119}
+maze-32.map, stays, 5, 43, False, 23.625603914260864, {}
+maze-32.map, disappearing, 5, 43, False, 22.644393920898438, {}
+maze-32.map, demands, 5, 43, True, 28.320479154586792, {'a0': 53, 'a1': 57, 'a2': 51, 'a3': 53, 'a4': 49}
+maze-32.map, stays, 5, 44, False, 57.26632595062256, {}
+maze-32.map, disappearing, 5, 44, False, 53.50855255126953, {}
+maze-32.map, demands, 5, 44, True, 67.75178241729736, {'a0': 31, 'a1': 46, 'a2': 59, 'a3': 92, 'a4': 109}
+maze-32.map, stays, 5, 45, False, 59.61537408828735, {}
+maze-32.map, disappearing, 5, 45, False, 57.88190674781799, {}
+maze-32.map, demands, 5, 45, True, 79.35155439376831, {'a0': 25, 'a1': 120, 'a2': 76, 'a3': 119, 'a4': 61}
+maze-32.map, stays, 5, 46, False, 68.45908188819885, {}
+maze-32.map, disappearing, 5, 46, False, 57.15369009971619, {}
+maze-32.map, demands, 5, 46, False, 67.64167261123657, {}
+maze-32.map, stays, 5, 47, False, 46.364936113357544, {}
+maze-32.map, disappearing, 5, 47, False, 46.535444259643555, {}
+maze-32.map, demands, 5, 47, True, 64.36136603355408, {'a0': 84, 'a1': 43, 'a2': 112, 'a3': 35, 'a4': 44}
+maze-32.map, stays, 5, 48, True, 60.26416301727295, {'a0': 118, 'a1': 107, 'a2': 82, 'a3': 67, 'a4': 45}
+maze-32.map, disappearing, 5, 48, True, 56.03409433364868, {'a0': 115, 'a1': 103, 'a2': 87, 'a3': 64, 'a4': 48}
+maze-32.map, demands, 5, 48, True, 72.67724609375, {'a0': 115, 'a1': 103, 'a2': 87, 'a3': 64, 'a4': 48}
+maze-32.map, stays, 5, 49, False, 67.40785026550293, {}
+maze-32.map, disappearing, 5, 49, True, 60.41803741455078, {'a0': 49, 'a1': 46, 'a2': 46, 'a3': 108, 'a4': 132}
+maze-32.map, demands, 5, 49, True, 80.43654084205627, {'a0': 52, 'a1': 56, 'a2': 51, 'a3': 108, 'a4': 119}
+maze-32.map, stays, 5, 50, False, 55.910831451416016, {}
+maze-32.map, disappearing, 5, 50, False, 54.706883668899536, {}
+maze-32.map, demands, 5, 50, False, 100.5077154636383, {}
+maze-32.map, stays, 7, 1, False, 67.51009821891785, {}
+maze-32.map, disappearing, 7, 1, False, 66.04346895217896, {}
+maze-32.map, demands, 7, 1, True, 72.16320991516113, {'a0': 47, 'a1': 38, 'a2': 54, 'a3': 53, 'a4': 49, 'a5': 80, 'a6': 114}
+maze-32.map, stays, 7, 2, True, 68.79276180267334, {'a0': 53, 'a1': 29, 'a2': 41, 'a3': 63, 'a4': 112, 'a5': 40, 'a6': 75}
+maze-32.map, disappearing, 7, 2, True, 58.960657596588135, {'a0': 41, 'a1': 51, 'a2': 49, 'a3': 39, 'a4': 112, 'a5': 40, 'a6': 75}
+maze-32.map, demands, 7, 2, True, 86.01269841194153, {'a0': 38, 'a1': 43, 'a2': 44, 'a3': 50, 'a4': 109, 'a5': 48, 'a6': 77}
+maze-32.map, stays, 7, 3, False, 62.261430978775024, {}
+maze-32.map, disappearing, 7, 3, False, 57.201714754104614, {}
+maze-32.map, demands, 7, 3, True, 71.2671263217926, {'a0': 91, 'a1': 57, 'a2': 60, 'a3': 77, 'a4': 108, 'a5': 59, 'a6': 56}
+maze-32.map, stays, 7, 4, False, 57.41468644142151, {}
+maze-32.map, disappearing, 7, 4, False, 55.608105182647705, {}
+maze-32.map, demands, 7, 4, True, 75.3879086971283, {'a0': 46, 'a1': 44, 'a2': 54, 'a3': 44, 'a4': 94, 'a5': 79, 'a6': 18}
+maze-32.map, stays, 7, 5, False, 50.6277129650116, {}
+maze-32.map, disappearing, 7, 5, True, 51.098498821258545, {'a0': 93, 'a1': 3, 'a2': 69, 'a3': 7, 'a4': 38, 'a5': 96, 'a6': 108}
+maze-32.map, demands, 7, 5, True, 74.5722758769989, {'a0': 88, 'a1': 6, 'a2': 77, 'a3': 29, 'a4': 31, 'a5': 88, 'a6': 99}
+maze-32.map, stays, 7, 6, False, 54.7701051235199, {}
+maze-32.map, disappearing, 7, 6, True, 50.09786868095398, {'a0': 104, 'a1': 51, 'a2': 55, 'a3': 15, 'a4': 37, 'a5': 44, 'a6': 35}
+maze-32.map, demands, 7, 6, True, 72.36005282402039, {'a0': 90, 'a1': 46, 'a2': 47, 'a3': 15, 'a4': 51, 'a5': 44, 'a6': 45}
+maze-32.map, stays, 7, 7, False, 64.80861306190491, {}
+maze-32.map, disappearing, 7, 7, False, 60.48761224746704, {}
+maze-32.map, demands, 7, 7, True, 81.59158873558044, {'a0': 105, 'a1': 39, 'a2': 33, 'a3': 46, 'a4': 110, 'a5': 24, 'a6': 97}
+maze-32.map, stays, 7, 8, False, 70.51704359054565, {}
+maze-32.map, disappearing, 7, 8, False, 61.94832444190979, {}
+maze-32.map, demands, 7, 8, True, 86.30773639678955, {'a0': 48, 'a1': 13, 'a2': 49, 'a3': 109, 'a4': 113, 'a5': 29, 'a6': 53}
+maze-32.map, stays, 7, 9, False, 65.4086606502533, {}
+maze-32.map, disappearing, 7, 9, False, 51.73874640464783, {}
+maze-32.map, demands, 7, 9, False, 74.36302423477173, {}
+maze-32.map, stays, 7, 10, False, 53.220070362091064, {}
+maze-32.map, disappearing, 7, 10, False, 52.7814462184906, {}
+maze-32.map, demands, 7, 10, True, 78.27534627914429, {'a0': 90, 'a1': 56, 'a2': 102, 'a3': 22, 'a4': 20, 'a5': 30, 'a6': 106}
+maze-32.map, stays, 7, 11, False, 48.41874551773071, {}
+maze-32.map, disappearing, 7, 11, True, 55.21811008453369, {'a0': 4, 'a1': 17, 'a2': 49, 'a3': 115, 'a4': 86, 'a5': 18, 'a6': 84}
+maze-32.map, demands, 7, 11, True, 71.46131038665771, {'a0': 6, 'a1': 21, 'a2': 55, 'a3': 101, 'a4': 86, 'a5': 18, 'a6': 93}
+maze-32.map, stays, 7, 12, False, 50.64639949798584, {}
+maze-32.map, disappearing, 7, 12, False, 44.804391622543335, {}
+maze-32.map, demands, 7, 12, False, 55.80103135108948, {}
+maze-32.map, stays, 7, 13, False, 14.922990083694458, {}
+maze-32.map, disappearing, 7, 13, True, 16.29923915863037, {'a0': 31, 'a1': 48, 'a2': 25, 'a3': 49, 'a4': 52, 'a5': 30, 'a6': 41}
+maze-32.map, demands, 7, 13, True, 21.289384126663208, {'a0': 31, 'a1': 40, 'a2': 39, 'a3': 38, 'a4': 43, 'a5': 32, 'a6': 41}
+maze-32.map, stays, 7, 14, True, 54.39465641975403, {'a0': 40, 'a1': 71, 'a2': 50, 'a3': 13, 'a4': 21, 'a5': 107, 'a6': 50}
+maze-32.map, disappearing, 7, 14, True, 54.892616510391235, {'a0': 40, 'a1': 71, 'a2': 48, 'a3': 7, 'a4': 21, 'a5': 107, 'a6': 50}
+maze-32.map, demands, 7, 14, True, 70.06843900680542, {'a0': 40, 'a1': 59, 'a2': 45, 'a3': 18, 'a4': 31, 'a5': 104, 'a6': 39}
+maze-32.map, stays, 7, 15, True, 50.03825545310974, {'a0': 48, 'a1': 57, 'a2': 39, 'a3': 44, 'a4': 91, 'a5': 11, 'a6': 62}
+maze-32.map, disappearing, 7, 15, True, 47.4646201133728, {'a0': 37, 'a1': 57, 'a2': 47, 'a3': 47, 'a4': 91, 'a5': 11, 'a6': 62}
+maze-32.map, demands, 7, 15, True, 66.65760684013367, {'a0': 39, 'a1': 51, 'a2': 31, 'a3': 53, 'a4': 91, 'a5': 30, 'a6': 59}
+maze-32.map, stays, 7, 16, False, 39.330947399139404, {}
+maze-32.map, disappearing, 7, 16, False, 38.40485453605652, {}
+maze-32.map, demands, 7, 16, True, 51.11904215812683, {'a0': 55, 'a1': 46, 'a2': 78, 'a3': 49, 'a4': 54, 'a5': 30, 'a6': 50}
+maze-32.map, stays, 7, 17, False, 16.484798908233643, {}
+maze-32.map, disappearing, 7, 17, True, 18.594545125961304, {'a0': 29, 'a1': 55, 'a2': 54, 'a3': 37, 'a4': 34, 'a5': 39, 'a6': 31}
+maze-32.map, demands, 7, 17, True, 23.073261499404907, {'a0': 25, 'a1': 45, 'a2': 43, 'a3': 38, 'a4': 39, 'a5': 39, 'a6': 42}
+maze-32.map, stays, 7, 18, False, 46.11568999290466, {}
+maze-32.map, disappearing, 7, 18, False, 45.23008632659912, {}
+maze-32.map, demands, 7, 18, True, 57.31818914413452, {'a0': 90, 'a1': 95, 'a2': 73, 'a3': 47, 'a4': 69, 'a5': 60, 'a6': 56}
+maze-32.map, stays, 7, 19, False, 19.160930633544922, {}
+maze-32.map, disappearing, 7, 19, True, 17.991552591323853, {'a0': 34, 'a1': 41, 'a2': 59, 'a3': 44, 'a4': 53, 'a5': 40, 'a6': 6}
+maze-32.map, demands, 7, 19, True, 26.037883758544922, {'a0': 45, 'a1': 38, 'a2': 43, 'a3': 50, 'a4': 42, 'a5': 50, 'a6': 15}
+maze-32.map, stays, 7, 20, False, 46.13784122467041, {}
+maze-32.map, disappearing, 7, 20, False, 45.11408567428589, {}
+maze-32.map, demands, 7, 20, True, 56.789215326309204, {'a0': 69, 'a1': 64, 'a2': 58, 'a3': 50, 'a4': 47, 'a5': 35, 'a6': 73}
+maze-32.map, stays, 7, 21, False, 34.14015746116638, {}
+maze-32.map, disappearing, 7, 21, True, 36.73937678337097, {'a0': 36, 'a1': 3, 'a2': 40, 'a3': 78, 'a4': 41, 'a5': 45, 'a6': 10}
+maze-32.map, demands, 7, 21, True, 55.412880659103394, {'a0': 47, 'a1': 7, 'a2': 40, 'a3': 69, 'a4': 41, 'a5': 45, 'a6': 12}
+maze-32.map, stays, 7, 22, False, 58.21364378929138, {}
+maze-32.map, disappearing, 7, 22, False, 57.26560711860657, {}
+maze-32.map, demands, 7, 22, True, 69.48916172981262, {'a0': 40, 'a1': 113, 'a2': 42, 'a3': 47, 'a4': 35, 'a5': 55, 'a6': 24}
+maze-32.map, stays, 7, 23, False, 46.06908202171326, {}
+maze-32.map, disappearing, 7, 23, False, 45.42059850692749, {}
+maze-32.map, demands, 7, 23, True, 58.39107894897461, {'a0': 52, 'a1': 55, 'a2': 52, 'a3': 51, 'a4': 27, 'a5': 73, 'a6': 90}
+maze-32.map, stays, 7, 24, False, 44.16226410865784, {}
+maze-32.map, disappearing, 7, 24, False, 44.139122009277344, {}
+maze-32.map, demands, 7, 24, True, 60.43471908569336, {'a0': 38, 'a1': 67, 'a2': 43, 'a3': 72, 'a4': 78, 'a5': 84, 'a6': 43}
+maze-32.map, stays, 7, 25, False, 20.42817234992981, {}
+maze-32.map, disappearing, 7, 25, False, 17.41267442703247, {}
+maze-32.map, demands, 7, 25, True, 21.436480045318604, {'a0': 52, 'a1': 42, 'a2': 47, 'a3': 41, 'a4': 34, 'a5': 41, 'a6': 46}
+maze-32.map, stays, 7, 26, False, 62.99656367301941, {}
+maze-32.map, disappearing, 7, 26, True, 59.477134704589844, {'a0': 54, 'a1': 41, 'a2': 122, 'a3': 39, 'a4': 48, 'a5': 54, 'a6': 112}
+maze-32.map, demands, 7, 26, True, 78.98105978965759, {'a0': 67, 'a1': 41, 'a2': 105, 'a3': 50, 'a4': 53, 'a5': 52, 'a6': 109}
+maze-32.map, stays, 7, 27, False, 43.17218255996704, {}
+maze-32.map, disappearing, 7, 27, True, 45.276076316833496, {'a0': 57, 'a1': 47, 'a2': 46, 'a3': 47, 'a4': 96, 'a5': 58, 'a6': 53}
+maze-32.map, demands, 7, 27, True, 64.30961227416992, {'a0': 53, 'a1': 47, 'a2': 57, 'a3': 49, 'a4': 85, 'a5': 58, 'a6': 50}
+maze-32.map, stays, 7, 28, False, 68.19320106506348, {}
+maze-32.map, disappearing, 7, 28, True, 63.78528714179993, {'a0': 45, 'a1': 13, 'a2': 47, 'a3': 112, 'a4': 88, 'a5': 44, 'a6': 55}
+maze-32.map, demands, 7, 28, True, 70.29727053642273, {'a0': 48, 'a1': 13, 'a2': 49, 'a3': 112, 'a4': 88, 'a5': 47, 'a6': 44}
+maze-32.map, stays, 7, 29, False, 40.54421877861023, {}
+maze-32.map, disappearing, 7, 29, True, 39.726964235305786, {'a0': 84, 'a1': 43, 'a2': 85, 'a3': 47, 'a4': 3, 'a5': 37, 'a6': 55}
+maze-32.map, demands, 7, 29, True, 51.77863907814026, {'a0': 73, 'a1': 54, 'a2': 66, 'a3': 44, 'a4': 19, 'a5': 37, 'a6': 55}
+maze-32.map, stays, 7, 30, False, 15.62610673904419, {}
+maze-32.map, disappearing, 7, 30, True, 17.982629537582397, {'a0': 30, 'a1': 32, 'a2': 33, 'a3': 22, 'a4': 33, 'a5': 60, 'a6': 38}
+maze-32.map, demands, 7, 30, True, 22.815659761428833, {'a0': 36, 'a1': 32, 'a2': 38, 'a3': 36, 'a4': 37, 'a5': 38, 'a6': 32}
+maze-32.map, stays, 7, 31, False, 54.54694676399231, {}
+maze-32.map, disappearing, 7, 31, False, 52.23258376121521, {}
+maze-32.map, demands, 7, 31, True, 70.47875642776489, {'a0': 57, 'a1': 95, 'a2': 95, 'a3': 69, 'a4': 28, 'a5': 69, 'a6': 7}
+maze-32.map, stays, 7, 32, False, 69.66942143440247, {}
+maze-32.map, disappearing, 7, 32, False, 60.32997250556946, {}
+maze-32.map, demands, 7, 32, True, 80.13001847267151, {'a0': 59, 'a1': 82, 'a2': 89, 'a3': 41, 'a4': 69, 'a5': 111, 'a6': 100}
+maze-32.map, stays, 7, 33, False, 52.317503452301025, {}
+maze-32.map, disappearing, 7, 33, True, 53.16185998916626, {'a0': 34, 'a1': 113, 'a2': 26, 'a3': 6, 'a4': 116, 'a5': 32, 'a6': 65}
+maze-32.map, demands, 7, 33, True, 78.90553402900696, {'a0': 45, 'a1': 104, 'a2': 28, 'a3': 18, 'a4': 108, 'a5': 43, 'a6': 55}
+maze-32.map, stays, 7, 34, False, 61.84141492843628, {}
+maze-32.map, disappearing, 7, 34, False, 63.143803119659424, {}
+maze-32.map, demands, 7, 34, True, 82.3202793598175, {'a0': 96, 'a1': 104, 'a2': 38, 'a3': 111, 'a4': 67, 'a5': 30, 'a6': 20}
+maze-32.map, stays, 7, 35, False, 47.96474289894104, {}
+maze-32.map, disappearing, 7, 35, False, 50.650184631347656, {}
+maze-32.map, demands, 7, 35, True, 69.57071733474731, {'a0': 37, 'a1': 16, 'a2': 35, 'a3': 44, 'a4': 36, 'a5': 103, 'a6': 10}
+maze-32.map, stays, 7, 36, False, 49.48533272743225, {}
+maze-32.map, disappearing, 7, 36, True, 49.40711259841919, {'a0': 102, 'a1': 101, 'a2': 55, 'a3': 60, 'a4': 47, 'a5': 65, 'a6': 59}
+maze-32.map, demands, 7, 36, True, 63.67680287361145, {'a0': 93, 'a1': 90, 'a2': 55, 'a3': 60, 'a4': 58, 'a5': 78, 'a6': 59}
+maze-32.map, stays, 7, 37, False, 45.84549355506897, {}
+maze-32.map, disappearing, 7, 37, True, 45.530325174331665, {'a0': 21, 'a1': 95, 'a2': 25, 'a3': 89, 'a4': 9, 'a5': 44, 'a6': 58}
+maze-32.map, demands, 7, 37, True, 58.36994433403015, {'a0': 32, 'a1': 81, 'a2': 33, 'a3': 82, 'a4': 17, 'a5': 49, 'a6': 45}
+maze-32.map, stays, 7, 38, False, 61.514244079589844, {}
+maze-32.map, disappearing, 7, 38, False, 66.66649603843689, {}
+maze-32.map, demands, 7, 38, True, 94.11215877532959, {'a0': 28, 'a1': 34, 'a2': 27, 'a3': 46, 'a4': 84, 'a5': 27, 'a6': 113}
+maze-32.map, stays, 7, 39, False, 42.79147505760193, {}
+maze-32.map, disappearing, 7, 39, False, 42.32545781135559, {}
+maze-32.map, demands, 7, 39, True, 50.66458606719971, {'a0': 49, 'a1': 52, 'a2': 50, 'a3': 52, 'a4': 47, 'a5': 14, 'a6': 78}
+maze-32.map, stays, 7, 40, False, 34.240060329437256, {}
+maze-32.map, disappearing, 7, 40, True, 36.94665598869324, {'a0': 49, 'a1': 85, 'a2': 34, 'a3': 32, 'a4': 45, 'a5': 3, 'a6': 50}
+maze-32.map, demands, 7, 40, True, 51.59437966346741, {'a0': 49, 'a1': 66, 'a2': 28, 'a3': 45, 'a4': 59, 'a5': 14, 'a6': 42}
+maze-32.map, stays, 7, 41, False, 40.40701603889465, {}
+maze-32.map, disappearing, 7, 41, True, 42.06318211555481, {'a0': 15, 'a1': 17, 'a2': 32, 'a3': 48, 'a4': 54, 'a5': 86, 'a6': 46}
+maze-32.map, demands, 7, 41, True, 62.67063856124878, {'a0': 18, 'a1': 30, 'a2': 32, 'a3': 41, 'a4': 46, 'a5': 72, 'a6': 32}
+maze-32.map, stays, 7, 42, False, 42.93522500991821, {}
+maze-32.map, disappearing, 7, 42, True, 43.48650765419006, {'a0': 29, 'a1': 56, 'a2': 96, 'a3': 52, 'a4': 53, 'a5': 48, 'a6': 57}
+maze-32.map, demands, 7, 42, True, 57.34856915473938, {'a0': 48, 'a1': 46, 'a2': 87, 'a3': 57, 'a4': 51, 'a5': 55, 'a6': 44}
+maze-32.map, stays, 7, 43, False, 58.86049437522888, {}
+maze-32.map, disappearing, 7, 43, False, 78.47616672515869, {}
+maze-32.map, demands, 7, 43, True, 81.59032416343689, {'a0': 45, 'a1': 39, 'a2': 115, 'a3': 38, 'a4': 53, 'a5': 112, 'a6': 46}
+maze-32.map, stays, 7, 44, False, 58.05600070953369, {}
+maze-32.map, disappearing, 7, 44, True, 55.99029064178467, {'a0': 35, 'a1': 47, 'a2': 110, 'a3': 81, 'a4': 44, 'a5': 75, 'a6': 46}
+maze-32.map, demands, 7, 44, True, 73.6531023979187, {'a0': 35, 'a1': 39, 'a2': 99, 'a3': 90, 'a4': 46, 'a5': 77, 'a6': 51}
+maze-32.map, stays, 7, 45, False, 66.01062273979187, {}
+maze-32.map, disappearing, 7, 45, False, 58.636009216308594, {}
+maze-32.map, demands, 7, 45, True, 81.69678711891174, {'a0': 63, 'a1': 66, 'a2': 15, 'a3': 115, 'a4': 111, 'a5': 59, 'a6': 68}
+maze-32.map, stays, 7, 46, False, 61.35963320732117, {}
+maze-32.map, disappearing, 7, 46, False, 52.99685454368591, {}
+maze-32.map, demands, 7, 46, True, 72.62699007987976, {'a0': 111, 'a1': 109, 'a2': 52, 'a3': 92, 'a4': 90, 'a5': 80, 'a6': 86}
+maze-32.map, stays, 7, 47, False, 64.75424861907959, {}
+maze-32.map, disappearing, 7, 47, False, 65.894113779068, {}
+maze-32.map, demands, 7, 47, True, 81.91737580299377, {'a0': 43, 'a1': 83, 'a2': 106, 'a3': 48, 'a4': 99, 'a5': 90, 'a6': 104}
+maze-32.map, stays, 7, 48, False, 55.99249339103699, {}
+maze-32.map, disappearing, 7, 48, False, 55.09128713607788, {}
+maze-32.map, demands, 7, 48, True, 70.40247821807861, {'a0': 91, 'a1': 56, 'a2': 65, 'a3': 45, 'a4': 43, 'a5': 85, 'a6': 16}
+maze-32.map, stays, 7, 49, True, 68.60534167289734, {'a0': 49, 'a1': 49, 'a2': 87, 'a3': 114, 'a4': 46, 'a5': 68, 'a6': 36}
+maze-32.map, disappearing, 7, 49, True, 58.97683262825012, {'a0': 49, 'a1': 49, 'a2': 63, 'a3': 114, 'a4': 46, 'a5': 48, 'a6': 36}
+maze-32.map, demands, 7, 49, True, 70.8585524559021, {'a0': 54, 'a1': 49, 'a2': 53, 'a3': 111, 'a4': 43, 'a5': 48, 'a6': 41}
+maze-32.map, stays, 7, 50, False, 59.605896949768066, {}
+maze-32.map, disappearing, 7, 50, False, 56.02961587905884, {}
+maze-32.map, demands, 7, 50, True, 82.54894471168518, {'a0': 111, 'a1': 105, 'a2': 35, 'a3': 99, 'a4': 64, 'a5': 50, 'a6': 45}
+
+maze-32.map, stays, 9, 1, False, 49.68044829368591, {}
+maze-32.map, disappearing, 9, 1, False, 50.271029472351074, {}
+maze-32.map, demands, 9, 1, True, 65.60362267494202, {'a0': 76, 'a1': 41, 'a2': 57, 'a3': 55, 'a4': 83, 'a5': 58, 'a6': 70, 'a7': 68, 'a8': 3}
+maze-32.map, stays, 9, 2, False, 59.757047176361084, {}
+maze-32.map, disappearing, 9, 2, False, 56.78048515319824, {}
+maze-32.map, demands, 9, 2, True, 73.53095507621765, {'a0': 89, 'a1': 108, 'a2': 25, 'a3': 45, 'a4': 55, 'a5': 52, 'a6': 91, 'a7': 89, 'a8': 20}
+maze-32.map, stays, 9, 3, False, 50.96375775337219, {}
+maze-32.map, disappearing, 9, 3, True, 48.52307987213135, {'a0': 28, 'a1': 71, 'a2': 14, 'a3': 36, 'a4': 94, 'a5': 67, 'a6': 46, 'a7': 39, 'a8': 82}
+maze-32.map, demands, 9, 3, True, 60.56625199317932, {'a0': 28, 'a1': 57, 'a2': 17, 'a3': 50, 'a4': 88, 'a5': 69, 'a6': 38, 'a7': 39, 'a8': 76}
+maze-32.map, stays, 9, 4, False, 46.74177932739258, {}
+maze-32.map, disappearing, 9, 4, False, 48.5522243976593, {}
+maze-32.map, demands, 9, 4, True, 58.214778661727905, {'a0': 48, 'a1': 55, 'a2': 34, 'a3': 55, 'a4': 29, 'a5': 67, 'a6': 45, 'a7': 78, 'a8': 42}
+maze-32.map, stays, 9, 5, True, 65.50395679473877, {'a0': 112, 'a1': 36, 'a2': 95, 'a3': 16, 'a4': 51, 'a5': 19, 'a6': 38, 'a7': 101, 'a8': 40}
+maze-32.map, disappearing, 9, 5, True, 69.33464741706848, {'a0': 112, 'a1': 36, 'a2': 82, 'a3': 37, 'a4': 49, 'a5': 21, 'a6': 33, 'a7': 97, 'a8': 33}
+maze-32.map, demands, 9, 5, True, 90.3873884677887, {'a0': 114, 'a1': 36, 'a2': 88, 'a3': 39, 'a4': 51, 'a5': 32, 'a6': 17, 'a7': 91, 'a8': 35}
+maze-32.map, stays, 9, 6, True, 68.0233371257782, {'a0': 52, 'a1': 57, 'a2': 67, 'a3': 27, 'a4': 99, 'a5': 98, 'a6': 79, 'a7': 109, 'a8': 64}
+maze-32.map, disappearing, 9, 6, True, 64.02879357337952, {'a0': 63, 'a1': 52, 'a2': 63, 'a3': 27, 'a4': 99, 'a5': 109, 'a6': 47, 'a7': 96, 'a8': 62}
+maze-32.map, demands, 9, 6, True, 79.55931043624878, {'a0': 58, 'a1': 52, 'a2': 55, 'a3': 49, 'a4': 103, 'a5': 98, 'a6': 67, 'a7': 94, 'a8': 51}
+maze-32.map, stays, 9, 7, True, 57.141674757003784, {'a0': 66, 'a1': 96, 'a2': 54, 'a3': 10, 'a4': 11, 'a5': 53, 'a6': 32, 'a7': 104, 'a8': 35}
+maze-32.map, disappearing, 9, 7, True, 69.51012325286865, {'a0': 51, 'a1': 69, 'a2': 48, 'a3': 8, 'a4': 13, 'a5': 77, 'a6': 32, 'a7': 104, 'a8': 51}
+maze-32.map, demands, 9, 7, True, 85.88588976860046, {'a0': 44, 'a1': 76, 'a2': 46, 'a3': 20, 'a4': 4, 'a5': 53, 'a6': 45, 'a7': 104, 'a8': 46}
+maze-32.map, stays, 9, 8, False, 45.393139600753784, {}
+maze-32.map, disappearing, 9, 8, False, 49.734423875808716, {}
+maze-32.map, demands, 9, 8, True, 58.5588014125824, {'a0': 52, 'a1': 20, 'a2': 49, 'a3': 19, 'a4': 71, 'a5': 48, 'a6': 36, 'a7': 18, 'a8': 90}
+maze-32.map, stays, 9, 9, False, 84.47199058532715, {}
+maze-32.map, disappearing, 9, 9, False, 78.16819405555725, {}
+maze-32.map, demands, 9, 9, True, 82.79363322257996, {'a0': 17, 'a1': 50, 'a2': 29, 'a3': 45, 'a4': 94, 'a5': 15, 'a6': 98, 'a7': 44, 'a8': 45}
+maze-32.map, stays, 9, 10, True, 37.303627252578735, {'a0': 33, 'a1': 56, 'a2': 55, 'a3': 7, 'a4': 42, 'a5': 68, 'a6': 54, 'a7': 75, 'a8': 52}
+maze-32.map, disappearing, 9, 10, True, 37.424530029296875, {'a0': 33, 'a1': 56, 'a2': 53, 'a3': 7, 'a4': 47, 'a5': 70, 'a6': 54, 'a7': 70, 'a8': 52}
+maze-32.map, demands, 9, 10, True, 42.53686332702637, {'a0': 40, 'a1': 53, 'a2': 38, 'a3': 17, 'a4': 49, 'a5': 70, 'a6': 54, 'a7': 68, 'a8': 52}
+maze-32.map, stays, 9, 11, False, 27.099271774291992, {}
+maze-32.map, disappearing, 9, 11, False, 28.098116397857666, {}
+maze-32.map, demands, 9, 11, True, 38.198814392089844, {'a0': 34, 'a1': 52, 'a2': 54, 'a3': 37, 'a4': 41, 'a5': 20, 'a6': 53, 'a7': 50, 'a8': 43}
+maze-32.map, stays, 9, 12, False, 60.080986738204956, {}
+maze-32.map, disappearing, 9, 12, True, 62.41714811325073, {'a0': 43, 'a1': 43, 'a2': 15, 'a3': 42, 'a4': 21, 'a5': 33, 'a6': 40, 'a7': 118, 'a8': 9}
+maze-32.map, demands, 9, 12, True, 75.59502148628235, {'a0': 47, 'a1': 47, 'a2': 33, 'a3': 46, 'a4': 29, 'a5': 50, 'a6': 38, 'a7': 99, 'a8': 9}
+maze-32.map, stays, 9, 13, False, 55.7961585521698, {}
+maze-32.map, disappearing, 9, 13, True, 57.8228075504303, {'a0': 56, 'a1': 112, 'a2': 22, 'a3': 43, 'a4': 27, 'a5': 65, 'a6': 3, 'a7': 16, 'a8': 25}
+maze-32.map, demands, 9, 13, True, 72.16585302352905, {'a0': 59, 'a1': 93, 'a2': 19, 'a3': 43, 'a4': 35, 'a5': 52, 'a6': 14, 'a7': 18, 'a8': 25}
+maze-32.map, stays, 9, 14, False, 65.02685880661011, {}
+maze-32.map, disappearing, 9, 14, False, 70.70448732376099, {}
+maze-32.map, demands, 9, 14, True, 106.87821674346924, {'a0': 17, 'a1': 50, 'a2': 96, 'a3': 50, 'a4': 113, 'a5': 36, 'a6': 107, 'a7': 38, 'a8': 7}
+maze-32.map, stays, 9, 15, True, 38.810463428497314, {'a0': 65, 'a1': 8, 'a2': 41, 'a3': 57, 'a4': 25, 'a5': 60, 'a6': 34, 'a7': 52, 'a8': 34}
+maze-32.map, disappearing, 9, 15, True, 44.56715393066406, {'a0': 65, 'a1': 8, 'a2': 32, 'a3': 47, 'a4': 25, 'a5': 53, 'a6': 45, 'a7': 55, 'a8': 40}
+maze-32.map, demands, 9, 15, True, 56.50213098526001, {'a0': 71, 'a1': 8, 'a2': 43, 'a3': 34, 'a4': 25, 'a5': 58, 'a6': 40, 'a7': 57, 'a8': 40}
+maze-32.map, stays, 9, 16, False, 66.5905339717865, {}
+maze-32.map, disappearing, 9, 16, False, 65.49846076965332, {}
+maze-32.map, demands, 9, 16, True, 81.34783458709717, {'a0': 32, 'a1': 105, 'a2': 35, 'a3': 34, 'a4': 107, 'a5': 81, 'a6': 22, 'a7': 57, 'a8': 77}
+maze-32.map, stays, 9, 17, False, 65.82189726829529, {}
+maze-32.map, disappearing, 9, 17, False, 57.41342854499817, {}
+maze-32.map, demands, 9, 17, True, 77.85612273216248, {'a0': 48, 'a1': 38, 'a2': 88, 'a3': 102, 'a4': 47, 'a5': 28, 'a6': 36, 'a7': 45, 'a8': 25}
+maze-32.map, stays, 9, 18, False, 39.68990516662598, {}
+maze-32.map, disappearing, 9, 18, True, 46.54456353187561, {'a0': 37, 'a1': 23, 'a2': 13, 'a3': 23, 'a4': 30, 'a5': 96, 'a6': 28, 'a7': 37, 'a8': 32}
+maze-32.map, demands, 9, 18, True, 63.03199577331543, {'a0': 44, 'a1': 27, 'a2': 13, 'a3': 21, 'a4': 28, 'a5': 87, 'a6': 25, 'a7': 38, 'a8': 41}
+maze-32.map, stays, 9, 19, False, 61.04290175437927, {}
+maze-32.map, disappearing, 9, 19, False, 63.694254875183105, {}
+maze-32.map, demands, 9, 19, True, 85.22900176048279, {'a0': 58, 'a1': 47, 'a2': 97, 'a3': 28, 'a4': 49, 'a5': 102, 'a6': 106, 'a7': 104, 'a8': 55}
+maze-32.map, stays, 9, 20, False, 57.03918933868408, {}
+maze-32.map, disappearing, 9, 20, False, 55.950451612472534, {}
+maze-32.map, demands, 9, 20, True, 83.06096386909485, {'a0': 62, 'a1': 58, 'a2': 53, 'a3': 82, 'a4': 61, 'a5': 68, 'a6': 93, 'a7': 111, 'a8': 42}
+maze-32.map, stays, 9, 21, True, 63.62828969955444, {'a0': 20, 'a1': 70, 'a2': 47, 'a3': 55, 'a4': 37, 'a5': 82, 'a6': 47, 'a7': 104, 'a8': 46}
+maze-32.map, disappearing, 9, 21, True, 64.24134063720703, {'a0': 39, 'a1': 72, 'a2': 45, 'a3': 60, 'a4': 31, 'a5': 56, 'a6': 56, 'a7': 104, 'a8': 39}
+maze-32.map, demands, 9, 21, True, 82.59882068634033, {'a0': 28, 'a1': 72, 'a2': 39, 'a3': 52, 'a4': 41, 'a5': 63, 'a6': 49, 'a7': 104, 'a8': 44}
+maze-32.map, stays, 9, 22, False, 63.80322241783142, {}
+maze-32.map, disappearing, 9, 22, True, 73.31395411491394, {'a0': 21, 'a1': 10, 'a2': 48, 'a3': 44, 'a4': 127, 'a5': 60, 'a6': 127, 'a7': 46, 'a8': 43}
+maze-32.map, demands, 9, 22, True, 94.53616666793823, {'a0': 34, 'a1': 21, 'a2': 44, 'a3': 44, 'a4': 115, 'a5': 62, 'a6': 108, 'a7': 46, 'a8': 49}
+maze-32.map, stays, 9, 23, True, 66.36127257347107, {'a0': 61, 'a1': 111, 'a2': 35, 'a3': 36, 'a4': 106, 'a5': 90, 'a6': 46, 'a7': 99, 'a8': 96}
+maze-32.map, disappearing, 9, 23, True, 58.15022397041321, {'a0': 46, 'a1': 111, 'a2': 48, 'a3': 62, 'a4': 106, 'a5': 90, 'a6': 46, 'a7': 76, 'a8': 89}
+maze-32.map, demands, 9, 23, True, 81.45344471931458, {'a0': 61, 'a1': 111, 'a2': 37, 'a3': 59, 'a4': 106, 'a5': 90, 'a6': 51, 'a7': 92, 'a8': 70}
+maze-32.map, stays, 9, 24, False, 51.84326362609863, {}
+maze-32.map, disappearing, 9, 24, True, 50.43865513801575, {'a0': 97, 'a1': 35, 'a2': 31, 'a3': 37, 'a4': 12, 'a5': 44, 'a6': 43, 'a7': 2, 'a8': 26}
+maze-32.map, demands, 9, 24, True, 73.03567838668823, {'a0': 88, 'a1': 22, 'a2': 42, 'a3': 21, 'a4': 12, 'a5': 49, 'a6': 46, 'a7': 4, 'a8': 33}
+maze-32.map, stays, 9, 25, False, 56.0177903175354, {}
+maze-32.map, disappearing, 9, 25, False, 49.90924429893494, {}
+maze-32.map, demands, 9, 25, True, 74.31319093704224, {'a0': 7, 'a1': 34, 'a2': 7, 'a3': 73, 'a4': 106, 'a5': 48, 'a6': 71, 'a7': 34, 'a8': 70}
+maze-32.map, stays, 9, 26, False, 69.72864389419556, {}
+maze-32.map, disappearing, 9, 26, False, 68.08186173439026, {}
+maze-32.map, demands, 9, 26, True, 87.07241487503052, {'a0': 110, 'a1': 59, 'a2': 93, 'a3': 103, 'a4': 27, 'a5': 14, 'a6': 51, 'a7': 50, 'a8': 58}
+maze-32.map, stays, 9, 27, False, 43.45566177368164, {}
+maze-32.map, disappearing, 9, 27, False, 44.66967535018921, {}
+maze-32.map, demands, 9, 27, True, 60.536354780197144, {'a0': 18, 'a1': 56, 'a2': 71, 'a3': 9, 'a4': 29, 'a5': 23, 'a6': 47, 'a7': 24, 'a8': 87}
+maze-32.map, stays, 9, 28, False, 54.80670142173767, {}
+maze-32.map, disappearing, 9, 28, False, 62.438886880874634, {}
+maze-32.map, demands, 9, 28, True, 82.93055844306946, {'a0': 39, 'a1': 112, 'a2': 14, 'a3': 36, 'a4': 30, 'a5': 34, 'a6': 35, 'a7': 36, 'a8': 94}
+maze-32.map, stays, 9, 29, False, 76.6547384262085, {}
+maze-32.map, disappearing, 9, 29, True, 54.259360790252686, {'a0': 37, 'a1': 38, 'a2': 69, 'a3': 34, 'a4': 85, 'a5': 46, 'a6': 55, 'a7': 99, 'a8': 42}
+maze-32.map, demands, 9, 29, True, 70.78541111946106, {'a0': 47, 'a1': 53, 'a2': 45, 'a3': 44, 'a4': 85, 'a5': 51, 'a6': 58, 'a7': 85, 'a8': 53}
+maze-32.map, stays, 9, 30, False, 55.79551100730896, {}
+maze-32.map, disappearing, 9, 30, True, 57.723987340927124, {'a0': 49, 'a1': 48, 'a2': 52, 'a3': 46, 'a4': 116, 'a5': 110, 'a6': 109, 'a7': 30, 'a8': 31}
+maze-32.map, demands, 9, 30, True, 81.10953998565674, {'a0': 62, 'a1': 46, 'a2': 60, 'a3': 36, 'a4': 102, 'a5': 99, 'a6': 103, 'a7': 34, 'a8': 47}
+maze-32.map, stays, 9, 31, True, 55.79051971435547, {'a0': 101, 'a1': 97, 'a2': 28, 'a3': 28, 'a4': 45, 'a5': 58, 'a6': 43, 'a7': 65, 'a8': 58}
+maze-32.map, disappearing, 9, 31, True, 52.59412956237793, {'a0': 101, 'a1': 97, 'a2': 33, 'a3': 34, 'a4': 26, 'a5': 43, 'a6': 30, 'a7': 91, 'a8': 54}
+maze-32.map, demands, 9, 31, True, 66.82530617713928, {'a0': 101, 'a1': 95, 'a2': 41, 'a3': 36, 'a4': 39, 'a5': 41, 'a6': 38, 'a7': 65, 'a8': 38}
+maze-32.map, stays, 9, 32, False, 72.19360065460205, {}
+maze-32.map, disappearing, 9, 32, False, 65.74372744560242, {}
+maze-32.map, demands, 9, 32, True, 83.85009813308716, {'a0': 108, 'a1': 59, 'a2': 58, 'a3': 65, 'a4': 102, 'a5': 111, 'a6': 36, 'a7': 45, 'a8': 47}
+maze-32.map, stays, 9, 33, False, 70.97832107543945, {}
+maze-32.map, disappearing, 9, 33, False, 64.47561049461365, {}
+maze-32.map, demands, 9, 33, True, 82.58302330970764, {'a0': 45, 'a1': 60, 'a2': 105, 'a3': 59, 'a4': 57, 'a5': 82, 'a6': 33, 'a7': 55, 'a8': 53}
+maze-32.map, stays, 9, 34, False, 69.65070343017578, {}
+maze-32.map, disappearing, 9, 34, True, 59.07007336616516, {'a0': 41, 'a1': 97, 'a2': 73, 'a3': 38, 'a4': 32, 'a5': 54, 'a6': 109, 'a7': 34, 'a8': 50}
+maze-32.map, demands, 9, 34, True, 79.83542251586914, {'a0': 39, 'a1': 97, 'a2': 79, 'a3': 38, 'a4': 47, 'a5': 43, 'a6': 95, 'a7': 42, 'a8': 44}
+maze-32.map, stays, 9, 35, True, 69.0279893875122, {'a0': 17, 'a1': 38, 'a2': 112, 'a3': 58, 'a4': 94, 'a5': 4, 'a6': 65, 'a7': 25, 'a8': 32}
+maze-32.map, disappearing, 9, 35, True, 74.34215927124023, {'a0': 41, 'a1': 22, 'a2': 112, 'a3': 75, 'a4': 88, 'a5': 9, 'a6': 52, 'a7': 20, 'a8': 20}
+maze-32.map, demands, 9, 35, True, 106.26284122467041, {'a0': 40, 'a1': 22, 'a2': 112, 'a3': 73, 'a4': 84, 'a5': 9, 'a6': 52, 'a7': 33, 'a8': 8}
+maze-32.map, stays, 9, 36, False, 78.70675873756409, {}
+maze-32.map, disappearing, 9, 36, True, 65.19601440429688, {'a0': 102, 'a1': 60, 'a2': 49, 'a3': 50, 'a4': 44, 'a5': 22, 'a6': 104, 'a7': 99, 'a8': 29}
+maze-32.map, demands, 9, 36, True, 75.53864932060242, {'a0': 102, 'a1': 68, 'a2': 54, 'a3': 55, 'a4': 55, 'a5': 48, 'a6': 82, 'a7': 91, 'a8': 6}
+maze-32.map, stays, 9, 37, False, 56.4720892906189, {}
+maze-32.map, disappearing, 9, 37, False, 59.402257204055786, {}
+maze-32.map, demands, 9, 37, True, 79.97380042076111, {'a0': 42, 'a1': 30, 'a2': 43, 'a3': 24, 'a4': 110, 'a5': 88, 'a6': 65, 'a7': 44, 'a8': 74}
+maze-32.map, stays, 9, 38, True, 39.27555704116821, {'a0': 48, 'a1': 30, 'a2': 2, 'a3': 21, 'a4': 45, 'a5': 73, 'a6': 62, 'a7': 30, 'a8': 1}
+maze-32.map, disappearing, 9, 38, True, 37.48680806159973, {'a0': 35, 'a1': 35, 'a2': 2, 'a3': 32, 'a4': 40, 'a5': 73, 'a6': 47, 'a7': 41, 'a8': 1}
+maze-32.map, demands, 9, 38, True, 51.30482053756714, {'a0': 35, 'a1': 30, 'a2': 2, 'a3': 30, 'a4': 42, 'a5': 73, 'a6': 47, 'a7': 46, 'a8': 1}
+maze-32.map, stays, 9, 39, False, 95.4956603050232, {}
+maze-32.map, disappearing, 9, 39, True, 74.26646018028259, {'a0': 75, 'a1': 38, 'a2': 19, 'a3': 111, 'a4': 26, 'a5': 36, 'a6': 84, 'a7': 114, 'a8': 22}
+maze-32.map, demands, 9, 39, True, 90.8743953704834, {'a0': 79, 'a1': 47, 'a2': 19, 'a3': 111, 'a4': 26, 'a5': 38, 'a6': 86, 'a7': 92, 'a8': 25}
+maze-32.map, stays, 9, 40, False, 54.53336954116821, {}
+maze-32.map, disappearing, 9, 40, True, 59.49353075027466, {'a0': 114, 'a1': 44, 'a2': 47, 'a3': 95, 'a4': 46, 'a5': 32, 'a6': 35, 'a7': 38, 'a8': 52}
+maze-32.map, demands, 9, 40, True, 83.08664679527283, {'a0': 95, 'a1': 57, 'a2': 42, 'a3': 95, 'a4': 46, 'a5': 43, 'a6': 37, 'a7': 40, 'a8': 52}
+maze-32.map, stays, 9, 41, False, 61.93038320541382, {}
+maze-32.map, disappearing, 9, 41, False, 63.079838514328, {}
+maze-32.map, demands, 9, 41, True, 77.53859829902649, {'a0': 33, 'a1': 33, 'a2': 58, 'a3': 109, 'a4': 105, 'a5': 110, 'a6': 108, 'a7': 58, 'a8': 10}
+maze-32.map, stays, 9, 42, False, 67.2487461566925, {}
+maze-32.map, disappearing, 9, 42, True, 59.813819885253906, {'a0': 51, 'a1': 43, 'a2': 116, 'a3': 41, 'a4': 40, 'a5': 1, 'a6': 4, 'a7': 35, 'a8': 101}
+maze-32.map, demands, 9, 42, True, 84.33518743515015, {'a0': 51, 'a1': 39, 'a2': 97, 'a3': 41, 'a4': 48, 'a5': 23, 'a6': 20, 'a7': 47, 'a8': 101}
+maze-32.map, stays, 9, 43, False, 61.743719816207886, {}
+maze-32.map, disappearing, 9, 43, True, 72.23043584823608, {'a0': 47, 'a1': 36, 'a2': 42, 'a3': 19, 'a4': 30, 'a5': 35, 'a6': 91, 'a7': 124, 'a8': 90}
+maze-32.map, demands, 9, 43, True, 89.52436470985413, {'a0': 49, 'a1': 36, 'a2': 42, 'a3': 25, 'a4': 25, 'a5': 51, 'a6': 85, 'a7': 113, 'a8': 88}
+maze-32.map, stays, 9, 44, True, 73.80102705955505, {'a0': 59, 'a1': 52, 'a2': 57, 'a3': 120, 'a4': 26, 'a5': 76, 'a6': 112, 'a7': 10, 'a8': 49}
+maze-32.map, disappearing, 9, 44, True, 73.11928796768188, {'a0': 53, 'a1': 34, 'a2': 72, 'a3': 118, 'a4': 42, 'a5': 76, 'a6': 112, 'a7': 23, 'a8': 23}
+maze-32.map, demands, 9, 44, True, 99.38114523887634, {'a0': 55, 'a1': 42, 'a2': 59, 'a3': 107, 'a4': 34, 'a5': 76, 'a6': 112, 'a7': 10, 'a8': 36}
+maze-32.map, stays, 9, 45, False, 57.79547882080078, {}
+maze-32.map, disappearing, 9, 45, False, 45.5621383190155, {}
+maze-32.map, demands, 9, 45, True, 63.78660464286804, {'a0': 52, 'a1': 19, 'a2': 50, 'a3': 37, 'a4': 39, 'a5': 23, 'a6': 41, 'a7': 52, 'a8': 73}
+maze-32.map, stays, 9, 46, False, 57.623571157455444, {}
+maze-32.map, disappearing, 9, 46, False, 60.26326060295105, {}
+maze-32.map, demands, 9, 46, True, 80.13973116874695, {'a0': 103, 'a1': 41, 'a2': 44, 'a3': 36, 'a4': 37, 'a5': 46, 'a6': 42, 'a7': 69, 'a8': 47}
+maze-32.map, stays, 9, 47, False, 48.80498242378235, {}
+maze-32.map, disappearing, 9, 47, False, 45.239312410354614, {}
+maze-32.map, demands, 9, 47, True, 54.640105962753296, {'a0': 84, 'a1': 58, 'a2': 90, 'a3': 45, 'a4': 26, 'a5': 88, 'a6': 40, 'a7': 65, 'a8': 81}
+maze-32.map, stays, 9, 48, False, 59.34100818634033, {}
+maze-32.map, disappearing, 9, 48, True, 65.56985378265381, {'a0': 125, 'a1': 49, 'a2': 16, 'a3': 86, 'a4': 7, 'a5': 45, 'a6': 104, 'a7': 6, 'a8': 14}
+maze-32.map, demands, 9, 48, True, 92.68933176994324, {'a0': 106, 'a1': 36, 'a2': 29, 'a3': 92, 'a4': 7, 'a5': 30, 'a6': 107, 'a7': 17, 'a8': 23}
+maze-32.map, stays, 9, 49, False, 61.83261179924011, {}
+maze-32.map, disappearing, 9, 49, True, 60.1942937374115, {'a0': 54, 'a1': 51, 'a2': 90, 'a3': 13, 'a4': 36, 'a5': 72, 'a6': 116, 'a7': 46, 'a8': 53}
+maze-32.map, demands, 9, 49, True, 81.93191599845886, {'a0': 56, 'a1': 51, 'a2': 80, 'a3': 13, 'a4': 52, 'a5': 77, 'a6': 107, 'a7': 44, 'a8': 53}
+maze-32.map, stays, 9, 50, False, 56.15845823287964, {}
+maze-32.map, disappearing, 9, 50, False, 52.25605773925781, {}
+maze-32.map, demands, 9, 50, False, 65.73880696296692, {}
+maze-32.map, stays, 11, 1, True, 57.875699281692505, {'a0': 46, 'a1': 25, 'a2': 35, 'a3': 101, 'a4': 68, 'a5': 25, 'a6': 39, 'a7': 32, 'a8': 36, 'a9': 17, 'a10': 59}
+maze-32.map, disappearing, 11, 1, True, 58.27598690986633, {'a0': 36, 'a1': 41, 'a2': 37, 'a3': 101, 'a4': 68, 'a5': 34, 'a6': 41, 'a7': 34, 'a8': 34, 'a9': 17, 'a10': 38}
+maze-32.map, demands, 11, 1, True, 67.04019284248352, {'a0': 31, 'a1': 33, 'a2': 40, 'a3': 101, 'a4': 68, 'a5': 36, 'a6': 46, 'a7': 37, 'a8': 40, 'a9': 17, 'a10': 34}
+maze-32.map, stays, 11, 2, False, 62.60028600692749, {}
+maze-32.map, disappearing, 11, 2, False, 62.92735481262207, {}
+maze-32.map, demands, 11, 2, True, 82.31765913963318, {'a0': 37, 'a1': 57, 'a2': 36, 'a3': 79, 'a4': 45, 'a5': 27, 'a6': 8, 'a7': 9, 'a8': 41, 'a9': 102, 'a10': 80}
+maze-32.map, stays, 11, 3, False, 68.56374144554138, {}
+maze-32.map, disappearing, 11, 3, True, 70.16789078712463, {'a0': 47, 'a1': 99, 'a2': 12, 'a3': 24, 'a4': 36, 'a5': 30, 'a6': 57, 'a7': 121, 'a8': 124, 'a9': 27, 'a10': 13}
+maze-32.map, demands, 11, 3, True, 99.67375540733337, {'a0': 49, 'a1': 101, 'a2': 26, 'a3': 24, 'a4': 47, 'a5': 13, 'a6': 36, 'a7': 110, 'a8': 105, 'a9': 22, 'a10': 15}
+maze-32.map, stays, 11, 4, False, 70.1584403514862, {}
+maze-32.map, disappearing, 11, 4, True, 71.41638922691345, {'a0': 37, 'a1': 1, 'a2': 13, 'a3': 127, 'a4': 105, 'a5': 28, 'a6': 113, 'a7': 17, 'a8': 18, 'a9': 9, 'a10': 121}
+maze-32.map, demands, 11, 4, True, 108.33632159233093, {'a0': 50, 'a1': 18, 'a2': 21, 'a3': 103, 'a4': 75, 'a5': 23, 'a6': 113, 'a7': 32, 'a8': 18, 'a9': 22, 'a10': 105}
+maze-32.map, stays, 11, 5, False, 60.96814942359924, {}
+maze-32.map, disappearing, 11, 5, True, 59.2533175945282, {'a0': 22, 'a1': 45, 'a2': 96, 'a3': 38, 'a4': 47, 'a5': 25, 'a6': 29, 'a7': 64, 'a8': 63, 'a9': 46, 'a10': 112}
+maze-32.map, demands, 11, 5, True, 86.37574219703674, {'a0': 22, 'a1': 52, 'a2': 93, 'a3': 47, 'a4': 44, 'a5': 23, 'a6': 52, 'a7': 26, 'a8': 63, 'a9': 49, 'a10': 104}
+maze-32.map, stays, 11, 6, False, 69.5663149356842, {}
+maze-32.map, disappearing, 11, 6, True, 63.371809005737305, {'a0': 15, 'a1': 43, 'a2': 28, 'a3': 9, 'a4': 37, 'a5': 103, 'a6': 38, 'a7': 17, 'a8': 54, 'a9': 111, 'a10': 72}
+maze-32.map, demands, 11, 6, True, 87.51439452171326, {'a0': 23, 'a1': 43, 'a2': 26, 'a3': 9, 'a4': 18, 'a5': 103, 'a6': 46, 'a7': 17, 'a8': 41, 'a9': 97, 'a10': 79}
+maze-32.map, stays, 11, 7, False, 76.63024592399597, {}
+maze-32.map, disappearing, 11, 7, True, 57.716872215270996, {'a0': 75, 'a1': 29, 'a2': 93, 'a3': 96, 'a4': 48, 'a5': 102, 'a6': 61, 'a7': 39, 'a8': 96, 'a9': 21, 'a10': 84}
+maze-32.map, demands, 11, 7, True, 75.43322134017944, {'a0': 77, 'a1': 48, 'a2': 82, 'a3': 85, 'a4': 43, 'a5': 102, 'a6': 64, 'a7': 52, 'a8': 81, 'a9': 21, 'a10': 86}
+maze-32.map, stays, 11, 8, False, 52.694145917892456, {}
+maze-32.map, disappearing, 11, 8, False, 58.74333906173706, {}
+maze-32.map, demands, 11, 8, True, 79.13087058067322, {'a0': 7, 'a1': 34, 'a2': 2, 'a3': 33, 'a4': 19, 'a5': 46, 'a6': 25, 'a7': 33, 'a8': 107, 'a9': 62, 'a10': 32}
+maze-32.map, stays, 11, 9, False, 70.47981643676758, {}
+maze-32.map, disappearing, 11, 9, False, 145.49732947349548, {}
+maze-32.map, demands, 11, 9, True, 78.07774710655212, {'a0': 11, 'a1': 11, 'a2': 91, 'a3': 33, 'a4': 28, 'a5': 13, 'a6': 100, 'a7': 29, 'a8': 45, 'a9': 48, 'a10': 102}
+maze-32.map, stays, 11, 10, False, 51.18349623680115, {}
+maze-32.map, disappearing, 11, 10, False, 48.837658405303955, {}
+maze-32.map, demands, 11, 10, True, 67.28729009628296, {'a0': 45, 'a1': 78, 'a2': 31, 'a3': 35, 'a4': 53, 'a5': 40, 'a6': 75, 'a7': 92, 'a8': 13, 'a9': 29, 'a10': 33}
+maze-32.map, stays, 11, 11, False, 61.14695119857788, {}
+maze-32.map, disappearing, 11, 11, False, 65.04322004318237, {}
+maze-32.map, demands, 11, 11, True, 98.77757215499878, {'a0': 60, 'a1': 113, 'a2': 28, 'a3': 56, 'a4': 20, 'a5': 84, 'a6': 28, 'a7': 65, 'a8': 56, 'a9': 46, 'a10': 48}
+maze-32.map, stays, 11, 12, False, 69.20465445518494, {}
+maze-32.map, disappearing, 11, 12, True, 64.0956437587738, {'a0': 22, 'a1': 61, 'a2': 89, 'a3': 115, 'a4': 101, 'a5': 20, 'a6': 91, 'a7': 93, 'a8': 10, 'a9': 9, 'a10': 39}
+maze-32.map, demands, 11, 12, True, 90.63448905944824, {'a0': 26, 'a1': 57, 'a2': 84, 'a3': 107, 'a4': 101, 'a5': 18, 'a6': 73, 'a7': 97, 'a8': 10, 'a9': 32, 'a10': 39}
+maze-32.map, stays, 11, 13, False, 39.97223377227783, {}
+maze-32.map, disappearing, 11, 13, False, 43.68589425086975, {}
+maze-32.map, demands, 11, 13, True, 58.27308130264282, {'a0': 23, 'a1': 73, 'a2': 26, 'a3': 10, 'a4': 71, 'a5': 37, 'a6': 10, 'a7': 4, 'a8': 7, 'a9': 45, 'a10': 29}
+maze-32.map, stays, 11, 14, False, 43.96007680892944, {}
+maze-32.map, disappearing, 11, 14, False, 46.542858362197876, {}
+maze-32.map, demands, 11, 14, True, 62.60727119445801, {'a0': 82, 'a1': 37, 'a2': 54, 'a3': 47, 'a4': 69, 'a5': 81, 'a6': 31, 'a7': 42, 'a8': 80, 'a9': 28, 'a10': 21}
+maze-32.map, stays, 11, 15, False, 50.499388217926025, {}
+maze-32.map, disappearing, 11, 15, False, 48.55423641204834, {}
+maze-32.map, demands, 11, 15, True, 59.71789336204529, {'a0': 38, 'a1': 81, 'a2': 37, 'a3': 42, 'a4': 35, 'a5': 57, 'a6': 90, 'a7': 42, 'a8': 45, 'a9': 37, 'a10': 45}
+maze-32.map, stays, 11, 16, False, 48.7747528553009, {}
+maze-32.map, disappearing, 11, 16, True, 52.3239529132843, {'a0': 3, 'a1': 101, 'a2': 48, 'a3': 40, 'a4': 83, 'a5': 57, 'a6': 8, 'a7': 17, 'a8': 36, 'a9': 41, 'a10': 38}
+maze-32.map, demands, 11, 16, True, 68.64467144012451, {'a0': 3, 'a1': 82, 'a2': 37, 'a3': 38, 'a4': 81, 'a5': 59, 'a6': 23, 'a7': 17, 'a8': 33, 'a9': 50, 'a10': 42}
+maze-32.map, stays, 11, 17, False, 57.28469729423523, {}
+maze-32.map, disappearing, 11, 17, True, 58.78647971153259, {'a0': 22, 'a1': 16, 'a2': 28, 'a3': 35, 'a4': 12, 'a5': 44, 'a6': 9, 'a7': 46, 'a8': 7, 'a9': 104, 'a10': 108}
+maze-32.map, demands, 11, 17, True, 80.4119005203247, {'a0': 47, 'a1': 18, 'a2': 36, 'a3': 35, 'a4': 16, 'a5': 46, 'a6': 9, 'a7': 34, 'a8': 7, 'a9': 85, 'a10': 105}
+maze-32.map, stays, 11, 18, False, 65.63351893424988, {}
+maze-32.map, disappearing, 11, 18, False, 66.5389552116394, {}
+maze-32.map, demands, 11, 18, True, 96.64116287231445, {'a0': 62, 'a1': 49, 'a2': 37, 'a3': 19, 'a4': 32, 'a5': 101, 'a6': 30, 'a7': 50, 'a8': 55, 'a9': 88, 'a10': 32}
+maze-32.map, stays, 11, 19, False, 54.76365876197815, {}
+maze-32.map, disappearing, 11, 19, False, 59.894540309906006, {}
+maze-32.map, demands, 11, 19, True, 89.8239119052887, {'a0': 28, 'a1': 99, 'a2': 44, 'a3': 29, 'a4': 102, 'a5': 36, 'a6': 4, 'a7': 28, 'a8': 8, 'a9': 42, 'a10': 40}
+maze-32.map, stays, 11, 20, False, 53.96390748023987, {}
+maze-32.map, disappearing, 11, 20, True, 61.888365030288696, {'a0': 96, 'a1': 119, 'a2': 12, 'a3': 11, 'a4': 20, 'a5': 32, 'a6': 4, 'a7': 35, 'a8': 30, 'a9': 10, 'a10': 61}
+maze-32.map, demands, 11, 20, True, 86.78175520896912, {'a0': 98, 'a1': 108, 'a2': 14, 'a3': 8, 'a4': 38, 'a5': 28, 'a6': 20, 'a7': 37, 'a8': 28, 'a9': 8, 'a10': 52}
+maze-32.map, stays, 11, 21, False, 49.32834315299988, {}
+maze-32.map, disappearing, 11, 21, False, 55.532960414886475, {}
+maze-32.map, demands, 11, 21, True, 59.02678060531616, {'a0': 63, 'a1': 38, 'a2': 72, 'a3': 64, 'a4': 58, 'a5': 84, 'a6': 73, 'a7': 21, 'a8': 26, 'a9': 71, 'a10': 36}
+maze-32.map, stays, 11, 22, False, 40.232380390167236, {}
+maze-32.map, disappearing, 11, 22, False, 43.03092098236084, {}
+maze-32.map, demands, 11, 22, False, 58.489439964294434, {}
+maze-32.map, stays, 11, 23, True, 51.852373361587524, {'a0': 42, 'a1': 40, 'a2': 89, 'a3': 43, 'a4': 6, 'a5': 53, 'a6': 8, 'a7': 74, 'a8': 19, 'a9': 63, 'a10': 90}
+maze-32.map, disappearing, 11, 23, True, 47.58299922943115, {'a0': 40, 'a1': 52, 'a2': 74, 'a3': 33, 'a4': 4, 'a5': 63, 'a6': 12, 'a7': 51, 'a8': 34, 'a9': 66, 'a10': 90}
+maze-32.map, demands, 11, 23, True, 63.034464597702026, {'a0': 48, 'a1': 47, 'a2': 74, 'a3': 50, 'a4': 11, 'a5': 59, 'a6': 10, 'a7': 57, 'a8': 40, 'a9': 35, 'a10': 88}
+maze-32.map, stays, 11, 24, False, 47.48691940307617, {}
+maze-32.map, disappearing, 11, 24, False, 48.78674554824829, {}
+maze-32.map, demands, 11, 24, True, 65.16884541511536, {'a0': 27, 'a1': 77, 'a2': 48, 'a3': 33, 'a4': 43, 'a5': 26, 'a6': 39, 'a7': 87, 'a8': 58, 'a9': 27, 'a10': 45}
+maze-32.map, stays, 11, 25, True, 61.35265350341797, {'a0': 43, 'a1': 41, 'a2': 96, 'a3': 36, 'a4': 40, 'a5': 19, 'a6': 27, 'a7': 59, 'a8': 36, 'a9': 67, 'a10': 3}
+maze-32.map, disappearing, 11, 25, True, 60.378488302230835, {'a0': 69, 'a1': 27, 'a2': 96, 'a3': 36, 'a4': 40, 'a5': 19, 'a6': 56, 'a7': 39, 'a8': 36, 'a9': 30, 'a10': 3}
+maze-32.map, demands, 11, 25, True, 94.59040451049805, {'a0': 43, 'a1': 29, 'a2': 94, 'a3': 49, 'a4': 29, 'a5': 35, 'a6': 42, 'a7': 39, 'a8': 38, 'a9': 36, 'a10': 11}
+maze-32.map, stays, 11, 26, True, 58.34141540527344, {'a0': 52, 'a1': 47, 'a2': 20, 'a3': 45, 'a4': 16, 'a5': 113, 'a6': 35, 'a7': 42, 'a8': 4, 'a9': 6, 'a10': 10}
+maze-32.map, disappearing, 11, 26, True, 63.22294807434082, {'a0': 48, 'a1': 60, 'a2': 17, 'a3': 57, 'a4': 8, 'a5': 113, 'a6': 4, 'a7': 57, 'a8': 4, 'a9': 8, 'a10': 10}
+maze-32.map, demands, 11, 26, True, 86.45352172851562, {'a0': 37, 'a1': 28, 'a2': 17, 'a3': 59, 'a4': 21, 'a5': 113, 'a6': 25, 'a7': 36, 'a8': 22, 'a9': 14, 'a10': 22}
+maze-32.map, stays, 11, 27, False, 67.18043756484985, {}
+maze-32.map, disappearing, 11, 27, False, 70.59063196182251, {}
+maze-32.map, demands, 11, 27, True, 94.91889572143555, {'a0': 31, 'a1': 43, 'a2': 110, 'a3': 21, 'a4': 44, 'a5': 11, 'a6': 114, 'a7': 76, 'a8': 103, 'a9': 45, 'a10': 23}
+maze-32.map, stays, 11, 28, False, 71.38382315635681, {}
+maze-32.map, disappearing, 11, 28, False, 68.38786911964417, {}
+maze-32.map, demands, 11, 28, True, 87.75721764564514, {'a0': 109, 'a1': 37, 'a2': 95, 'a3': 57, 'a4': 47, 'a5': 104, 'a6': 63, 'a7': 42, 'a8': 79, 'a9': 44, 'a10': 96}
+maze-32.map, stays, 11, 29, False, 50.399895668029785, {}
+maze-32.map, disappearing, 11, 29, False, 48.72504544258118, {}
+maze-32.map, demands, 11, 29, True, 68.81067228317261, {'a0': 33, 'a1': 28, 'a2': 23, 'a3': 4, 'a4': 45, 'a5': 25, 'a6': 41, 'a7': 86, 'a8': 26, 'a9': 51, 'a10': 31}
+maze-32.map, stays, 11, 30, False, 57.47434139251709, {}
+maze-32.map, disappearing, 11, 30, True, 67.0265781879425, {'a0': 39, 'a1': 22, 'a2': 43, 'a3': 27, 'a4': 70, 'a5': 91, 'a6': 38, 'a7': 33, 'a8': 37, 'a9': 97, 'a10': 116}
+maze-32.map, demands, 11, 30, True, 81.35859656333923, {'a0': 23, 'a1': 45, 'a2': 43, 'a3': 32, 'a4': 70, 'a5': 91, 'a6': 23, 'a7': 49, 'a8': 39, 'a9': 93, 'a10': 100}
+maze-32.map, stays, 11, 31, True, 39.69433641433716, {'a0': 11, 'a1': 16, 'a2': 50, 'a3': 37, 'a4': 75, 'a5': 61, 'a6': 50, 'a7': 36, 'a8': 34, 'a9': 49, 'a10': 53}
+maze-32.map, disappearing, 11, 31, True, 37.29397463798523, {'a0': 11, 'a1': 16, 'a2': 50, 'a3': 48, 'a4': 69, 'a5': 61, 'a6': 42, 'a7': 36, 'a8': 43, 'a9': 37, 'a10': 51}
+maze-32.map, demands, 11, 31, True, 48.53751230239868, {'a0': 9, 'a1': 18, 'a2': 50, 'a3': 39, 'a4': 61, 'a5': 61, 'a6': 43, 'a7': 36, 'a8': 37, 'a9': 51, 'a10': 53}
+maze-32.map, stays, 11, 32, False, 54.04728960990906, {}
+maze-32.map, disappearing, 11, 32, False, 56.2624831199646, {}
+maze-32.map, demands, 11, 32, False, 74.0034773349762, {}
+maze-32.map, stays, 11, 33, False, 75.64110445976257, {}
+maze-32.map, disappearing, 11, 33, True, 67.39150047302246, {'a0': 92, 'a1': 30, 'a2': 45, 'a3': 52, 'a4': 78, 'a5': 78, 'a6': 52, 'a7': 130, 'a8': 40, 'a9': 82, 'a10': 41}
+maze-32.map, demands, 11, 33, True, 89.28402066230774, {'a0': 92, 'a1': 51, 'a2': 51, 'a3': 54, 'a4': 76, 'a5': 81, 'a6': 31, 'a7': 108, 'a8': 37, 'a9': 80, 'a10': 49}
+maze-32.map, stays, 11, 34, True, 58.808056354522705, {'a0': 88, 'a1': 38, 'a2': 14, 'a3': 97, 'a4': 26, 'a5': 53, 'a6': 54, 'a7': 45, 'a8': 6, 'a9': 3, 'a10': 23}
+maze-32.map, disappearing, 11, 34, True, 60.42276048660278, {'a0': 88, 'a1': 33, 'a2': 29, 'a3': 91, 'a4': 18, 'a5': 51, 'a6': 52, 'a7': 45, 'a8': 21, 'a9': 3, 'a10': 8}
+maze-32.map, demands, 11, 34, True, 82.07194304466248, {'a0': 88, 'a1': 44, 'a2': 40, 'a3': 83, 'a4': 24, 'a5': 19, 'a6': 44, 'a7': 49, 'a8': 6, 'a9': 11, 'a10': 31}
+maze-32.map, stays, 11, 35, False, 28.31439733505249, {}
+maze-32.map, disappearing, 11, 35, False, 35.532042264938354, {}
+maze-32.map, demands, 11, 35, True, 40.40152549743652, {'a0': 33, 'a1': 22, 'a2': 40, 'a3': 49, 'a4': 43, 'a5': 55, 'a6': 26, 'a7': 58, 'a8': 2, 'a9': 16, 'a10': 16}
+maze-32.map, stays, 11, 36, True, 78.40014863014221, {'a0': 35, 'a1': 2, 'a2': 107, 'a3': 45, 'a4': 32, 'a5': 41, 'a6': 3, 'a7': 76, 'a8': 120, 'a9': 40, 'a10': 27}
+maze-32.map, disappearing, 11, 36, True, 71.18849158287048, {'a0': 55, 'a1': 2, 'a2': 107, 'a3': 34, 'a4': 22, 'a5': 41, 'a6': 3, 'a7': 46, 'a8': 118, 'a9': 40, 'a10': 46}
+maze-32.map, demands, 11, 36, True, 95.94933295249939, {'a0': 31, 'a1': 18, 'a2': 107, 'a3': 47, 'a4': 45, 'a5': 41, 'a6': 3, 'a7': 48, 'a8': 85, 'a9': 40, 'a10': 42}
+maze-32.map, stays, 11, 37, False, 71.41814637184143, {}
+maze-32.map, disappearing, 11, 37, False, 70.46777820587158, {}
+maze-32.map, demands, 11, 37, True, 104.75648927688599, {'a0': 43, 'a1': 114, 'a2': 49, 'a3': 42, 'a4': 27, 'a5': 56, 'a6': 103, 'a7': 52, 'a8': 43, 'a9': 45, 'a10': 36}
+maze-32.map, stays, 11, 38, False, 65.4182538986206, {}
+maze-32.map, disappearing, 11, 38, False, 73.74897050857544, {}
+maze-32.map, demands, 11, 38, True, 94.81925368309021, {'a0': 115, 'a1': 91, 'a2': 68, 'a3': 27, 'a4': 43, 'a5': 33, 'a6': 31, 'a7': 40, 'a8': 27, 'a9': 18, 'a10': 98}
+maze-32.map, stays, 11, 39, False, 56.86439228057861, {}
+maze-32.map, disappearing, 11, 39, False, 59.67345952987671, {}
+maze-32.map, demands, 11, 39, True, 87.21739268302917, {'a0': 18, 'a1': 58, 'a2': 32, 'a3': 48, 'a4': 22, 'a5': 24, 'a6': 100, 'a7': 36, 'a8': 46, 'a9': 47, 'a10': 98}
+maze-32.map, stays, 11, 40, True, 46.832690954208374, {'a0': 29, 'a1': 29, 'a2': 99, 'a3': 16, 'a4': 16, 'a5': 50, 'a6': 52, 'a7': 11, 'a8': 60, 'a9': 56, 'a10': 26}
+maze-32.map, disappearing, 11, 40, True, 52.3511700630188, {'a0': 16, 'a1': 29, 'a2': 99, 'a3': 35, 'a4': 27, 'a5': 24, 'a6': 50, 'a7': 18, 'a8': 56, 'a9': 52, 'a10': 26}
+maze-32.map, demands, 11, 40, True, 68.22546458244324, {'a0': 29, 'a1': 31, 'a2': 99, 'a3': 22, 'a4': 27, 'a5': 22, 'a6': 40, 'a7': 13, 'a8': 41, 'a9': 41, 'a10': 47}
+maze-32.map, stays, 11, 41, False, 57.973262310028076, {}
+maze-32.map, disappearing, 11, 41, False, 60.51764631271362, {}
+maze-32.map, demands, 11, 41, True, 89.33622860908508, {'a0': 61, 'a1': 51, 'a2': 28, 'a3': 10, 'a4': 56, 'a5': 37, 'a6': 31, 'a7': 71, 'a8': 88, 'a9': 40, 'a10': 2}
+maze-32.map, stays, 11, 42, False, 54.67294526100159, {}
+maze-32.map, disappearing, 11, 42, True, 54.567713260650635, {'a0': 65, 'a1': 66, 'a2': 36, 'a3': 64, 'a4': 84, 'a5': 35, 'a6': 29, 'a7': 37, 'a8': 97, 'a9': 37, 'a10': 33}
+maze-32.map, demands, 11, 42, True, 69.68104791641235, {'a0': 53, 'a1': 60, 'a2': 36, 'a3': 74, 'a4': 68, 'a5': 47, 'a6': 29, 'a7': 47, 'a8': 78, 'a9': 47, 'a10': 47}
+maze-32.map, stays, 11, 43, False, 69.41432070732117, {}
+maze-32.map, disappearing, 11, 43, True, 70.00525641441345, {'a0': 125, 'a1': 36, 'a2': 39, 'a3': 39, 'a4': 51, 'a5': 36, 'a6': 51, 'a7': 34, 'a8': 44, 'a9': 68, 'a10': 23}
+maze-32.map, demands, 11, 43, True, 99.37194585800171, {'a0': 114, 'a1': 36, 'a2': 47, 'a3': 29, 'a4': 64, 'a5': 31, 'a6': 45, 'a7': 10, 'a8': 55, 'a9': 68, 'a10': 23}
+maze-32.map, stays, 11, 44, False, 63.449610471725464, {}
+maze-32.map, disappearing, 11, 44, True, 62.81461048126221, {'a0': 44, 'a1': 6, 'a2': 109, 'a3': 37, 'a4': 37, 'a5': 42, 'a6': 64, 'a7': 3, 'a8': 56, 'a9': 88, 'a10': 51}
+maze-32.map, demands, 11, 44, True, 80.4060411453247, {'a0': 39, 'a1': 13, 'a2': 90, 'a3': 43, 'a4': 37, 'a5': 38, 'a6': 77, 'a7': 3, 'a8': 65, 'a9': 88, 'a10': 43}
+maze-32.map, stays, 11, 45, False, 60.57522964477539, {}
+maze-32.map, disappearing, 11, 45, True, 61.99901509284973, {'a0': 19, 'a1': 18, 'a2': 72, 'a3': 90, 'a4': 107, 'a5': 100, 'a6': 8, 'a7': 8, 'a8': 10, 'a9': 20, 'a10': 23}
+maze-32.map, demands, 11, 45, True, 92.38959383964539, {'a0': 17, 'a1': 42, 'a2': 72, 'a3': 86, 'a4': 96, 'a5': 81, 'a6': 16, 'a7': 8, 'a8': 5, 'a9': 35, 'a10': 15}
+maze-32.map, stays, 11, 46, False, 57.46499013900757, {}
+maze-32.map, disappearing, 11, 46, False, 62.15859246253967, {}
+maze-32.map, demands, 11, 46, True, 101.10522842407227, {'a0': 78, 'a1': 32, 'a2': 98, 'a3': 47, 'a4': 20, 'a5': 46, 'a6': 22, 'a7': 79, 'a8': 51, 'a9': 34, 'a10': 67}
+maze-32.map, stays, 11, 47, False, 74.5054919719696, {}
+maze-32.map, disappearing, 11, 47, True, 65.34595680236816, {'a0': 45, 'a1': 70, 'a2': 89, 'a3': 104, 'a4': 103, 'a5': 42, 'a6': 98, 'a7': 103, 'a8': 24, 'a9': 51, 'a10': 43}
+maze-32.map, demands, 11, 47, True, 73.55574679374695, {'a0': 45, 'a1': 83, 'a2': 81, 'a3': 104, 'a4': 79, 'a5': 50, 'a6': 96, 'a7': 103, 'a8': 28, 'a9': 46, 'a10': 43}
+maze-32.map, stays, 11, 48, False, 47.43694090843201, {}
+maze-32.map, disappearing, 11, 48, True, 47.42731022834778, {'a0': 29, 'a1': 74, 'a2': 28, 'a3': 55, 'a4': 48, 'a5': 6, 'a6': 38, 'a7': 38, 'a8': 52, 'a9': 30, 'a10': 17}
+maze-32.map, demands, 11, 48, True, 60.702390909194946, {'a0': 29, 'a1': 74, 'a2': 44, 'a3': 36, 'a4': 33, 'a5': 11, 'a6': 38, 'a7': 40, 'a8': 46, 'a9': 32, 'a10': 17}
+maze-32.map, stays, 11, 49, True, 64.5912573337555, {'a0': 19, 'a1': 23, 'a2': 28, 'a3': 24, 'a4': 35, 'a5': 38, 'a6': 114, 'a7': 111, 'a8': 40, 'a9': 38, 'a10': 67}
+maze-32.map, disappearing, 11, 49, True, 72.33343505859375, {'a0': 30, 'a1': 23, 'a2': 36, 'a3': 24, 'a4': 35, 'a5': 43, 'a6': 85, 'a7': 111, 'a8': 38, 'a9': 33, 'a10': 67}
+maze-32.map, demands, 11, 49, True, 94.80520415306091, {'a0': 27, 'a1': 23, 'a2': 22, 'a3': 27, 'a4': 35, 'a5': 49, 'a6': 77, 'a7': 111, 'a8': 29, 'a9': 41, 'a10': 77}
+maze-32.map, stays, 11, 50, False, 64.49257564544678, {}
+maze-32.map, disappearing, 11, 50, False, 59.92795133590698, {}
+maze-32.map, demands, 11, 50, True, 81.01836109161377, {'a0': 36, 'a1': 103, 'a2': 64, 'a3': 49, 'a4': 6, 'a5': 27, 'a6': 40, 'a7': 3, 'a8': 61, 'a9': 74, 'a10': 41}
+
+
+
+
+
+
+
+maze-32.map, stays, 11, 1, False, 58.6963324546814, {}
+maze-32.map, disappearing, 11, 1, False, 67.95585632324219, {}
+maze-32.map, demands, 11, 1, True, 101.26215887069702, {'a0': 20, 'a1': 90, 'a2': 84, 'a3': 112, 'a4': 26, 'a5': 38, 'a6': 47, 'a7': 39, 'a8': 34, 'a9': 116, 'a10': 51}
+maze-32.map, stays, 11, 2, False, 43.553115367889404, {}
+maze-32.map, disappearing, 11, 2, True, 42.231356143951416, {'a0': 53, 'a1': 36, 'a2': 30, 'a3': 45, 'a4': 40, 'a5': 56, 'a6': 49, 'a7': 42, 'a8': 45, 'a9': 50, 'a10': 63}
+maze-32.map, demands, 11, 2, True, 53.68479323387146, {'a0': 57, 'a1': 39, 'a2': 48, 'a3': 42, 'a4': 29, 'a5': 51, 'a6': 49, 'a7': 42, 'a8': 38, 'a9': 53, 'a10': 63}
+maze-32.map, stays, 11, 3, False, 67.04857397079468, {}
+maze-32.map, disappearing, 11, 3, True, 62.994032859802246, {'a0': 31, 'a1': 94, 'a2': 69, 'a3': 102, 'a4': 2, 'a5': 106, 'a6': 86, 'a7': 54, 'a8': 111, 'a9': 62, 'a10': 33}
+maze-32.map, demands, 11, 3, True, 74.72072076797485, {'a0': 31, 'a1': 94, 'a2': 69, 'a3': 102, 'a4': 7, 'a5': 109, 'a6': 82, 'a7': 54, 'a8': 108, 'a9': 53, 'a10': 38}
+maze-32.map, stays, 11, 4, False, 47.136977195739746, {}
+maze-32.map, disappearing, 11, 4, False, 52.243985176086426, {}
+maze-32.map, demands, 11, 4, True, 71.57535171508789, {'a0': 46, 'a1': 91, 'a2': 92, 'a3': 49, 'a4': 44, 'a5': 40, 'a6': 44, 'a7': 86, 'a8': 45, 'a9': 45, 'a10': 46}
+maze-32.map, stays, 11, 5, False, 65.85344433784485, {}
+maze-32.map, disappearing, 11, 5, True, 69.10567498207092, {'a0': 48, 'a1': 21, 'a2': 42, 'a3': 45, 'a4': 119, 'a5': 63, 'a6': 16, 'a7': 36, 'a8': 46, 'a9': 41, 'a10': 68}
+maze-32.map, demands, 11, 5, True, 95.2048487663269, {'a0': 39, 'a1': 57, 'a2': 42, 'a3': 24, 'a4': 112, 'a5': 65, 'a6': 31, 'a7': 49, 'a8': 32, 'a9': 33, 'a10': 85}
+maze-32.map, stays, 11, 6, False, 47.41643667221069, {}
+maze-32.map, disappearing, 11, 6, False, 51.70221567153931, {}
+maze-32.map, demands, 11, 6, True, 65.92676568031311, {'a0': 26, 'a1': 38, 'a2': 45, 'a3': 43, 'a4': 83, 'a5': 38, 'a6': 37, 'a7': 61, 'a8': 60, 'a9': 34, 'a10': 23}
+maze-32.map, stays, 11, 7, True, 32.88110327720642, {'a0': 48, 'a1': 26, 'a2': 26, 'a3': 67, 'a4': 55, 'a5': 45, 'a6': 58, 'a7': 41, 'a8': 29, 'a9': 38, 'a10': 61}
+maze-32.map, disappearing, 11, 7, True, 33.56556272506714, {'a0': 37, 'a1': 26, 'a2': 26, 'a3': 67, 'a4': 53, 'a5': 53, 'a6': 56, 'a7': 50, 'a8': 29, 'a9': 49, 'a10': 42}
+maze-32.map, demands, 11, 7, True, 40.2863404750824, {'a0': 37, 'a1': 28, 'a2': 37, 'a3': 67, 'a4': 45, 'a5': 50, 'a6': 58, 'a7': 54, 'a8': 31, 'a9': 43, 'a10': 48}
+maze-32.map, stays, 11, 8, False, 58.02634143829346, {}
+maze-32.map, disappearing, 11, 8, True, 66.56889033317566, {'a0': 42, 'a1': 4, 'a2': 123, 'a3': 41, 'a4': 114, 'a5': 15, 'a6': 30, 'a7': 115, 'a8': 64, 'a9': 41, 'a10': 60}
+maze-32.map, demands, 11, 8, True, 99.99526333808899, {'a0': 8, 'a1': 20, 'a2': 118, 'a3': 31, 'a4': 107, 'a5': 40, 'a6': 45, 'a7': 117, 'a8': 41, 'a9': 57, 'a10': 85}
+maze-32.map, stays, 11, 9, True, 61.9282922744751, {'a0': 25, 'a1': 81, 'a2': 37, 'a3': 74, 'a4': 48, 'a5': 45, 'a6': 69, 'a7': 20, 'a8': 5, 'a9': 58, 'a10': 88}
+maze-32.map, disappearing, 11, 9, True, 62.659663438797, {'a0': 49, 'a1': 81, 'a2': 37, 'a3': 44, 'a4': 53, 'a5': 49, 'a6': 69, 'a7': 20, 'a8': 2, 'a9': 56, 'a10': 76}
+maze-32.map, demands, 11, 9, True, 85.74251008033752, {'a0': 46, 'a1': 81, 'a2': 48, 'a3': 38, 'a4': 52, 'a5': 49, 'a6': 73, 'a7': 20, 'a8': 5, 'a9': 52, 'a10': 76}
+maze-32.map, stays, 11, 10, False, 61.377241134643555, {}
+maze-32.map, disappearing, 11, 10, False, 51.947959184646606, {}
+maze-32.map, demands, 11, 10, True, 77.26778769493103, {'a0': 69, 'a1': 74, 'a2': 71, 'a3': 61, 'a4': 43, 'a5': 45, 'a6': 54, 'a7': 92, 'a8': 91, 'a9': 64, 'a10': 26}
+maze-32.map, stays, 11, 11, True, 72.27817893028259, {'a0': 40, 'a1': 43, 'a2': 111, 'a3': 31, 'a4': 60, 'a5': 44, 'a6': 26, 'a7': 82, 'a8': 2, 'a9': 78, 'a10': 92}
+maze-32.map, disappearing, 11, 11, True, 70.55196762084961, {'a0': 37, 'a1': 59, 'a2': 111, 'a3': 52, 'a4': 39, 'a5': 28, 'a6': 31, 'a7': 61, 'a8': 21, 'a9': 88, 'a10': 74}
+maze-32.map, demands, 11, 11, True, 90.89204502105713, {'a0': 16, 'a1': 29, 'a2': 111, 'a3': 50, 'a4': 62, 'a5': 44, 'a6': 51, 'a7': 73, 'a8': 27, 'a9': 80, 'a10': 78}
+maze-32.map, stays, 11, 12, True, 76.37884759902954, {'a0': 39, 'a1': 116, 'a2': 40, 'a3': 55, 'a4': 60, 'a5': 64, 'a6': 86, 'a7': 33, 'a8': 62, 'a9': 36, 'a10': 41}
+maze-32.map, disappearing, 11, 12, True, 69.63416361808777, {'a0': 37, 'a1': 116, 'a2': 55, 'a3': 45, 'a4': 57, 'a5': 62, 'a6': 84, 'a7': 33, 'a8': 39, 'a9': 46, 'a10': 54}
+maze-32.map, demands, 11, 12, True, 99.55371189117432, {'a0': 39, 'a1': 113, 'a2': 58, 'a3': 55, 'a4': 51, 'a5': 56, 'a6': 68, 'a7': 44, 'a8': 57, 'a9': 51, 'a10': 55}
+maze-32.map, stays, 11, 13, False, 58.91119194030762, {}
+maze-32.map, disappearing, 11, 13, False, 64.72287559509277, {}
+maze-32.map, demands, 11, 13, True, 89.78509259223938, {'a0': 46, 'a1': 100, 'a2': 53, 'a3': 58, 'a4': 10, 'a5': 16, 'a6': 51, 'a7': 61, 'a8': 101, 'a9': 106, 'a10': 44}
+maze-32.map, stays, 11, 14, False, 55.3486487865448, {}
+maze-32.map, disappearing, 11, 14, False, 56.638394594192505, {}
+maze-32.map, demands, 11, 14, True, 70.01278686523438, {'a0': 73, 'a1': 60, 'a2': 12, 'a3': 38, 'a4': 64, 'a5': 67, 'a6': 50, 'a7': 96, 'a8': 8, 'a9': 36, 'a10': 77}
+maze-32.map, stays, 11, 15, False, 66.46833443641663, {}
+maze-32.map, disappearing, 11, 15, True, 75.04118967056274, {'a0': 23, 'a1': 25, 'a2': 8, 'a3': 135, 'a4': 10, 'a5': 50, 'a6': 74, 'a7': 25, 'a8': 33, 'a9': 34, 'a10': 102}
+maze-32.map, demands, 11, 15, True, 113.71842789649963, {'a0': 46, 'a1': 34, 'a2': 10, 'a3': 115, 'a4': 25, 'a5': 59, 'a6': 68, 'a7': 14, 'a8': 45, 'a9': 37, 'a10': 102}
+maze-32.map, stays, 11, 16, False, 65.5017602443695, {}
+maze-32.map, disappearing, 11, 16, True, 72.39128422737122, {'a0': 49, 'a1': 99, 'a2': 58, 'a3': 83, 'a4': 69, 'a5': 48, 'a6': 118, 'a7': 64, 'a8': 21, 'a9': 50, 'a10': 39}
+maze-32.map, demands, 11, 16, True, 87.18037605285645, {'a0': 57, 'a1': 93, 'a2': 47, 'a3': 70, 'a4': 71, 'a5': 69, 'a6': 101, 'a7': 68, 'a8': 19, 'a9': 81, 'a10': 65}
+maze-32.map, stays, 11, 17, False, 61.224079847335815, {}
+maze-32.map, disappearing, 11, 17, False, 69.56533813476562, {}
+maze-32.map, demands, 11, 17, True, 99.4653058052063, {'a0': 110, 'a1': 31, 'a2': 108, 'a3': 22, 'a4': 65, 'a5': 52, 'a6': 52, 'a7': 14, 'a8': 53, 'a9': 81, 'a10': 25}
+maze-32.map, stays, 11, 18, False, 24.09155297279358, {}
+maze-32.map, disappearing, 11, 18, True, 30.81892442703247, {'a0': 64, 'a1': 3, 'a2': 52, 'a3': 48, 'a4': 12, 'a5': 24, 'a6': 19, 'a7': 26, 'a8': 48, 'a9': 22, 'a10': 55}
+maze-32.map, demands, 11, 18, True, 34.409159421920776, {'a0': 40, 'a1': 11, 'a2': 44, 'a3': 54, 'a4': 42, 'a5': 31, 'a6': 19, 'a7': 34, 'a8': 48, 'a9': 22, 'a10': 36}
+maze-32.map, stays, 11, 19, True, 48.64657497406006, {'a0': 94, 'a1': 37, 'a2': 19, 'a3': 83, 'a4': 53, 'a5': 50, 'a6': 24, 'a7': 61, 'a8': 33, 'a9': 72, 'a10': 45}
+maze-32.map, disappearing, 11, 19, True, 53.88070797920227, {'a0': 94, 'a1': 37, 'a2': 40, 'a3': 83, 'a4': 32, 'a5': 24, 'a6': 45, 'a7': 60, 'a8': 33, 'a9': 72, 'a10': 45}
+maze-32.map, demands, 11, 19, True, 70.23500967025757, {'a0': 94, 'a1': 34, 'a2': 40, 'a3': 85, 'a4': 48, 'a5': 34, 'a6': 24, 'a7': 57, 'a8': 35, 'a9': 72, 'a10': 51}
+maze-32.map, stays, 11, 20, False, 52.2751681804657, {}
+maze-32.map, disappearing, 11, 20, False, 53.643476724624634, {}
+maze-32.map, demands, 11, 20, True, 70.44362807273865, {'a0': 3, 'a1': 17, 'a2': 18, 'a3': 95, 'a4': 81, 'a5': 33, 'a6': 33, 'a7': 38, 'a8': 23, 'a9': 52, 'a10': 11}
+maze-32.map, stays, 11, 21, False, 42.754300594329834, {}
+maze-32.map, disappearing, 11, 21, False, 43.12882614135742, {}
+maze-32.map, demands, 11, 21, True, 54.61094927787781, {'a0': 25, 'a1': 39, 'a2': 35, 'a3': 33, 'a4': 51, 'a5': 32, 'a6': 36, 'a7': 26, 'a8': 34, 'a9': 38, 'a10': 70}
+maze-32.map, stays, 11, 22, False, 57.81364464759827, {}
+maze-32.map, disappearing, 11, 22, False, 56.82589793205261, {}
+maze-32.map, demands, 11, 22, True, 85.97016549110413, {'a0': 89, 'a1': 59, 'a2': 46, 'a3': 46, 'a4': 39, 'a5': 54, 'a6': 96, 'a7': 53, 'a8': 27, 'a9': 44, 'a10': 44}
+maze-32.map, stays, 11, 23, False, 39.03830122947693, {}
+maze-32.map, disappearing, 11, 23, False, 53.02871513366699, {}
+maze-32.map, demands, 11, 23, True, 68.36152863502502, {'a0': 45, 'a1': 74, 'a2': 60, 'a3': 42, 'a4': 36, 'a5': 46, 'a6': 11, 'a7': 23, 'a8': 53, 'a9': 40, 'a10': 27}
+maze-32.map, stays, 11, 24, False, 70.02261710166931, {}
+maze-32.map, disappearing, 11, 24, True, 71.68242859840393, {'a0': 9, 'a1': 20, 'a2': 26, 'a3': 96, 'a4': 16, 'a5': 81, 'a6': 133, 'a7': 87, 'a8': 96, 'a9': 83, 'a10': 51}
+maze-32.map, demands, 11, 24, True, 99.96843767166138, {'a0': 9, 'a1': 18, 'a2': 28, 'a3': 92, 'a4': 39, 'a5': 93, 'a6': 111, 'a7': 81, 'a8': 96, 'a9': 91, 'a10': 53}
+maze-32.map, stays, 11, 25, False, 68.93622875213623, {}
+maze-32.map, disappearing, 11, 25, False, 68.35445499420166, {}
+maze-32.map, demands, 11, 25, True, 95.2557282447815, {'a0': 115, 'a1': 77, 'a2': 56, 'a3': 103, 'a4': 63, 'a5': 17, 'a6': 22, 'a7': 116, 'a8': 46, 'a9': 67, 'a10': 79}

@@ -31,8 +31,8 @@ class DataRecord(BaseModel):
     number_of_runs: int    
     
 
-MAP_NAME = "room-32.map"
-NUM_OF_RUNS = 100
+MAP_NAME = "maze-32.map"
+NUM_OF_RUNS = 25
 NETWORK_MODES = ["stays", "disappearing", "demands"]
 GOALS_LOCATIONS_ROOM = [
     "325",
@@ -60,7 +60,7 @@ GOALS_LOCATIONS_MAZE = [
     "783",
     "750",
 ]
-GOAL_LOCATIONS = GOALS_LOCATIONS_ROOM
+GOAL_LOCATIONS = GOALS_LOCATIONS_MAZE
 
 def goal_locations(num_of_goals: int) -> List[str]:
     return GOAL_LOCATIONS[:num_of_goals]
@@ -134,7 +134,7 @@ def check_munkres(env: Environment, constraints: Dict[str, int]) -> bool:
         for j, distance in enumerate(row):
             new_row.append(
                 0
-                if distance <= constraints_list[j]
+                if distance <= constraints_list[j] + 1
                 else 1
             )
         reachability_matrix.append(new_row)
@@ -182,7 +182,7 @@ def calc_strategy_paths_size(strategy: ConstraintsStrategy) -> Dict[str, int]:
     return path_sums  
         
 def main():
-    for num_of_goals in [5, 7, 9, 11]:
+    for num_of_goals in [11]:
         results = {
             network_mode: {
                 'overall_sat_time': 0.0,
