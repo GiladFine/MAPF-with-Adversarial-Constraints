@@ -7,6 +7,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from itertools import combinations
 
+from max_flow_min_cost_solver import MaxFlowMinCostSolver
+
 # This class represents the time-expanded-graph reduction described by Yu & LaValle in order to solve Anonymous-MAPF polynomially
 class Network:
     def __init__(self, graph, team, goals, network_mode, reach_constraints = None, objective = "MAKESPAN"):
@@ -26,6 +28,7 @@ class Network:
         self.flow_cost = 0
         self.flow_value = 0
         self.debug = False
+        self.solver_time = -1
         self.brute_force = True
         if self.network_mode == "stays":
             self.build_network_stays_on_targets()
@@ -281,10 +284,9 @@ class Network:
             self.flow_value != len(self.goals.get_locations_list())
             or self.flow_cost >= max_allowd_flow
         ):
-            raise ValueError("No Solution!!!", self.flow_value)
+            raise ValueError("No Solution!!!", self.flow_value, self.solver_time)
 
         try:
-            self.calc_simplified_flow_list()
             if self.hs_time_delay == 0:
                 self.calc_strategy()
             else:
@@ -360,10 +362,9 @@ class Network:
                 break
             
         if not self.solution_found:
-            raise ValueError("No Solution!!!", self.flow_value)
+            raise ValueError("No Solution!!!", self.flow_value, self.solver_time)
         
         try:
-            self.calc_simplified_flow_list()                        
             if self.debug == True:
                 self.write_flow_file()
                 
@@ -381,25 +382,25 @@ class Network:
                 return False
         return True
 
-    def calc_simplified_flow_list(self):
-        self.simplified_flow_list = []
-        for src, inner_dict in self.flow_dict.items():
-            if 1 in inner_dict.values():
-                dsts = []
-                for dst, val in inner_dict.items():
-                    if val == 1:
-                        dsts.append(dst)
-                self.simplified_flow_list.append(f"{src} -> {dsts}")
+    # def calc_simplified_flow_list(self):
+    #     self.simplified_flow_list = []
+    #     for src, inner_dict in self.flow_dict.items():
+    #         if 1 in inner_dict.values():
+    #             dsts = []
+    #             for dst, val in inner_dict.items():
+    #                 if val == 1:
+    #                     dsts.append(dst)
+    #             self.simplified_flow_list.append(f"{src} -> {dsts}")
                 
-        if "src" in self.flow_dict["dst"]:
-            dst_to_src_flow_val = self.flow_dict["dst"]["src"]
-            self.simplified_flow_list.append(f"dst -> src X{dst_to_src_flow_val}")
+    #     if "src" in self.flow_dict["dst"]:
+    #         dst_to_src_flow_val = self.flow_dict["dst"]["src"]
+    #         self.simplified_flow_list.append(f"dst -> src X{dst_to_src_flow_val}")
     
-    def write_flow_file(self):
-        filename = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-        with open(f"./results/{filename}.txt", "w") as fp:
-            for item in self.simplified_flow_list:
-                fp.write(f"{item}\n")
+    # def write_flow_file(self):
+    #     filename = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
+    #     with open(f"./results/{filename}.txt", "w") as fp:
+    #         for item in self.simplified_flow_list:
+    #             fp.write(f"{item}\n")
         
     # This function creates the time-expanded-graph by gradually creating & connecting subgraphs until all goals are reached by the flow
     def build_network_disappearing(self): 
@@ -411,10 +412,9 @@ class Network:
         self.calc_flow_and_cost()
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if self.flow_value != len(self.goals.get_locations_list()):
-            raise ValueError("No Solution!!!", self.flow_value)
+            raise ValueError("No Solution!!!", self.flow_value, self.solver_time)
 
         try:
-            self.calc_simplified_flow_list()
             self.calc_strategy()
 
         except:
@@ -429,10 +429,9 @@ class Network:
         self.calc_flow_and_cost()
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if self.flow_value != len(self.goals.get_locations_list()):
-            raise ValueError("No Solution!!!", self.flow_value)
+            raise ValueError("No Solution!!!", self.flow_value, self.solver_time)
 
         try:
-            self.calc_simplified_flow_list()
             self.calc_strategy()
             pass
         except:
@@ -488,10 +487,20 @@ class Network:
     # This function calculates the flow on the time-expanded-graph
     def calc_flow_and_cost(self):
         try:
-            self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
-            # self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "src", "dst")[1]
-            self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
-            self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))
+            before = time()
+            print("START")
+            solver = MaxFlowMinCostSolver(self.time_expanded_graph)
+            self.flow_dict, self.flow_value, self.flow_cost = solver.max_flow_min_cost()
+            after = time()
+            self.solver_time = after - before
+            print(f"FLOW CALC TOOK - {self.solver_time} sec with new solver")
+            
+            # self.flow_dict = nx.max_flow_min_cost(self.time_expanded_graph, "src", "dst")
+            # # self.flow_dict = nx.maximum_flow(self.time_expanded_graph, "src", "dst")[1]
+            # self.flow_cost = nx.cost_of_flow(self.time_expanded_graph, self.flow_dict)
+            # self.flow_value = sum((self.flow_dict[u]["dst"] for u in self.time_expanded_graph.predecessors("dst"))) - sum((self.flow_dict["dst"][v] for v in self.time_expanded_graph.successors("dst")))            
+            # after = time()
+            # print(f"FLOW CALC TOOK - {after - before} sec with old solver")
         except:
             self.flow_dict={}
             self.flow_cost=0

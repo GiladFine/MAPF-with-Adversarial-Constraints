@@ -1,4 +1,7 @@
+ortools
 matplotlib
 networkx
 colorama
 munkres
+func_timeout
+pydantic

@@ -1,10 +1,3 @@
-map_name, network_mode, number_of_agents, iteration, is_sat, overall_time, paths_lens, overall_fuel, overall_flow_values
+map_name, network_mode, number_of_agents, iteration, is_sat, solver_time, overall_time, paths_lens, overall_fuel, overall_flow_values
 -------------------------------------------------------------------------------------------------------------------------------------
 
-maze-32.map, stays, 3, 1, True, 68.59570479393005, {'a2': 66, 'a1': 61, 'a0': 55}, 182, 3
-maze-32.map, hot_swapping-2, 3, 1, True, 86.1969792842865, {'a2': 66, 'a1': 61, 'a0': 55}, 182, 3
-maze-32.map, disappearing, 3, 1, True, 76.04399490356445, {'a2': 66, 'a1': 61, 'a0': 55}, 182, 3
-maze-32.map, hot_swapping-0, 3, 1, True, 90.65412306785583, {'a2': 61, 'a1': 61, 'a0': 60}, 182, 3
-maze-32.map, stays, 3, 2, True, 175.16790390014648, {'a0': 85, 'a2': 57, 'a1': 58}, 200, 3
-maze-32.map, hot_swapping-2, 3, 2, True, 177.95044469833374, {'a0': 85, 'a2': 60, 'a1': 55}, 200, 3
-maze-32.map, disappearing, 3, 2, True, 175.20038771629333, {'a0': 85, 'a2': 60, 'a1': 55}, 200, 3

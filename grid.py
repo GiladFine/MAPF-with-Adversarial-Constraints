@@ -10,8 +10,8 @@ import numpy as np
 class Grid:
     def __init__(self, grid):
         self.grid = grid
-        self.row_size = len(self.grid)
-        self.col_size = len(self.grid[0])
+        self.col_size = len(self.grid)
+        self.row_size = len(self.grid[0])
 
 
     # This function prints the grid to the console
@@ -44,16 +44,16 @@ class Grid:
             j_size = len(row)
             for j in range(j_size):
                 if j + 1 < j_size and row[j] == row[j + 1] == 1:
-                    edges.append([str(i * i_size + j + 1), str(i * i_size + j + 2)])
+                    edges.append([str(i * j_size + j + 1), str(i * j_size + j + 2)])
                 if i + 1 < i_size and row[j] == self.grid[i + 1][j] == 1:
-                    edges.append([str(i * i_size + j + 1), str((i + 1) * i_size + j + 1)])
+                    edges.append([str(i * j_size + j + 1), str((i + 1) * j_size + j + 1 )])
         return edges
     
     def random_free_locations(self, num_of_locations: int) -> List[str]:
         locations = []
         while len(locations) < num_of_locations:
-            row = randint(0, self.row_size - 1)
-            col = randint(0, self.col_size - 1)
+            col = randint(0, self.row_size - 1)
+            row = randint(0, self.col_size - 1)
             location = str(row * self.row_size + col + 1)
             if (
                 self.grid[row][col] == 0
