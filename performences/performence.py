@@ -34,8 +34,9 @@ class DataRecord(BaseModel):
     number_of_runs: int    
     
 
+CONFIG_TYPE = ConfigType.ROOMS_32
 CONFIG = get_config(
-    config_type=ConfigType.ROOMS_32,
+    config_type=CONFIG_TYPE,
 )
 MAP_NAME = CONFIG.MAP_NAME
 NUM_OF_RUNS = CONFIG.NUMBER_OF_RUNS
@@ -67,7 +68,7 @@ def log_data_record(
             overall_flow_values=info["overall_flow_values"],
         )
         print(data_record.dict())
-        with open("performences/performence_results.txt", 'a') as results_file:
+        with open(f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_performence_results.txt", 'a') as results_file:
             results_file.write(json.dumps(data_record.dict(), indent=4))
             results_file.write("\n------------------------\n")
 
@@ -228,7 +229,7 @@ def main():
                 log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {solver_time}, {overall_time}, {path_sizes_dict}, {overall_fuel}, {flow_value}"
                 print(log_str)
 
-                with open("performences/log.txt", 'a') as log_file:
+                with open(f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_log.txt", 'a') as log_file:
                     log_file.write(log_str + "\n")
                 
             print(f"\nResults for {num_of_goals} agents - \n{json.dumps(results, indent=4)}\n")        

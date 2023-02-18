@@ -24,6 +24,7 @@ class BaseConfig:
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
     NUMBER_OF_RUNS: ClassVar[int] = 10
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_ROOM
+    index: ClassVar[int] = 1
 
 
 @dataclass
@@ -33,6 +34,7 @@ class Rooms32Config(BaseConfig):
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
     NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_ROOM
+    index: ClassVar[int] = 1
 
 
 @dataclass
@@ -42,6 +44,7 @@ class Maze32Config(BaseConfig):
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
     NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_MAZE
+    index: ClassVar[int] = 1
 
 
 @dataclass
@@ -51,6 +54,7 @@ class WarehouseConfig(BaseConfig):
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
     NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_WAREHOUSE
+    index: ClassVar[int] = 1
 
 
 @dataclass
