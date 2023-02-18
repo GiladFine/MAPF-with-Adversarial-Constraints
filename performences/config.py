@@ -11,7 +11,7 @@ from performences.goal_locations import (
 
 
 class ConfigType(str, Enum):
-    ROOMS_32 = "room_32"
+    ROOMS_32 = "rooms_32"
     MAZE_32 = "maze_32"
     WAREHOUSE = "warehouse"
     RANDOM_64 = "random_64"

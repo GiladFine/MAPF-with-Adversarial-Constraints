@@ -1,3 +1,4 @@
+import sys
 from random import randint
 from munkres import Munkres
 from env_generator import Environment
@@ -32,13 +33,15 @@ class DataRecord(BaseModel):
     overall_paths_sizes_generally_sat: int
     overall_flow_values: int
     number_of_runs: int    
-    
 
-CONFIG_TYPE = ConfigType.ROOMS_32
+
+# CONFIGS
+
+CONFIG_TYPE = ConfigType(sys.argv[1])
 CONFIG = get_config(
     config_type=CONFIG_TYPE,
-    number_of_runs=50,
-    index=1
+    number_of_runs=int(sys.argv[2]),
+    index=int(sys.argv[3]),
 )
 MAP_NAME = CONFIG.MAP_NAME
 NUM_OF_RUNS = CONFIG.number_of_runs
@@ -166,81 +169,79 @@ def calc_strategy_paths_size(strategy: ConstraintsStrategy) -> Dict[str, int]:
                prev_loc = loc
                path_sum += 1  
         path_sums[agent] = path_sum - 1 # First loc does not require a move
-    return path_sums  
+    return path_sums
+
+
+# MAIN
         
-def main():
-    for num_of_goals in NUMBER_OF_GOALS_LIST:
-        results = {
-            network_mode: {
-                'overall_sat_time': 0.0,
-                'overall_sat_time_solver': 0.0,
-                'overall_non_sat_time': 0.0,
-                'overall_non_sat_time_solver': 0.0,
-                'number_of_valid_solutions': 0,
-                'overall_paths_sizes_generally_sat': 0,
-                'overall_flow_values': 0,
-            }
-            for network_mode in NETWORK_MODES
+for num_of_goals in NUMBER_OF_GOALS_LIST:
+    results = {
+        network_mode: {
+            'overall_sat_time': 0.0,
+            'overall_sat_time_solver': 0.0,
+            'overall_non_sat_time': 0.0,
+            'overall_non_sat_time_solver': 0.0,
+            'number_of_valid_solutions': 0,
+            'overall_paths_sizes_generally_sat': 0,
+            'overall_flow_values': 0,
         }
-        for i in range(NUM_OF_RUNS):
-            print(i + 1)
-            environment, constraints = create_env_and_constraints(num_of_goals=num_of_goals)
-            all_solutions_found = True
-            for network_mode in NETWORK_MODES:
-                before_time = time()
-                constraiant_strategy = calc_strategy(
-                    environment=environment,
-                    network_mode=network_mode,
-                    constraints=constraints,
-                )
-                after_time = time()
-                overall_time = after_time - before_time
+        for network_mode in NETWORK_MODES
+    }
+    for i in range(NUM_OF_RUNS):
+        print(i + 1)
+        environment, constraints = create_env_and_constraints(num_of_goals=num_of_goals)
+        all_solutions_found = True
+        for network_mode in NETWORK_MODES:
+            before_time = time()
+            constraiant_strategy = calc_strategy(
+                environment=environment,
+                network_mode=network_mode,
+                constraints=constraints,
+            )
+            after_time = time()
+            overall_time = after_time - before_time
 
-                solution_found = (
-                    True
-                    if isinstance(constraiant_strategy, ConstraintsStrategy)
-                    else False
-                )
-                solver_time = (
-                    constraiant_strategy.constrains_network_a.solver_time
-                    if solution_found
-                    else constraiant_strategy[1]
-                )
-                flow_value = (
-                    constraiant_strategy.constrains_network_a.flow_value
-                    if solution_found
-                    else constraiant_strategy[0]
-                )
-                results[network_mode]['overall_flow_values'] += flow_value
-                    
-                path_sizes_dict = {}
-                if solution_found:
-                    results[network_mode]['number_of_valid_solutions'] += 1
-                    results[network_mode]['overall_sat_time'] += overall_time
-                    results[network_mode]['overall_sat_time_solver'] += solver_time
-                    path_sizes_dict = calc_strategy_paths_size(strategy=constraiant_strategy)
-                    overall_fuel = sum(path_sizes_dict.values())
-                    if all_solutions_found:
-                        results[network_mode]['overall_paths_sizes_generally_sat'] += overall_fuel
-                else:
-                    overall_fuel = 0
-                    all_solutions_found = False
-                    results[network_mode]['overall_non_sat_time'] += overall_time
-                    results[network_mode]['overall_non_sat_time_solver'] += solver_time
-
-                log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {solver_time}, {overall_time}, {path_sizes_dict}, {overall_fuel}, {flow_value}"
-                print(log_str)
-
-                with open(f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_log.txt", 'a') as log_file:
-                    log_file.write(log_str + "\n")
+            solution_found = (
+                True
+                if isinstance(constraiant_strategy, ConstraintsStrategy)
+                else False
+            )
+            solver_time = (
+                constraiant_strategy.constrains_network_a.solver_time
+                if solution_found
+                else constraiant_strategy[1]
+            )
+            flow_value = (
+                constraiant_strategy.constrains_network_a.flow_value
+                if solution_found
+                else constraiant_strategy[0]
+            )
+            results[network_mode]['overall_flow_values'] += flow_value
                 
-            print(f"\nResults for {num_of_goals} agents - \n{json.dumps(results, indent=4)}\n")        
-        
-        log_data_record(
-            results=results,
-            env=environment,
-        )
+            path_sizes_dict = {}
+            if solution_found:
+                results[network_mode]['number_of_valid_solutions'] += 1
+                results[network_mode]['overall_sat_time'] += overall_time
+                results[network_mode]['overall_sat_time_solver'] += solver_time
+                path_sizes_dict = calc_strategy_paths_size(strategy=constraiant_strategy)
+                overall_fuel = sum(path_sizes_dict.values())
+                if all_solutions_found:
+                    results[network_mode]['overall_paths_sizes_generally_sat'] += overall_fuel
+            else:
+                overall_fuel = 0
+                all_solutions_found = False
+                results[network_mode]['overall_non_sat_time'] += overall_time
+                results[network_mode]['overall_non_sat_time_solver'] += solver_time
 
+            log_str = f"{MAP_NAME}, {network_mode}, {num_of_goals}, {i + 1}, {solution_found}, {solver_time}, {overall_time}, {path_sizes_dict}, {overall_fuel}, {flow_value}"
+            print(log_str)
 
-if __name__ == "__main__":
-    main()
+            with open(f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_log.txt", 'a') as log_file:
+                log_file.write(log_str + "\n")
+            
+        print(f"\nResults for {num_of_goals} agents - \n{json.dumps(results, indent=4)}\n")        
+    
+    log_data_record(
+        results=results,
+        env=environment,
+    )
