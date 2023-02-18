@@ -22,9 +22,11 @@ class BaseConfig:
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [5]
     MAP_NAME: ClassVar[str] = "room-32.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
-    NUMBER_OF_RUNS: ClassVar[int] = 10
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_ROOM
-    index: ClassVar[int] = 1
+    
+    def __init__(self, number_of_runs: int, index: int):
+      self.number_of_runs = number_of_runs
+      self.index = index
 
 
 @dataclass
@@ -32,9 +34,11 @@ class Rooms32Config(BaseConfig):
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [10, 20, 30, 40, 50]
     MAP_NAME: ClassVar[str] = "room-32.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
-    NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_ROOM
-    index: ClassVar[int] = 1
+
+    def __init__(self, number_of_runs: int, index: int):
+      self.number_of_runs = number_of_runs
+      self.index = index
 
 
 @dataclass
@@ -42,9 +46,11 @@ class Maze32Config(BaseConfig):
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [10, 20, 30, 40, 50]
     MAP_NAME: ClassVar[str] = "maze-32.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
-    NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_MAZE
-    index: ClassVar[int] = 1
+
+    def __init__(self, number_of_runs: int, index: int):
+      self.number_of_runs = number_of_runs
+      self.index = index
 
 
 @dataclass
@@ -52,9 +58,11 @@ class WarehouseConfig(BaseConfig):
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [10, 20, 30, 40, 50]
     MAP_NAME: ClassVar[str] = "warehouse.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
-    NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_WAREHOUSE
-    index: ClassVar[int] = 1
+
+    def __init__(self, number_of_runs: int, index: int):
+      self.number_of_runs = number_of_runs
+      self.index = index
 
 
 @dataclass
@@ -62,21 +70,30 @@ class Random64Config(BaseConfig):
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [5]
     MAP_NAME: ClassVar[str] = "random-64.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
-    NUMBER_OF_RUNS: ClassVar[int] = 50
     GOAL_LOCATIONS: ClassVar[List[str]] = GOALS_LOCATIONS_RANDOM_64
 
+    def __init__(self, number_of_runs: int, index: int):
+      self.number_of_runs = number_of_runs
+      self.index = index
 
 
 CONFIG_TYPES_TO_CONFIGS: Dict[ConfigType, BaseConfig] =  {
-    ConfigType.ROOMS_32: Rooms32Config(),
-    ConfigType.MAZE_32: Maze32Config(),
-    ConfigType.WAREHOUSE: WarehouseConfig(),
-    ConfigType.RANDOM_64: Random64Config(),
+    ConfigType.ROOMS_32: Rooms32Config,
+    ConfigType.MAZE_32: Maze32Config,
+    ConfigType.WAREHOUSE: WarehouseConfig,
+    ConfigType.RANDOM_64: Random64Config,
 }
 
 
-def get_config(config_type: ConfigType) -> BaseConfig:
+def get_config(
+    config_type: ConfigType,
+    number_of_runs: int,
+    index: int,
+) -> BaseConfig:
     return CONFIG_TYPES_TO_CONFIGS.get(
         config_type,
-        BaseConfig(),
+        BaseConfig,
+    )(
+        number_of_runs=number_of_runs,
+        index=index,
     )
