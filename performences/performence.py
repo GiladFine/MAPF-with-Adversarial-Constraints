@@ -103,7 +103,7 @@ def calc_strategy(environment: Environment, network_mode: str, constraints: Dict
             constraints=constraints,
         )
     except ValueError as err:
-        return int(err.args[1]), int(err.args[2])
+        return int(err.args[1]), float(err.args[2])
 
 def generate_team_a(env: Environment, num_of_goals: int) -> Dict[str, str]:
     generated_locations = env.grid.random_free_locations(num_of_locations=num_of_goals)

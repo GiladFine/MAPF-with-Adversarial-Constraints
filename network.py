@@ -28,7 +28,7 @@ class Network:
         self.flow_cost = 0
         self.flow_value = 0
         self.debug = False
-        self.solver_time = -1
+        self.solver_time = -1.0
         self.brute_force = True
         if self.network_mode == "stays":
             self.build_network_stays_on_targets()
