@@ -1,0 +1,320 @@
+{
+    "map_name": "maze-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 9,
+    "overall_sat_time": 899.3130722045898,
+    "overall_sat_time_solver": 235.7051477432251,
+    "overall_non_sat_time": 1610.7945940494537,
+    "overall_non_sat_time_solver": 382.0,
+    "overall_paths_sizes_generally_sat": 4539,
+    "overall_flow_values": 230,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 11,
+    "overall_sat_time": 1282.8543541431427,
+    "overall_sat_time_solver": 441.094877243042,
+    "overall_non_sat_time": 1666.5811340808868,
+    "overall_non_sat_time_solver": 564.0,
+    "overall_paths_sizes_generally_sat": 4529,
+    "overall_flow_values": 249,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 17,
+    "overall_sat_time": 1799.773137807846,
+    "overall_sat_time_solver": 466.5745596885681,
+    "overall_non_sat_time": 836.5298664569855,
+    "overall_non_sat_time_solver": 253.0,
+    "overall_paths_sizes_generally_sat": 4529,
+    "overall_flow_values": 241,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 10,
+    "number_of_sat_solutions": 22,
+    "overall_sat_time": 3236.1753063201904,
+    "overall_sat_time_solver": 1500.5055859088898,
+    "overall_non_sat_time": 285.3405592441559,
+    "overall_non_sat_time_solver": 102.0,
+    "overall_paths_sizes_generally_sat": 4529,
+    "overall_flow_values": 249,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 1,
+    "overall_sat_time": 118.50964570045471,
+    "overall_sat_time_solver": 31.677857875823975,
+    "overall_non_sat_time": 2915.7644696235657,
+    "overall_non_sat_time_solver": 731.0,
+    "overall_paths_sizes_generally_sat": 1045,
+    "overall_flow_values": 457,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 24,
+    "overall_sat_time": 3346.0482861995697,
+    "overall_sat_time_solver": 1064.124174118042,
+    "overall_non_sat_time": 166.97979187965393,
+    "overall_non_sat_time_solver": 68.0,
+    "overall_paths_sizes_generally_sat": 1061,
+    "overall_flow_values": 500,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 17,
+    "overall_sat_time": 2139.8204395771027,
+    "overall_sat_time_solver": 543.8750762939453,
+    "overall_non_sat_time": 1084.6230912208557,
+    "overall_non_sat_time_solver": 340.0,
+    "overall_paths_sizes_generally_sat": 1037,
+    "overall_flow_values": 492,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 20,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 4787.944091796875,
+    "overall_sat_time_solver": 2413.191868543625,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 1037,
+    "overall_flow_values": 500,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 30,
+    "number_of_sat_solutions": 0,
+    "overall_sat_time": 0.0,
+    "overall_sat_time_solver": 0.0,
+    "overall_non_sat_time": 2871.914869785309,
+    "overall_non_sat_time_solver": 620.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 633,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 30,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 3677.870892047882,
+    "overall_sat_time_solver": 1259.6495344638824,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 750,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 30,
+    "number_of_sat_solutions": 13,
+    "overall_sat_time": 1682.8488869667053,
+    "overall_sat_time_solver": 458.37714862823486,
+    "overall_non_sat_time": 1593.1154713630676,
+    "overall_non_sat_time_solver": 450.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 738,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 30,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 4719.181217670441,
+    "overall_sat_time_solver": 2309.1314697265625,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 750,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 40,
+    "number_of_sat_solutions": 3,
+    "overall_sat_time": 322.82606625556946,
+    "overall_sat_time_solver": 67.8745539188385,
+    "overall_non_sat_time": 2565.836347103119,
+    "overall_non_sat_time_solver": 545.0,
+    "overall_paths_sizes_generally_sat": 2530,
+    "overall_flow_values": 867,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 40,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 4364.1344175338745,
+    "overall_sat_time_solver": 1869.3570516109467,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 3130,
+    "overall_flow_values": 1000,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 40,
+    "number_of_sat_solutions": 22,
+    "overall_sat_time": 3139.8001186847687,
+    "overall_sat_time_solver": 974.0102534294128,
+    "overall_non_sat_time": 391.4126663208008,
+    "overall_non_sat_time_solver": 99.0,
+    "overall_paths_sizes_generally_sat": 2448,
+    "overall_flow_values": 996,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 40,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 4876.79519367218,
+    "overall_sat_time_solver": 2377.0064239501953,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 2446,
+    "overall_flow_values": 1000,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "stays",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 50,
+    "number_of_sat_solutions": 0,
+    "overall_sat_time": 0.0,
+    "overall_sat_time_solver": 0.0,
+    "overall_non_sat_time": 2987.439668416977,
+    "overall_non_sat_time_solver": 565.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 1078,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-2",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 50,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 4870.80797624588,
+    "overall_sat_time_solver": 2140.0674934387207,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 1250,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "disappearing",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 50,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 3815.5790832042694,
+    "overall_sat_time_solver": 1151.0100598335266,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 1250,
+    "number_of_runs": 25
+}
+------------------------
+{
+    "map_name": "maze-32.map",
+    "network_mode": "hot_swapping-0",
+    "grid_size": 32,
+    "obstacle_frequency": 0.349609375,
+    "teams_size": 50,
+    "number_of_sat_solutions": 25,
+    "overall_sat_time": 5216.219909191132,
+    "overall_sat_time_solver": 2494.486251115799,
+    "overall_non_sat_time": 0.0,
+    "overall_non_sat_time_solver": 0.0,
+    "overall_paths_sizes_generally_sat": 0,
+    "overall_flow_values": 1250,
+    "number_of_runs": 25
+}
+------------------------
