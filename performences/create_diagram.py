@@ -6,8 +6,8 @@ import glob
 import os
 
 NUMBER_OF_RUNS = 50
-MAP_NAME = "room-32.map"
-RESULTS_FOLDER = "results/rooms_32/"
+MAP_NAME = "maze-32.map"
+RESULTS_FOLDER = "results/old_runs/2/maze_32/"
 FILE_PATTERN = "*_performence_results.json"
 RESULT_FILE_NAME = "performence_results.json"
 RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
@@ -174,10 +174,10 @@ def plot_sat_graph(mode):
 
 
 if __name__ == "__main__":
-    # plot_sat_graph("percent-of-SAT")
-    # plot_sat_graph("SAT-times")
-    # plot_sat_graph("non-SAT-times")
+    plot_sat_graph("percent-of-SAT")
+    plot_sat_graph("SAT-times")
+    plot_sat_graph("non-SAT-times")
     plot_sat_graph("solver-SAT-times")
     plot_sat_graph("solver-non-SAT-times")
     plot_sat_graph("overall-times")
-    # plot_sat_graph("avg_paths_length")
+    plot_sat_graph("avg_paths_length")

@@ -11,7 +11,7 @@ from performences.goal_locations import (
 
 
 class ConfigType(str, Enum):
-    ROOMS_32 = "rooms_32"
+    ROOM_32 = "room_32"
     MAZE_32 = "maze_32"
     WAREHOUSE = "warehouse"
     RANDOM_64 = "random_64"
@@ -30,7 +30,7 @@ class BaseConfig:
 
 
 @dataclass
-class Rooms32Config(BaseConfig):
+class Room32Config(BaseConfig):
     NUMBER_OF_GOALS_LIST: ClassVar[List[int]] = [10, 20, 30, 40, 50]
     MAP_NAME: ClassVar[str] = "room-32.map"
     NETWORK_MODES: ClassVar[List[str]] = ["stays", "hot_swapping-2", "disappearing", "hot_swapping-0"]
@@ -78,7 +78,7 @@ class Random64Config(BaseConfig):
 
 
 CONFIG_TYPES_TO_CONFIGS: Dict[ConfigType, BaseConfig] =  {
-    ConfigType.ROOMS_32: Rooms32Config,
+    ConfigType.ROOM_32: Room32Config,
     ConfigType.MAZE_32: Maze32Config,
     ConfigType.WAREHOUSE: WarehouseConfig,
     ConfigType.RANDOM_64: Random64Config,
