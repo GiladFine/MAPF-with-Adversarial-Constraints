@@ -6,8 +6,8 @@ import glob
 import os
 
 NUMBER_OF_RUNS = 50
-MAP_NAME = "maze-32.map"
-RESULTS_FOLDER = "results/old_runs/2/maze_32/"
+MAP_NAME = "room-32.map"
+RESULTS_FOLDER = "results/old_runs/2/room_32/"
 FILE_PATTERN = "*_performence_results.json"
 RESULT_FILE_NAME = "performence_results.json"
 RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
@@ -109,6 +109,18 @@ def plot_sat_graph(mode):
                     ),
                     1
                 )
+            elif mode == "coverage_percentage_DOT":
+                if variation != "disappearing":
+                    continue
+                number_of_non_sat_solutions = (       
+                    NUMBER_OF_RUNS
+                    - data_of_agents_amount["number_of_sat_solutions"]
+                )
+                value = round(
+                    100 * (int(data_of_agents_amount["overall_flow_values"]) - data_of_agents_amount["number_of_sat_solutions"] * int(num_of_agents))
+                    / (int(num_of_agents) * number_of_non_sat_solutions),
+                    1
+                )
             else:
                 raise ValueError("BAD MODE")
             arrays_dict[variation].append(value)
@@ -119,10 +131,13 @@ def plot_sat_graph(mode):
     width = pad_width - 0.005  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - 1.5 * pad_width, arrays_dict[variations[0]], width, label='SOT', hatch='///')
-    rects2 = ax.bar(x - 0.5 * pad_width, arrays_dict[variations[1]], width, label='HOT-2', hatch='.O')
-    rects3 = ax.bar(x + 0.5 * pad_width, arrays_dict[variations[2]], width, label='DOT', hatch='..')
-    rects4 = ax.bar(x + 1.5 * pad_width, arrays_dict[variations[3]], width, label='HOT-0', hatch='.|.|.')
+    if mode == "coverage_percentage_DOT":
+        rects1 = ax.bar(x, arrays_dict["disappearing"], 2 * width, label='DOT', hatch='..', color='green')
+    else:
+        rects1 = ax.bar(x - 1.5 * pad_width, arrays_dict[variations[0]], width, label='SOT', hatch='///')
+        rects2 = ax.bar(x - 0.5 * pad_width, arrays_dict[variations[1]], width, label='HOT-2', hatch='.O')
+        rects3 = ax.bar(x + 0.5 * pad_width, arrays_dict[variations[2]], width, label='DOT', hatch='..')
+        rects4 = ax.bar(x + 1.5 * pad_width, arrays_dict[variations[3]], width, label='HOT-0', hatch='.|.|.')
 
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
@@ -132,28 +147,31 @@ def plot_sat_graph(mode):
         plt.ylim(0, 130)
     elif mode == "SAT-times":
         ax.set_ylabel('Average time per SAT instance (seconds)')
-        ylim = 80 if MAP_NAME == "room-32.map" else 120
+        ylim = 80 if MAP_NAME == "room-32.map" else 140
         plt.ylim(0, ylim)
     elif mode == "solver-SAT-times":
         ax.set_ylabel('Average solver time per SAT instance (seconds)')
-        ylim = 18 if MAP_NAME == "room-32.map" else 120
+        ylim = 12 if MAP_NAME == "room-32.map" else 35
         plt.ylim(0, ylim)
     elif mode == "non-SAT-times":
         ax.set_ylabel('Average time per non-SAT instance (seconds)')
-        ylim = 80 if MAP_NAME == "room-32.map" else 120
+        ylim = 70 if MAP_NAME == "room-32.map" else 140
         plt.ylim(0, ylim)
     elif mode == "solver-non-SAT-times":
         ax.set_ylabel('Average solver time per non-SAT instance (seconds)')
-        ylim = 18 if MAP_NAME == "room-32.map" else 120
+        ylim = 12 if MAP_NAME == "room-32.map" else 35
         plt.ylim(0, ylim)
     elif mode == "overall-times":
         ax.set_ylabel('Average time per instance (seconds)')
-        ylim = 80 if MAP_NAME == "room-32.map" else 120
+        ylim = 70 if MAP_NAME == "room-32.map" else 140
         plt.ylim(0, ylim)
     elif mode == "avg_paths_length":
         ax.set_ylabel('Average path length for SAT instances')
-        ylim = 40 if MAP_NAME == "room-32.map" else 90
+        ylim = 25 if MAP_NAME == "room-32.map" else 25
         plt.ylim(0, ylim)
+    elif mode == "coverage_percentage_DOT":
+        ax.set_ylabel('% Coverage of DOT for non-SAT instances')
+        plt.ylim(0, 130)
     else:
         raise ValueError("BAD MODE")
     
@@ -162,14 +180,15 @@ def plot_sat_graph(mode):
     ax.legend()
 
     ax.bar_label(rects1, padding=3)
-    ax.bar_label(rects2, padding=3)
-    ax.bar_label(rects3, padding=3)
-    ax.bar_label(rects4, padding=3)
+    if mode != "coverage_percentage_DOT":
+        ax.bar_label(rects2, padding=3)
+        ax.bar_label(rects3, padding=3)
+        ax.bar_label(rects4, padding=3)
 
 
     fig.tight_layout()
-    plt.show()
-    # plt.savefig("room-32-graphs/" + mode + ".png")
+    # plt.show()
+    plt.savefig(f"{RESULTS_FOLDER}/graphs/{mode}.png")
            
 
 
@@ -181,3 +200,4 @@ if __name__ == "__main__":
     plot_sat_graph("solver-non-SAT-times")
     plot_sat_graph("overall-times")
     plot_sat_graph("avg_paths_length")
+    plot_sat_graph("coverage_percentage_DOT")
