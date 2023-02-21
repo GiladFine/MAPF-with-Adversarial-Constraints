@@ -1,0 +1,3 @@
+map_name, network_mode, number_of_agents, iteration, is_sat, solver_time, overall_time, paths_lens, overall_fuel, overall_flow_values
+-------------------------------------------------------------------------------------------------------------------------------------
+

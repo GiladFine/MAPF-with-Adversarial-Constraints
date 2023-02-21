@@ -2,12 +2,43 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 import numpy as np
 import json
+import glob
+import os
 
-NUMBER_OF_RUNS = 100
+NUMBER_OF_RUNS = 50
 MAP_NAME = "room-32.map"
+RESULTS_FOLDER = "results/rooms_32/"
+FILE_PATTERN = "*_performence_results.json"
+RESULT_FILE_NAME = "performence_results.json"
+RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
+
+
+
+def merge_dicts():
+    abs_directory_path = os.path.abspath(RESULTS_FOLDER)
+
+    results_dict = {}
+    for filepath in glob.glob(os.path.join(abs_directory_path, FILE_PATTERN)):
+        with open(filepath, 'r') as file_name:
+            new_results_dict = json.load(file_name)
+        if results_dict == {}:
+            results_dict = new_results_dict
+            continue
+        for map_name, subdict_1 in new_results_dict.items():
+            for network_mode, subdict_2 in subdict_1.items():
+                for number_of_goals, subdict_3 in subdict_2.items():
+                    for field_name, value in subdict_3.items():
+                        results_dict[map_name][network_mode][number_of_goals][field_name] += value
+    
+    if results_dict == {}:
+        return
+    with open(RESULT_FILE_PATH, 'w') as results_file:
+        results_file.write(json.dumps(results_dict, indent=4))
+
 
 def read_results():
-    with open("performence_results.json") as res_file:
+    merge_dicts()
+    with open(RESULT_FILE_PATH) as res_file:
         results = json.load(res_file)
         return results
 
@@ -32,16 +63,33 @@ def plot_sat_graph(mode):
                     data_of_agents_amount["overall_sat_time"]
                     / data_of_agents_amount["number_of_sat_solutions"],
                     1
-                )
+                ) if data_of_agents_amount["number_of_sat_solutions"] > 0 else 0
+            elif mode == "solver-SAT-times":
+                value = round(
+                    data_of_agents_amount["overall_sat_time_solver"]
+                    / data_of_agents_amount["number_of_sat_solutions"],
+                    1
+                ) if data_of_agents_amount["number_of_sat_solutions"] > 0 else 0
             elif mode == "non-SAT-times":
+                number_of_non_sat_solutions = (       
+                    NUMBER_OF_RUNS
+                    - data_of_agents_amount["number_of_sat_solutions"]
+                )
                 value = round(
                     data_of_agents_amount["overall_non_sat_time"]
-                    / (
-                        NUMBER_OF_RUNS
-                        - data_of_agents_amount["number_of_sat_solutions"]
-                    ),
+                    / number_of_non_sat_solutions,
                     1
+                ) if number_of_non_sat_solutions > 0 else 0
+            elif mode == "solver-non-SAT-times":
+                number_of_non_sat_solutions = (       
+                    NUMBER_OF_RUNS
+                    - data_of_agents_amount["number_of_sat_solutions"]
                 )
+                value = round(
+                    data_of_agents_amount["overall_non_sat_time_solver"]
+                    / number_of_non_sat_solutions,
+                    1
+                ) if number_of_non_sat_solutions else 0
             elif mode == "overall-times":
                 value = round(
                     (
@@ -67,12 +115,14 @@ def plot_sat_graph(mode):
 
     labels = sorted(list(labels))
     x = np.arange(len(labels))  # the label locations
-    width = 0.3  # the width of the bars
+    pad_width = 0.22
+    width = pad_width - 0.005  # the width of the bars
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width, arrays_dict[variations[0]], width, label='SOT', hatch='///')
-    rects2 = ax.bar(x, arrays_dict[variations[1]], width, label='DOT', hatch='.O')
-    rects3 = ax.bar(x + width, arrays_dict[variations[2]], width, label='HOT', hatch='..')
+    rects1 = ax.bar(x - 1.5 * pad_width, arrays_dict[variations[0]], width, label='SOT', hatch='///')
+    rects2 = ax.bar(x - 0.5 * pad_width, arrays_dict[variations[1]], width, label='HOT-2', hatch='.O')
+    rects3 = ax.bar(x + 0.5 * pad_width, arrays_dict[variations[2]], width, label='DOT', hatch='..')
+    rects4 = ax.bar(x + 1.5 * pad_width, arrays_dict[variations[3]], width, label='HOT-0', hatch='.|.|.')
 
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
@@ -82,15 +132,23 @@ def plot_sat_graph(mode):
         plt.ylim(0, 130)
     elif mode == "SAT-times":
         ax.set_ylabel('Average time per SAT instance (seconds)')
-        ylim = 40 if MAP_NAME == "room-32.map" else 120
+        ylim = 80 if MAP_NAME == "room-32.map" else 120
+        plt.ylim(0, ylim)
+    elif mode == "solver-SAT-times":
+        ax.set_ylabel('Average solver time per SAT instance (seconds)')
+        ylim = 18 if MAP_NAME == "room-32.map" else 120
         plt.ylim(0, ylim)
     elif mode == "non-SAT-times":
         ax.set_ylabel('Average time per non-SAT instance (seconds)')
-        ylim = 40 if MAP_NAME == "room-32.map" else 120
+        ylim = 80 if MAP_NAME == "room-32.map" else 120
+        plt.ylim(0, ylim)
+    elif mode == "solver-non-SAT-times":
+        ax.set_ylabel('Average solver time per non-SAT instance (seconds)')
+        ylim = 18 if MAP_NAME == "room-32.map" else 120
         plt.ylim(0, ylim)
     elif mode == "overall-times":
         ax.set_ylabel('Average time per instance (seconds)')
-        ylim = 40 if MAP_NAME == "room-32.map" else 120
+        ylim = 80 if MAP_NAME == "room-32.map" else 120
         plt.ylim(0, ylim)
     elif mode == "avg_paths_length":
         ax.set_ylabel('Average path length for SAT instances')
@@ -106,6 +164,7 @@ def plot_sat_graph(mode):
     ax.bar_label(rects1, padding=3)
     ax.bar_label(rects2, padding=3)
     ax.bar_label(rects3, padding=3)
+    ax.bar_label(rects4, padding=3)
 
 
     fig.tight_layout()
@@ -115,8 +174,10 @@ def plot_sat_graph(mode):
 
 
 if __name__ == "__main__":
-    plot_sat_graph("percent-of-SAT")
-    plot_sat_graph("SAT-times")
-    plot_sat_graph("non-SAT-times")
+    # plot_sat_graph("percent-of-SAT")
+    # plot_sat_graph("SAT-times")
+    # plot_sat_graph("non-SAT-times")
+    plot_sat_graph("solver-SAT-times")
+    plot_sat_graph("solver-non-SAT-times")
     plot_sat_graph("overall-times")
-    plot_sat_graph("avg_paths_length")
+    # plot_sat_graph("avg_paths_length")

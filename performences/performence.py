@@ -1,5 +1,5 @@
 import sys
-from random import randint
+from random import randint, uniform
 from munkres import Munkres
 from env_generator import Environment
 from strategies import ConstraintsStrategy
@@ -56,28 +56,29 @@ def log_data_record(
     results: Dict[str, Any],
     env: Environment,
 ) -> None:
-    for network_mode, info in results.items():
-        data_record = DataRecord(
-            map_name=MAP_NAME,
-            network_mode=network_mode,
-            grid_size=env.grid_size,
-            teams_size=env.teams_size,
-            obstacle_frequency=env.obstacle_frequency,
-            number_of_runs=NUM_OF_RUNS,
-            number_of_sat_solutions=info["number_of_valid_solutions"],
-            overall_sat_time=info["overall_sat_time"],
-            overall_sat_time_solver=info["overall_sat_time_solver"],
-            overall_non_sat_time=info["overall_non_sat_time"],
-            overall_non_sat_time_solver=info["overall_non_sat_time_solver"],
-            overall_paths_sizes_generally_sat=info["overall_paths_sizes_generally_sat"],
-            overall_flow_values=info["overall_flow_values"],
-        )
-        print(data_record.dict())
-        with open(f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_performence_results.txt", 'a') as results_file:
-            results_file.write(json.dumps(data_record.dict(), indent=4))
-            results_file.write("\n------------------------\n")
+    file_name = f"performences/results/{CONFIG_TYPE.value}/{CONFIG.index}_performence_results.json"
+    with open(file_name, 'r') as results_file:
+        results_dict = json.load(results_file)
 
-def generate_constraints(env: Environment, factor: int, num_of_goals: int) -> Dict[str, int]:
+    for network_mode, info in results.items():
+        results_dict[MAP_NAME][network_mode].update(
+            {
+                str(env.teams_size): {
+                    "number_of_sat_solutions": info["number_of_valid_solutions"],
+                    "overall_sat_time": info["overall_sat_time"],
+                    "overall_sat_time_solver": info["overall_sat_time_solver"],
+                    "overall_non_sat_time": info["overall_non_sat_time"],
+                    "overall_non_sat_time_solver": info["overall_non_sat_time_solver"],
+                    "overall_paths_sizes_generally_sat": info["overall_paths_sizes_generally_sat"],
+                    "overall_flow_values": info["overall_flow_values"]
+                }
+            }
+        )
+        print(results_dict[MAP_NAME][network_mode])
+        with open(file_name, 'w') as results_file:
+            results_file.write(json.dumps(results_dict, indent=4))
+
+def generate_constraints(env: Environment, num_of_goals: int) -> Dict[str, int]:
     constraints = {}
     for goal_location in goal_locations(num_of_goals=num_of_goals):
         distances = [
@@ -86,11 +87,12 @@ def generate_constraints(env: Environment, factor: int, num_of_goals: int) -> Di
         ]
         max_d = max(distances)
         min_d = min(distances)
-        constraints[goal_location] = randint(
-            min(min_d + factor, max_d),
-            max_d,
+        factor = (240 - num_of_goals) / 240
+        constraints[goal_location] = max(
+            int(randint(min_d, max_d) * min(uniform(factor, factor + 0.1), 1)),
+            min_d
         )
-    
+        
     return constraints
         
 
@@ -112,7 +114,7 @@ def generate_team_a(env: Environment, num_of_goals: int) -> Dict[str, str]:
         for i, loc in enumerate(generated_locations)
     }
 
-def check_munkres(env: Environment, constraints: Dict[str, int]) -> bool:
+def check_munkres(env: Environment, constraints: Dict[str, int], num_of_goals: int) -> bool:
     munkres_strategy = MunkresStrategy(env, b_type="MUNKRES")
     constraints_list = [
         constraints[goal_location]
@@ -151,11 +153,10 @@ def create_env_and_constraints(num_of_goals: int) -> Environment:
 
     environment.team_a.agents = generate_team_a(env=environment, num_of_goals=num_of_goals)
 
-    factor = 0
-    constraints = generate_constraints(env=environment, factor=factor, num_of_goals=num_of_goals)
-    while not check_munkres(env=environment, constraints=constraints):
-        # factor += 1
-        constraints = generate_constraints(env=environment, factor=factor, num_of_goals=num_of_goals)
+    constraints = generate_constraints(env=environment, num_of_goals=num_of_goals)
+    # while not check_munkres(env=environment, constraints=constraints, num_of_goals=num_of_goals):
+    #     # factor += 1
+    #     constraints = generate_constraints(env=environment, factor=factor, num_of_goals=num_of_goals)
 
     return environment, constraints
 
