@@ -165,14 +165,7 @@ class Network:
                 c_node_dst_hs_delayed_edge_cost = (
                     0
                     if c_node_dst_hs_delayed is None
-                    else sum([
-                        self.edge_cost(
-                            network_mode=network_mode,
-                            node=base_node,
-                            index=i,
-                            edge_cost=edge_cost_for_hs,
-                        ) for i in range(index + 1, index + 1 + self.hs_time_delay)
-                    ]) + 1
+                    else self.hs_time_delay * (1 + edge_cost_for_hs)
                 )
             
                 b_node_dst_hs_delayed = (
@@ -188,14 +181,7 @@ class Network:
                 b_node_dst_hs_delayed_edge_cost = (
                     0
                     if b_node_dst_hs_delayed is None
-                    else sum([
-                        self.edge_cost(
-                            network_mode=network_mode,
-                            node=connected_node,
-                            index=i,
-                            edge_cost=edge_cost_for_hs,
-                        ) for i in range(index + 1, index + 1 + self.hs_time_delay)
-                    ]) + 1
+                    else self.hs_time_delay * (1 + edge_cost_for_hs)
                 )
                 
                 tmp_src = b_node_src + "-" + connected_node 
@@ -279,6 +265,8 @@ class Network:
     
         self.calc_flow_and_cost()
         max_allowd_flow = edge_cost * (sum_of_deadlines - number_of_targets + 1)
+
+        # print(f"flow val - {self.flow_value}, flow cost - {self.flow_cost}, max_allowd_flow_cost - {max_allowd_flow}")
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if (
             self.flow_value != len(self.goals.get_locations_list())
