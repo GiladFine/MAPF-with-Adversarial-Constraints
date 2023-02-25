@@ -6,8 +6,8 @@ import glob
 import os
 
 NUMBER_OF_RUNS = 50
-MAP_NAME = "maze-32.map"
-RESULTS_FOLDER = "results/old_runs/3/maze_32/"
+MAP_NAME = "room-32.map"
+RESULTS_FOLDER = "results/old_runs/5/room_32/"
 FILE_PATTERN = "*_performence_results.json"
 RESULT_FILE_NAME = "performence_results.json"
 RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
