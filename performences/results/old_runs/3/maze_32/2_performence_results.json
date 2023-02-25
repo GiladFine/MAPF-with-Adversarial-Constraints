@@ -1,0 +1,192 @@
+{
+    "maze-32.map": {
+        "stays": {
+            "10": {
+                "number_of_sat_solutions": 0,
+                "overall_sat_time": 0.0,
+                "overall_sat_time_solver": 0.0,
+                "overall_non_sat_time": 2186.5541841983795,
+                "overall_non_sat_time_solver": 494.55369687080383,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 200
+            },
+            "20": {
+                "number_of_sat_solutions": 0,
+                "overall_sat_time": 0.0,
+                "overall_sat_time_solver": 0.0,
+                "overall_non_sat_time": 1538.3715069293976,
+                "overall_non_sat_time_solver": 335.95631551742554,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 390
+            },
+            "30": {
+                "number_of_sat_solutions": 3,
+                "overall_sat_time": 184.55212783813477,
+                "overall_sat_time_solver": 58.619531869888306,
+                "overall_non_sat_time": 1337.7275927066803,
+                "overall_non_sat_time_solver": 298.19977164268494,
+                "overall_paths_sizes_generally_sat": 1911,
+                "overall_flow_values": 647
+            },
+            "40": {
+                "number_of_sat_solutions": 1,
+                "overall_sat_time": 65.94595241546631,
+                "overall_sat_time_solver": 19.908832788467407,
+                "overall_non_sat_time": 1609.2609457969666,
+                "overall_non_sat_time_solver": 388.69564414024353,
+                "overall_paths_sizes_generally_sat": 1073,
+                "overall_flow_values": 877
+            },
+            "50": {
+                "number_of_sat_solutions": 1,
+                "overall_sat_time": 69.40848112106323,
+                "overall_sat_time_solver": 19.41238260269165,
+                "overall_non_sat_time": 1460.7953605651855,
+                "overall_non_sat_time_solver": 313.0410234928131,
+                "overall_paths_sizes_generally_sat": 892,
+                "overall_flow_values": 1036
+            }
+        },
+        "hot_swapping-2": {
+            "10": {
+                "number_of_sat_solutions": 0,
+                "overall_sat_time": 0.0,
+                "overall_sat_time_solver": 0.0,
+                "overall_non_sat_time": 2046.0238111019135,
+                "overall_non_sat_time_solver": 500.8507409095764,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 240
+            },
+            "20": {
+                "number_of_sat_solutions": 0,
+                "overall_sat_time": 0.0,
+                "overall_sat_time_solver": 0.0,
+                "overall_non_sat_time": 1890.5452921390533,
+                "overall_non_sat_time_solver": 625.9476208686829,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 500
+            },
+            "30": {
+                "number_of_sat_solutions": 8,
+                "overall_sat_time": 814.1172895431519,
+                "overall_sat_time_solver": 427.39532494544983,
+                "overall_non_sat_time": 1634.1014068126678,
+                "overall_non_sat_time_solver": 762.2848675251007,
+                "overall_paths_sizes_generally_sat": 1877,
+                "overall_flow_values": 750
+            },
+            "40": {
+                "number_of_sat_solutions": 12,
+                "overall_sat_time": 1534.2342426776886,
+                "overall_sat_time_solver": 875.7670562267303,
+                "overall_non_sat_time": 1664.1445846557617,
+                "overall_non_sat_time_solver": 925.4203345775604,
+                "overall_paths_sizes_generally_sat": 1049,
+                "overall_flow_values": 1000
+            },
+            "50": {
+                "number_of_sat_solutions": 2,
+                "overall_sat_time": 243.24754118919373,
+                "overall_sat_time_solver": 135.75076699256897,
+                "overall_non_sat_time": 2450.9600236415863,
+                "overall_non_sat_time_solver": 1207.6270701885223,
+                "overall_paths_sizes_generally_sat": 882,
+                "overall_flow_values": 1250
+            }
+        },
+        "disappearing": {
+            "10": {
+                "number_of_sat_solutions": 1,
+                "overall_sat_time": 86.65216374397278,
+                "overall_sat_time_solver": 26.025482892990112,
+                "overall_non_sat_time": 2454.9060871601105,
+                "overall_non_sat_time_solver": 753.7622809410095,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 206
+            },
+            "20": {
+                "number_of_sat_solutions": 0,
+                "overall_sat_time": 0.0,
+                "overall_sat_time_solver": 0.0,
+                "overall_non_sat_time": 1789.9121861457825,
+                "overall_non_sat_time_solver": 532.0283257961273,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 441
+            },
+            "30": {
+                "number_of_sat_solutions": 9,
+                "overall_sat_time": 638.2053234577179,
+                "overall_sat_time_solver": 207.21091485023499,
+                "overall_non_sat_time": 1130.553237915039,
+                "overall_non_sat_time_solver": 313.2147855758667,
+                "overall_paths_sizes_generally_sat": 1877,
+                "overall_flow_values": 712
+            },
+            "40": {
+                "number_of_sat_solutions": 14,
+                "overall_sat_time": 1134.6793904304504,
+                "overall_sat_time_solver": 364.92394065856934,
+                "overall_non_sat_time": 870.0931861400604,
+                "overall_non_sat_time_solver": 259.8320519924164,
+                "overall_paths_sizes_generally_sat": 1045,
+                "overall_flow_values": 977
+            },
+            "50": {
+                "number_of_sat_solutions": 5,
+                "overall_sat_time": 380.0306828022003,
+                "overall_sat_time_solver": 109.35078930854797,
+                "overall_non_sat_time": 1522.3550744056702,
+                "overall_non_sat_time_solver": 454.5113251209259,
+                "overall_paths_sizes_generally_sat": 874,
+                "overall_flow_values": 1193
+            }
+        },
+        "hot_swapping-0": {
+            "10": {
+                "number_of_sat_solutions": 2,
+                "overall_sat_time": 209.50787544250488,
+                "overall_sat_time_solver": 93.4642927646637,
+                "overall_non_sat_time": 3148.6725764274597,
+                "overall_non_sat_time_solver": 1172.051409959793,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 243
+            },
+            "20": {
+                "number_of_sat_solutions": 5,
+                "overall_sat_time": 503.6347668170929,
+                "overall_sat_time_solver": 263.0107684135437,
+                "overall_non_sat_time": 1836.2212896347046,
+                "overall_non_sat_time_solver": 820.1730411052704,
+                "overall_paths_sizes_generally_sat": 0,
+                "overall_flow_values": 500
+            },
+            "30": {
+                "number_of_sat_solutions": 13,
+                "overall_sat_time": 1380.0758981704712,
+                "overall_sat_time_solver": 754.0911056995392,
+                "overall_non_sat_time": 1332.9566473960876,
+                "overall_non_sat_time_solver": 704.2289619445801,
+                "overall_paths_sizes_generally_sat": 1875,
+                "overall_flow_values": 750
+            },
+            "40": {
+                "number_of_sat_solutions": 18,
+                "overall_sat_time": 2238.4358682632446,
+                "overall_sat_time_solver": 1230.2034366130829,
+                "overall_non_sat_time": 856.6438953876495,
+                "overall_non_sat_time_solver": 475.5085434913635,
+                "overall_paths_sizes_generally_sat": 1045,
+                "overall_flow_values": 1000
+            },
+            "50": {
+                "number_of_sat_solutions": 10,
+                "overall_sat_time": 1224.4297473430634,
+                "overall_sat_time_solver": 689.4708051681519,
+                "overall_non_sat_time": 1835.487300157547,
+                "overall_non_sat_time_solver": 1029.1814019680023,
+                "overall_paths_sizes_generally_sat": 874,
+                "overall_flow_values": 1250
+            }
+        }
+    }
+}
