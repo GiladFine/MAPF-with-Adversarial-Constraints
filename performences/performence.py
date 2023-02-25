@@ -156,7 +156,7 @@ def create_env_and_constraints(num_of_goals: int) -> Environment:
     constraints = generate_constraints(env=environment, num_of_goals=num_of_goals)
 
     if num_of_goals >= 30:
-        return cenvironment, constraintsons
+        return environment, constraints
 
     for i in range(3):
         if check_munkres(env=environment, constraints=constraints, num_of_goals=num_of_goals):
