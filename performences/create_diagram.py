@@ -6,8 +6,8 @@ import glob
 import os
 
 NUMBER_OF_RUNS = 50
-MAP_NAME = "room-32.map"
-RESULTS_FOLDER = "results/old_runs/2/room_32/"
+MAP_NAME = "maze-32.map"
+RESULTS_FOLDER = "results/old_runs/3/maze_32/"
 FILE_PATTERN = "*_performence_results.json"
 RESULT_FILE_NAME = "performence_results.json"
 RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
@@ -108,7 +108,7 @@ def plot_sat_graph(mode):
                         )
                     ),
                     1
-                )
+                ) if result[MAP_NAME]["stays"][num_of_agents]["number_of_sat_solutions"] > 0 else 0
             elif mode == "coverage_percentage_DOT":
                 if variation != "disappearing":
                     continue
@@ -144,7 +144,7 @@ def plot_sat_graph(mode):
     ax.set_xlabel('number of agents')
     if mode == "percent-of-SAT":
         ax.set_ylabel('% of SAT instances')
-        plt.ylim(0, 130)
+        plt.ylim(0, 110)
     elif mode == "SAT-times":
         ax.set_ylabel('Average time per SAT instance (seconds)')
         ylim = 80 if MAP_NAME == "room-32.map" else 140
@@ -163,7 +163,7 @@ def plot_sat_graph(mode):
         plt.ylim(0, ylim)
     elif mode == "overall-times":
         ax.set_ylabel('Average time per instance (seconds)')
-        ylim = 70 if MAP_NAME == "room-32.map" else 140
+        ylim = 100 if MAP_NAME == "room-32.map" else 180
         plt.ylim(0, ylim)
     elif mode == "avg_paths_length":
         ax.set_ylabel('Average path length for SAT instances')
@@ -187,17 +187,17 @@ def plot_sat_graph(mode):
 
 
     fig.tight_layout()
-    # plt.show()
-    plt.savefig(f"{RESULTS_FOLDER}/graphs/{mode}.png")
+    plt.show()
+    # plt.savefig(f"{RESULTS_FOLDER}/graphs/{mode}.png")
            
 
 
 if __name__ == "__main__":
     plot_sat_graph("percent-of-SAT")
-    plot_sat_graph("SAT-times")
-    plot_sat_graph("non-SAT-times")
-    plot_sat_graph("solver-SAT-times")
-    plot_sat_graph("solver-non-SAT-times")
+    # plot_sat_graph("SAT-times")
+    # plot_sat_graph("non-SAT-times")
+    # plot_sat_graph("solver-SAT-times")
+    # plot_sat_graph("solver-non-SAT-times")
     plot_sat_graph("overall-times")
     plot_sat_graph("avg_paths_length")
     plot_sat_graph("coverage_percentage_DOT")

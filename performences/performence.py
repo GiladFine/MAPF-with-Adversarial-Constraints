@@ -78,7 +78,7 @@ def log_data_record(
         with open(file_name, 'w') as results_file:
             results_file.write(json.dumps(results_dict, indent=4))
 
-def generate_constraints(env: Environment, num_of_goals: int) -> Dict[str, int]:
+def generate_constraints(env: Environment, num_of_goals: int, ext_factor: int = 0) -> Dict[str, int]:
     constraints = {}
     for goal_location in goal_locations(num_of_goals=num_of_goals):
         distances = [
@@ -89,7 +89,7 @@ def generate_constraints(env: Environment, num_of_goals: int) -> Dict[str, int]:
         min_d = min(distances)
         factor = (240 - num_of_goals) / 240
         constraints[goal_location] = max(
-            int(randint(min_d, max_d) * min(uniform(factor, factor + 0.1), 1)),
+            int(randint(min(min_d + ext_factor, max_d), max_d) * min(uniform(factor, factor + 0.1), 1)),
             min_d
         )
         
@@ -154,9 +154,14 @@ def create_env_and_constraints(num_of_goals: int) -> Environment:
     environment.team_a.agents = generate_team_a(env=environment, num_of_goals=num_of_goals)
 
     constraints = generate_constraints(env=environment, num_of_goals=num_of_goals)
-    # while not check_munkres(env=environment, constraints=constraints, num_of_goals=num_of_goals):
-    #     # factor += 1
-    #     constraints = generate_constraints(env=environment, factor=factor, num_of_goals=num_of_goals)
+
+    if num_of_goals >= 30:
+        return cenvironment, constraintsons
+
+    for i in range(3):
+        if check_munkres(env=environment, constraints=constraints, num_of_goals=num_of_goals):
+            break
+        constraints = generate_constraints(env=environment, num_of_goals=num_of_goals, ext_factor=i)
 
     return environment, constraints
 
