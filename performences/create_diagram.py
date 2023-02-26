@@ -7,7 +7,7 @@ import os
 
 NUMBER_OF_RUNS = 50
 MAP_NAME = "room-32.map"
-RESULTS_FOLDER = "results/old_runs/5/room_32/"
+RESULTS_FOLDER = "results/old_runs/4/room_32/"
 FILE_PATTERN = "*_performence_results.json"
 RESULT_FILE_NAME = "performence_results.json"
 RESULT_FILE_PATH = os.path.join(RESULTS_FOLDER, RESULT_FILE_NAME)
@@ -167,7 +167,7 @@ def plot_sat_graph(mode):
         plt.ylim(0, ylim)
     elif mode == "avg_paths_length":
         ax.set_ylabel('Average path length for SAT instances')
-        ylim = 25 if MAP_NAME == "room-32.map" else 25
+        ylim = 60 if MAP_NAME == "maze-32.map" else 25
         plt.ylim(0, ylim)
     elif mode == "coverage_percentage_DOT":
         ax.set_ylabel('% Coverage of DOT for non-SAT instances')
@@ -179,11 +179,11 @@ def plot_sat_graph(mode):
     ax.set_xticks(x, labels)
     ax.legend()
 
-    ax.bar_label(rects1, padding=3)
+    ax.bar_label(rects1, padding=3, fontsize=8)
     if mode != "coverage_percentage_DOT":
-        ax.bar_label(rects2, padding=3)
-        ax.bar_label(rects3, padding=3)
-        ax.bar_label(rects4, padding=3)
+        ax.bar_label(rects2, padding=3, fontsize=8)
+        ax.bar_label(rects3, padding=3, fontsize=8)
+        ax.bar_label(rects4, padding=3, fontsize=8)
 
 
     fig.tight_layout()
