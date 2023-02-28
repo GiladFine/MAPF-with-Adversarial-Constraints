@@ -1,6 +1,6 @@
 from copy import deepcopy
 import datetime
-from typing import List
+from typing import List, Tuple
 from time import time
 from func_timeout import func_set_timeout
 import networkx as nx
@@ -77,6 +77,7 @@ class Network:
         tmp_edges_list = []
         nodes_visited = []
         all_base_nodes_neighbors = []
+        hs_edges = []
         nodes_lower_bounds_total_input = {}
         nodes_lower_bounds_total_output = {}
         
@@ -165,7 +166,7 @@ class Network:
                 c_node_dst_hs_delayed_edge_cost = (
                     0
                     if c_node_dst_hs_delayed is None
-                    else self.hs_time_delay * (1 + edge_cost_for_hs)
+                    else self.hs_time_delay * (1 + edge_cost_for_hs) - 1
                 )
             
                 b_node_dst_hs_delayed = (
@@ -181,11 +182,16 @@ class Network:
                 b_node_dst_hs_delayed_edge_cost = (
                     0
                     if b_node_dst_hs_delayed is None
-                    else self.hs_time_delay * (1 + edge_cost_for_hs)
+                    else self.hs_time_delay * (1 + edge_cost_for_hs) - 1
                 )
                 
                 tmp_src = b_node_src + "-" + connected_node 
                 tmp_dst = b_node_dst + "-" + connected_node
+                if b_node_dst_hs_delayed is not None:
+                    hs_edges.append((tmp_dst, b_node_dst_hs_delayed))
+                if c_node_dst_hs_delayed is not None:
+                    hs_edges.append((tmp_dst, c_node_dst_hs_delayed))
+
                 tmp_edges_list.extend([
                     (b_node_src, tmp_src, {"capacity": 1}),
                     (c_node_src, tmp_src, {"capacity": 1}),
@@ -217,7 +223,7 @@ class Network:
         # Remove duplicates
         edges_list = []
         [edges_list.append(item) for item in tmp_edges_list if item not in edges_list]
-        return edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes
+        return edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes, hs_edges
     
     def _get_all_combinations(self, l):
         if not self.brute_force:
@@ -252,21 +258,37 @@ class Network:
         self.time_expanded_graph.remove_edges_from(removed_edges)
         return removed_edges
 
+    def _get_number_of_hot_swapping_for_flow(self, overall_hs_edges: List[Tuple[str, str]]) -> int:
+        if self.hs_time_delay == 0:
+            return 0
+        number_of_hs = 0
+        for src, dst in overall_hs_edges:
+            if (
+                src in self.flow_dict
+                and dst in self.flow_dict[src]
+                and self.flow_dict[src][dst] > 0
+            ):
+                number_of_hs += 1
+        return number_of_hs
+
     def build_network_hot_swapping(self):
         number_of_targets = len(self.goals.get_locations_list())
         max_number_of_hs_actions = (number_of_targets * number_of_targets - number_of_targets) / 2
         sum_of_deadlines = sum(self.reach_constraints.values())
         edge_cost = sum_of_deadlines + max_number_of_hs_actions + 1
 
+        overall_hs_edges = []
         reached_nodes = self.team.get_locations_list()       
         for i in range(self.propagation_const):
-            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="hot_swapping", reached_nodes=reached_nodes, edge_cost_for_hs=edge_cost)
+            edges_list, _, _, reached_nodes, hs_edges = self.create_subgraph(index=i, network_mode="hot_swapping", reached_nodes=reached_nodes, edge_cost_for_hs=edge_cost)
+            overall_hs_edges.extend(hs_edges)
             self.time_expanded_graph.add_edges_from(edges_list)
     
         self.calc_flow_and_cost()
-        max_allowd_flow = edge_cost * (sum_of_deadlines - number_of_targets + 1)
+        number_of_hs_in_flow = self._get_number_of_hot_swapping_for_flow(overall_hs_edges=overall_hs_edges)
+        max_allowd_flow = edge_cost * (sum_of_deadlines - number_of_targets + 1) - number_of_hs_in_flow
 
-        # print(f"flow val - {self.flow_value}, flow cost - {self.flow_cost}, max_allowd_flow_cost - {max_allowd_flow}")
+        # print(f"flow val - {self.flow_value}, flow cost - {self.flow_cost}, max_allowd_flow_cost - {max_allowd_flow}, number_of_hs_in_flow - {number_of_hs_in_flow}")
         # This means that all the max-flow was reached, indicating a solution for the Path-Finding problem
         if (
             self.flow_value != len(self.goals.get_locations_list())
@@ -296,7 +318,7 @@ class Network:
         
         before_time = time()
         for i in range(self.propagation_const):
-            edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes = self.create_subgraph(index=i, network_mode="demands", reached_nodes=reached_nodes)
+            edges_list, nodes_lower_bounds_total_input, nodes_lower_bounds_total_output, reached_nodes, _ = self.create_subgraph(index=i, network_mode="demands", reached_nodes=reached_nodes)
             
             self.time_expanded_graph.add_edges_from(edges_list)
             
@@ -394,7 +416,7 @@ class Network:
     def build_network_disappearing(self): 
         reached_nodes = self.team.get_locations_list()       
         for i in range(self.propagation_const):
-            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="disappearing", reached_nodes=reached_nodes)
+            edges_list, _, _, reached_nodes, _ = self.create_subgraph(index=i, network_mode="disappearing", reached_nodes=reached_nodes)
             self.time_expanded_graph.add_edges_from(edges_list)
     
         self.calc_flow_and_cost()
@@ -411,7 +433,7 @@ class Network:
     def build_network_stays_on_targets(self): 
         reached_nodes = self.team.get_locations_list()       
         for i in range(self.propagation_const):
-            edges_list, _, _, reached_nodes = self.create_subgraph(index=i, network_mode="stays", reached_nodes=reached_nodes)
+            edges_list, _, _, reached_nodes, _ = self.create_subgraph(index=i, network_mode="stays", reached_nodes=reached_nodes)
             self.time_expanded_graph.add_edges_from(edges_list)
     
         self.calc_flow_and_cost()
